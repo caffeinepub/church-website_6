@@ -9,25 +9,31 @@ import {
   Cross,
   Facebook,
   Globe,
+  GraduationCap,
   Heart,
   Instagram,
   Mail,
   MapPin,
   Menu,
   Music,
+  Music2,
   Phone,
   Play,
-  Star,
+  Share2,
+  Sparkles,
   Twitter,
   Users,
   X,
   Youtube,
+  Zap,
 } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const NAV_LINKS = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
+  { label: "Founder", href: "#founder" },
+  { label: "Mission", href: "#mission" },
   { label: "Worship", href: "#worship" },
   { label: "Sermons", href: "#sermons" },
   { label: "Events", href: "#events" },
@@ -35,6 +41,45 @@ const NAV_LINKS = [
   { label: "Leadership", href: "#leadership" },
   { label: "Gallery", href: "#gallery" },
   { label: "Contact", href: "#contact" },
+];
+
+const MISSION_POINTS = [
+  {
+    Icon: Heart,
+    title: "A Welcoming Home",
+    description:
+      "Creating an environment of love, acceptance, and support where everyone belongs.",
+  },
+  {
+    Icon: Zap,
+    title: "Bold Witnesses",
+    description:
+      "Empowering believers to be bold witnesses for Christ in every sphere of life.",
+  },
+  {
+    Icon: Share2,
+    title: "Gospel Outreach",
+    description:
+      "Sharing the Gospel across communities, schools, workplaces, and homes.",
+  },
+  {
+    Icon: Sparkles,
+    title: "Discover Your Gifts",
+    description:
+      "Equipping believers to discover and develop their God-given gifts.",
+  },
+  {
+    Icon: Music2,
+    title: "Worship Excellence",
+    description:
+      "Establishing a strong, Spirit-filled worship team that glorifies God.",
+  },
+  {
+    Icon: GraduationCap,
+    title: "Leadership Development",
+    description:
+      "Training future leaders through Bible-based education and mentorship.",
+  },
 ];
 
 const SERMONS = [
@@ -66,20 +111,6 @@ const EVENTS = [
       "Join us for a powerful Easter service celebrating the resurrection of Jesus Christ with special music, family activities, and a message of hope.",
     img: "/assets/generated/event-easter.dim_600x400.jpg",
   },
-  {
-    title: "Youth Summer Camp",
-    date: "June 14–18, 2026",
-    description:
-      "A transformative five-day camp experience for teens ages 13–18. Register now for a week of faith, friendship, adventure, and spiritual growth.",
-    img: "/assets/generated/event-youth-camp.dim_600x400.jpg",
-  },
-  {
-    title: "Community Outreach Day",
-    date: "May 3, 2026",
-    description:
-      "Volunteer alongside our congregation to serve meals, distribute supplies, and share love with our local neighbors in need.",
-    img: "/assets/generated/event-outreach.dim_600x400.jpg",
-  },
 ];
 
 const MINISTRIES = [
@@ -106,12 +137,6 @@ const MINISTRIES = [
     name: "Children's Ministry",
     description:
       "Planting seeds of faith in the youngest hearts with fun, interactive Bible learning.",
-  },
-  {
-    Icon: Star,
-    name: "Senior Ministry",
-    description:
-      "Honoring and uplifting our senior members with care, community, and connection.",
   },
   {
     Icon: Globe,
@@ -168,22 +193,19 @@ const GALLERY = [
 
 const WORSHIP_TIMES = [
   {
-    service: "Sunday Morning",
-    time: "8:00 AM",
-    location: "Main Sanctuary",
-    note: "Traditional Service",
-  },
-  {
-    service: "Sunday Morning",
+    service: "Sunday Church Service",
     time: "10:30 AM",
-    location: "Main Sanctuary",
-    note: "Contemporary Service",
+    location: "Christ Church Chapel",
+    address:
+      "The Chapel On The Hill, Church Rise / South Road, Forest Hill, London, SE23 2UJ",
+    note: "",
   },
   {
-    service: "Wednesday Evening",
+    service: "Wednesday Midweek Service",
     time: "7:00 PM",
-    location: "Online & In-Person",
-    note: "Midweek Prayer",
+    location: "St George's Church",
+    address: "Vancouver Road, London SE23 2AG",
+    note: "",
   },
 ];
 
@@ -331,9 +353,6 @@ export default function App() {
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30" />
           <div className="relative z-10 mx-auto max-w-7xl px-6 pt-24">
             <div className="max-w-2xl animate-fade-in-up">
-              <p className="mb-3 text-sm font-semibold uppercase tracking-[0.3em] text-gold">
-                Welcome to Our Church Family
-              </p>
               <h1 className="font-display text-5xl font-bold leading-tight text-white drop-shadow-lg sm:text-6xl lg:text-7xl">
                 Welcome to
                 <br />
@@ -404,11 +423,11 @@ export default function App() {
                       Our History
                     </h3>
                     <p>
-                      Founded in 1987 by a small group of 12 families, Grace
-                      Community Church has grown into a vibrant congregation of
-                      over 1,400 members. Through decades of faithful ministry,
-                      we have baptized hundreds, planted two daughter churches,
-                      and served thousands in our local community.
+                      Founded in 1997, New Life Evangelistic Ministries Worship
+                      Centre has grown into a vibrant congregation committed to
+                      spreading the Word of God to all nations. Through decades
+                      of faithful ministry, we have baptised many, planted
+                      daughter churches, and served thousands in our community.
                     </p>
                   </div>
                 </div>
@@ -427,13 +446,130 @@ export default function App() {
                 />
                 <div className="absolute -bottom-6 -left-6 bg-navy rounded-xl p-5 shadow-card">
                   <p className="text-3xl font-display font-bold text-gold">
-                    37+
+                    Est.
                   </p>
-                  <p className="text-sm text-white/80 mt-1">
-                    Years of Ministry
-                  </p>
+                  <p className="text-sm text-white/80 mt-1">1997</p>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── FOUNDER'S MESSAGE ── */}
+        <section
+          id="founder"
+          className="py-20"
+          style={{ background: "oklch(0.985 0.012 68)" }}
+          aria-label="Founder's Message"
+        >
+          <div className="mx-auto max-w-4xl px-6">
+            <SectionHeading>Founder's Message</SectionHeading>
+
+            {/* Decorative divider */}
+            <div className="mt-6 flex items-center justify-center gap-4">
+              <div className="h-px flex-1 bg-gold/30" />
+              <Cross className="h-5 w-5 text-gold" />
+              <div className="h-px flex-1 bg-gold/30" />
+            </div>
+
+            {/* Quote card */}
+            <div className="relative mt-10 rounded-2xl bg-white px-8 py-10 shadow-card sm:px-14 sm:py-14">
+              {/* Opening quote mark */}
+              <span
+                className="absolute -top-6 left-8 font-display text-8xl leading-none text-gold select-none sm:left-12"
+                aria-hidden="true"
+              >
+                &ldquo;
+              </span>
+
+              <div className="space-y-6 text-foreground/80 leading-relaxed text-base sm:text-lg">
+                <p>
+                  A warm and special greeting to you! As the head pastor of New
+                  Life Evangelistic Ministries International Worship Centre, I
+                  am overjoyed and deeply thankful to lead such an incredible
+                  body of Christ. New Life Church was established in 1997. Our
+                  core mission is to spread the{" "}
+                  <strong className="text-navy font-bold">
+                    WHOLE WORD OF GOD TO THE WHOLE WORLD
+                  </strong>
+                  , sharing the good news of His profound love and purpose for
+                  each of our lives. In doing so, we aim to deepen our faith
+                  together, live with unwavering integrity, and actively serve
+                  our communities.
+                </p>
+                <p>
+                  Evangelism is central to our mission, driving us to spread
+                  hope and love throughout the world. It is all about living in
+                  a way that honours God, and inviting others to discover His
+                  grace. The Bible is our guiding light, encouraging us to trust
+                  in His divine plans, even when facing adversity, and to commit
+                  to His teachings every day.
+                </p>
+                <p>
+                  Our church is a family, deeply rooted in love, committed to
+                  God, and with a strong desire to grow together in faith and
+                  service. All are welcome to fellowship with us, come as you
+                  are and expect to leave with a renewed sense of hope and
+                  understanding of Christ.
+                </p>
+              </div>
+
+              {/* Closing quote mark */}
+              <span
+                className="absolute -bottom-4 right-8 font-display text-8xl leading-none text-gold select-none sm:right-12"
+                aria-hidden="true"
+              >
+                &rdquo;
+              </span>
+            </div>
+
+            {/* Attribution */}
+            <div className="mt-10 flex flex-col items-center gap-3">
+              <img
+                src="/assets/generated/pastor-founder.dim_400x400.jpg"
+                alt="Rev Patrick Adu Amankwah"
+                className="h-32 w-32 rounded-full border-4 border-gold shadow-card object-cover mx-auto mb-4"
+              />
+              <div className="h-px w-24 bg-gold/40" />
+              <p className="font-display text-xl font-bold tracking-widest text-navy uppercase">
+                Rev Patrick Adu Amankwah
+              </p>
+              <p
+                className="text-sm font-semibold uppercase tracking-[0.25em] text-gold"
+                style={{ fontVariant: "small-caps" }}
+              >
+                General Overseer
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* ── OUR MISSION ── */}
+        <section
+          id="mission"
+          className="py-20 bg-navy"
+          aria-label="Our Mission"
+        >
+          <div className="mx-auto max-w-7xl px-6">
+            <SectionHeading light>Our Mission</SectionHeading>
+            <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
+              {MISSION_POINTS.map(({ Icon, title, description }, i) => (
+                <div
+                  key={title}
+                  className="flex items-start gap-5 rounded-xl bg-white/10 p-6 hover:bg-white/15 transition-colors"
+                  data-ocid={`mission.item.${i + 1}`}
+                >
+                  <div className="shrink-0 flex h-12 w-12 items-center justify-center rounded-full border-2 border-gold">
+                    <Icon className="h-5 w-5 text-gold" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-white text-lg">{title}</h3>
+                    <p className="mt-1 text-sm text-white/70 leading-relaxed">
+                      {description}
+                    </p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
@@ -446,7 +582,7 @@ export default function App() {
         >
           <div className="mx-auto max-w-7xl px-6">
             <SectionHeading>Worship Times</SectionHeading>
-            <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-3">
+            <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2">
               {WORSHIP_TIMES.map((s, i) => (
                 <div
                   key={s.time}
@@ -464,7 +600,9 @@ export default function App() {
                   <p className="mt-3 text-sm font-medium text-foreground/70">
                     {s.location}
                   </p>
-                  <p className="mt-1 text-xs text-muted-foreground">{s.note}</p>
+                  <p className="mt-1 text-xs text-muted-foreground">
+                    {s.address}
+                  </p>
                 </div>
               ))}
             </div>
@@ -547,7 +685,7 @@ export default function App() {
         >
           <div className="mx-auto max-w-7xl px-6">
             <SectionHeading>Upcoming Events</SectionHeading>
-            <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-3">
+            <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-1 max-w-md mx-auto">
               {EVENTS.map((event, i) => (
                 <div
                   key={event.title}
@@ -706,7 +844,8 @@ export default function App() {
                     New Life Evangelistic Ministries Worship Centre
                   </p>
                   <p className="text-xs text-white/50">
-                    123 Grace Avenue, Springfield, IL 62701
+                    Christ Church Chapel, The Chapel On The Hill, Church Rise/
+                    South Road, Forest Hill, London SE23 2UJ
                   </p>
                   <div className="mt-4 rounded-lg bg-white/10 px-4 py-2 text-xs text-white/50">
                     📍 Map Loading...
@@ -778,9 +917,15 @@ export default function App() {
                         Address
                       </p>
                       <p className="text-sm text-white/70 mt-0.5">
-                        123 Grace Avenue
+                        Christ Church Chapel
                         <br />
-                        Springfield, IL 62701
+                        The Chapel On The Hill
+                        <br />
+                        Church Rise/ South Road
+                        <br />
+                        Forest Hill, London
+                        <br />
+                        SE23 2UJ
                       </p>
                     </div>
                   </div>
@@ -865,11 +1010,7 @@ export default function App() {
               <div className="mt-6 space-y-2">
                 <div className="flex items-center gap-2 text-sm text-white/60">
                   <Clock className="h-4 w-4 text-gold" />
-                  <span>Sun: 8:00 AM &amp; 10:30 AM</span>
-                </div>
-                <div className="flex items-center gap-2 text-sm text-white/60">
-                  <Clock className="h-4 w-4 text-gold" />
-                  <span>Wed: 7:00 PM</span>
+                  <span>Sun: 10:30 AM | Wed: 7:00 PM</span>
                 </div>
                 <div className="flex items-center gap-2 text-sm text-white/60">
                   <Phone className="h-4 w-4 text-gold" />
