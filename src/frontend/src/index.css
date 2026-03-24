@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Playfair Display";
+  src: url("/assets/fonts/PlayfairDisplay.woff2") format("woff2");
+  font-weight: 400 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("/assets/fonts/PlusJakartaSans.woff2") format("woff2");
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.75rem;
+
+    /* Navy: #0B2F4B → oklch(0.248 0.072 233) */
+    --navy: 0.248 0.072 233;
+    /* Gold: #C6A24A → oklch(0.692 0.115 68) */
+    --gold: 0.692 0.115 68;
+    /* White */
+    --white: 1 0 0;
+    /* Light gray: #F3F3F3 → oklch(0.963 0 0) */
+    --gray-light: 0.963 0 0;
+    /* Text dark: #2B2B2B → oklch(0.22 0 0) */
+    --text-dark: 0.22 0 0;
+
+    /* Semantic tokens mapped to navy/gold palette */
+    --background: 1 0 0;
+    --foreground: 0.22 0 0;
+    --card: 1 0 0;
+    --card-foreground: 0.22 0 0;
+    --popover: 1 0 0;
+    --popover-foreground: 0.22 0 0;
+    --primary: 0.248 0.072 233;
+    --primary-foreground: 1 0 0;
+    --secondary: 0.963 0 0;
+    --secondary-foreground: 0.248 0.072 233;
+    --muted: 0.963 0 0;
+    --muted-foreground: 0.5 0 0;
+    --accent: 0.692 0.115 68;
+    --accent-foreground: 1 0 0;
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+    --border: 0.9 0 0;
+    --input: 0.9 0 0;
+    --ring: 0.692 0.115 68;
+    --chart-1: 0.692 0.115 68;
+    --chart-2: 0.248 0.072 233;
+    --chart-3: 0.6 0.05 200;
+    --chart-4: 0.8 0.1 80;
+    --chart-5: 0.4 0.05 230;
+    --sidebar: 0.963 0 0;
+    --sidebar-foreground: 0.22 0 0;
+    --sidebar-primary: 0.248 0.072 233;
+    --sidebar-primary-foreground: 1 0 0;
+    --sidebar-accent: 0.692 0.115 68;
+    --sidebar-accent-foreground: 1 0 0;
+    --sidebar-border: 0.9 0 0;
+    --sidebar-ring: 0.692 0.115 68;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+  }
+}
