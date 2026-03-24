@@ -85,19 +85,19 @@ const MISSION_POINTS = [
 const SERMONS = [
   {
     title: "The Power of Faith",
-    speaker: "Pastor John Williams",
+    speaker: "Pastor Samuel",
     date: "March 17, 2026",
     img: "/assets/generated/sermon-faith.dim_600x400.jpg",
   },
   {
     title: "Walking in Grace",
-    speaker: "Pastor Sarah Mitchell",
+    speaker: "Pastor Solomon",
     date: "March 10, 2026",
     img: "/assets/generated/sermon-grace.dim_600x400.jpg",
   },
   {
     title: "A New Beginning",
-    speaker: "Pastor John Williams",
+    speaker: "Pastor Augustine",
     date: "March 3, 2026",
     img: "/assets/generated/sermon-beginning.dim_600x400.jpg",
   },
@@ -148,22 +148,39 @@ const MINISTRIES = [
 
 const LEADERSHIP = [
   {
-    name: "Pastor John Williams",
-    title: "Lead Pastor",
-    bio: "With over 20 years of pastoral experience, Pastor John leads our congregation with vision, compassion, and a deep love for God's Word.",
+    name: "Pastor Samuel",
+    title: "Resident Pastor",
     img: "/assets/generated/pastor-john.dim_400x400.jpg",
   },
   {
-    name: "Pastor Sarah Mitchell",
-    title: "Associate Pastor",
-    bio: "Pastor Sarah brings a heart for discipleship and community, overseeing our women's ministry, small groups, and counseling programs.",
+    name: "Pastor Ebenezer",
+    title: "Men Ministry Leader",
     img: "/assets/generated/pastor-sarah.dim_400x400.jpg",
   },
   {
-    name: "Elder David Chen",
-    title: "Board Elder",
-    bio: "Elder David serves with wisdom and integrity on our leadership board, guiding the church through strategic planning and spiritual oversight.",
+    name: "Pastor Augustine",
+    title: "Children Ministry Leader",
     img: "/assets/generated/elder-david.dim_400x400.jpg",
+  },
+  {
+    name: "Mrs Koomson",
+    title: "Ushering / Hospitality",
+    img: "/assets/generated/leader-koomson.dim_400x400.jpg",
+  },
+  {
+    name: "Dr Joyce Adu Amankwah",
+    title: "Women Ministry Leader",
+    img: "/assets/generated/leader-joyce.dim_400x400.jpg",
+  },
+  {
+    name: "Pastor Solomon",
+    title: "Youth Coordinator",
+    img: "/assets/generated/leader-solomon.dim_400x400.jpg",
+  },
+  {
+    name: "Minister Audrey",
+    title: "Worship Team Leader",
+    img: "/assets/generated/leader-audrey.dim_400x400.jpg",
   },
 ];
 
@@ -767,7 +784,7 @@ export default function App() {
         >
           <div className="mx-auto max-w-7xl px-6">
             <SectionHeading light>Meet the Leadership</SectionHeading>
-            <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-3">
+            <div className="mt-12 grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-4">
               {LEADERSHIP.map((leader, i) => (
                 <div
                   key={leader.name}
@@ -778,17 +795,14 @@ export default function App() {
                     <img
                       src={leader.img}
                       alt={leader.name}
-                      className="h-32 w-32 rounded-full object-cover border-4 border-gold shadow-card"
+                      className="h-28 w-28 rounded-full object-cover border-4 border-gold shadow-card"
                     />
                   </div>
-                  <h3 className="font-display font-bold text-white text-xl">
+                  <h3 className="font-display font-bold text-white text-base">
                     {leader.name}
                   </h3>
-                  <p className="mt-1 text-sm font-semibold uppercase tracking-wider text-gold">
+                  <p className="mt-1 text-xs font-semibold uppercase tracking-wider text-gold">
                     {leader.title}
-                  </p>
-                  <p className="mt-3 text-sm text-white/70 leading-relaxed">
-                    {leader.bio}
                   </p>
                 </div>
               ))}
