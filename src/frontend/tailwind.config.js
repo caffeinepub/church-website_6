@@ -22,7 +22,9 @@ export default {
         background: "oklch(var(--background))",
         foreground: "oklch(var(--foreground))",
         navy: "oklch(var(--navy))",
+        "navy-deep": "oklch(var(--navy-deep))",
         gold: "oklch(var(--gold))",
+        "gold-muted": "oklch(var(--gold-muted))",
         primary: {
           DEFAULT: "oklch(var(--primary) / <alpha-value>)",
           foreground: "oklch(var(--primary-foreground))",

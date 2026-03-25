@@ -264,15 +264,29 @@ function SectionHeading({
   className?: string;
 }) {
   return (
-    <div className={`flex flex-col items-center gap-3 ${className}`}>
+    <div className={`flex flex-col items-center gap-4 ${className}`}>
+      <span
+        className={`text-xs font-bold tracking-[0.35em] select-none ${
+          light ? "text-gold/60" : "text-gold/70"
+        }`}
+        aria-hidden="true"
+      >
+        ✦&nbsp;&nbsp;✦&nbsp;&nbsp;✦
+      </span>
       <h2
-        className={`font-display text-2xl font-bold uppercase tracking-widest ${
+        className={`font-display text-3xl sm:text-4xl font-bold leading-tight text-center ${
           light ? "text-white" : "text-navy"
         }`}
       >
         {children}
       </h2>
-      <div className="h-0.5 w-16 rounded-full bg-gold" />
+      <div className="flex items-center gap-1.5">
+        <div className={`h-px w-10 ${light ? "bg-white/25" : "bg-gold/35"}`} />
+        <div
+          className={`h-[3px] w-14 rounded-full ${light ? "bg-white/60" : "bg-gold"}`}
+        />
+        <div className={`h-px w-10 ${light ? "bg-white/25" : "bg-gold/35"}`} />
+      </div>
     </div>
   );
 }
@@ -388,39 +402,78 @@ export default function App() {
         {/* ── HERO ── */}
         <section
           id="home"
-          className="relative flex min-h-screen items-center bg-navy"
+          className="relative flex min-h-screen items-center justify-center overflow-hidden bg-navy"
           aria-label="Hero"
         >
-          <div className="relative z-10 mx-auto max-w-7xl px-6 pt-24">
-            <div className="max-w-2xl animate-fade-in-up">
-              <h1 className="font-display text-5xl font-bold leading-tight text-white drop-shadow-lg sm:text-6xl lg:text-7xl">
-                Welcome to
-                <br />
-                <span className="text-gold">
-                  New Life Evangelistic Ministries Worship Centre
-                </span>
-              </h1>
-              <p className="mt-6 text-lg text-white/85 sm:text-xl">
-                A place to belong, grow, and serve. Join our family as we
-                journey together in faith, hope, and love.
-              </p>
-              <div className="mt-8 flex flex-wrap gap-4">
-                <Button
-                  onClick={() => handleNavClick("#worship")}
-                  className="bg-gold hover:bg-gold/90 text-navy font-bold uppercase tracking-wider px-8 py-3 text-sm"
-                  data-ocid="hero.primary_button"
-                >
-                  Join Us This Sunday
-                </Button>
-                <Button
-                  onClick={() => handleNavClick("#about")}
-                  variant="outline"
-                  className="border-gold text-gold hover:bg-gold/10 font-bold uppercase tracking-wider px-8 py-3 text-sm bg-transparent"
-                  data-ocid="hero.secondary_button"
-                >
-                  Learn More
-                </Button>
-              </div>
+          {/* Deep radial glow for depth */}
+          <div
+            className="pointer-events-none absolute inset-0"
+            style={{
+              background:
+                "radial-gradient(ellipse 90% 70% at 50% 38%, oklch(0.19 0.06 233 / 0.85), transparent 70%)",
+            }}
+          />
+          {/* Subtle horizontal gold accent lines at bottom */}
+          <div className="pointer-events-none absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-gold/50 to-transparent" />
+          <div className="pointer-events-none absolute bottom-1 inset-x-0 h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
+
+          <div className="relative z-10 mx-auto max-w-4xl px-6 pb-12 pt-28 text-center animate-fade-in-up">
+            {/* Eyebrow label */}
+            <p className="mb-5 text-[11px] font-bold tracking-[0.45em] uppercase text-gold/75 animate-fade-in">
+              ✦&nbsp;&nbsp;Welcome to&nbsp;&nbsp;✦
+            </p>
+
+            {/* Decorative gold rule */}
+            <div className="mx-auto mb-7 flex items-center justify-center gap-2">
+              <div className="h-px w-14 bg-gradient-to-r from-transparent to-gold/55" />
+              <div className="h-1.5 w-1.5 rounded-full bg-gold/70" />
+              <div className="h-px w-28 bg-gold/55" />
+              <div className="h-1.5 w-1.5 rounded-full bg-gold/70" />
+              <div className="h-px w-14 bg-gradient-to-l from-transparent to-gold/55" />
+            </div>
+
+            <h1 className="font-display text-4xl font-bold leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-6xl xl:text-[4.5rem]">
+              New Life Evangelistic Ministries
+              <br />
+              <span
+                className="text-gold"
+                style={{ textShadow: "0 0 60px oklch(0.692 0.115 68 / 0.35)" }}
+              >
+                Worship Centre
+              </span>
+            </h1>
+
+            {/* Tagline */}
+            <div className="mx-auto mt-9 mb-5 flex items-center justify-center gap-3">
+              <div className="h-px flex-1 max-w-[72px] bg-gold/35" />
+              <Cross className="h-3.5 w-3.5 text-gold/60" />
+              <div className="h-px flex-1 max-w-[72px] bg-gold/35" />
+            </div>
+            <p className="text-sm sm:text-base font-bold uppercase tracking-[0.22em] text-gold">
+              Taking the whole WORD of GOD to the whole WORLD!
+            </p>
+            <p className="mt-5 mx-auto max-w-xl text-sm sm:text-[15px] text-white/60 italic font-light leading-relaxed">
+              2 Kings 7:9 &ldquo;This is a day of good news and we are keeping
+              it to ourselves…Let&rsquo;s go back and tell the people&rdquo;{" "}
+              (NLT)
+            </p>
+
+            <div className="mt-10 flex flex-wrap justify-center gap-4">
+              <Button
+                onClick={() => handleNavClick("#worship")}
+                className="bg-gold hover:bg-gold/90 text-navy font-bold uppercase tracking-wider px-10 py-3 text-sm shadow-lg"
+                data-ocid="hero.primary_button"
+              >
+                Join Us This Sunday
+              </Button>
+              <Button
+                onClick={() => handleNavClick("#about")}
+                variant="outline"
+                className="border-gold/70 text-gold hover:bg-gold/10 font-bold uppercase tracking-wider px-10 py-3 text-sm bg-transparent"
+                data-ocid="hero.secondary_button"
+              >
+                Learn More
+              </Button>
             </div>
           </div>
         </section>
@@ -497,8 +550,7 @@ export default function App() {
         {/* ── FOUNDER'S MESSAGE ── */}
         <section
           id="founder"
-          className="py-20"
-          style={{ background: "oklch(0.985 0.012 68)" }}
+          className="py-20 section-gold-muted"
           aria-label="Founder's Message"
         >
           <div className="mx-auto max-w-4xl px-6">
