@@ -57,6 +57,7 @@ const NAV_LINKS = [
   { label: "Leadership", href: "#leadership" },
   { label: "Gallery", href: "#gallery" },
   { label: "Contact", href: "#contact" },
+  { label: "Giving", href: "#giving" },
 ];
 
 const MISSION_POINTS = [
@@ -1237,6 +1238,119 @@ export default function App() {
                 </div>
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* ── GIVING SECTION ── */}
+        <section id="giving" className="py-24 bg-navy-deep" aria-label="Giving">
+          <div className="mx-auto max-w-6xl px-6">
+            <SectionHeading light>Giving</SectionHeading>
+
+            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 mt-12">
+              {/* Tithes & Offerings Card */}
+              <div className="relative rounded-2xl bg-white/5 border border-white/10 overflow-hidden shadow-card">
+                <div className="h-1.5 w-full bg-gold" />
+                <div className="p-8">
+                  <h3 className="font-display text-xl font-bold uppercase tracking-widest text-gold mb-4">
+                    Tithes and Offerings
+                  </h3>
+                  <p className="text-white/75 text-sm leading-relaxed mb-8">
+                    Your generous tithes and offerings are vital for the
+                    financial support of the church. Your faithful giving helps
+                    cover the ministry&apos;s operating expenses and
+                    demonstrates your commitment and faith. You can make
+                    payments for tithes, offerings, or any other donations to
+                    the Church Account using the following methods.
+                  </p>
+
+                  <div className="rounded-xl bg-white/5 border border-gold/30 p-6 space-y-4">
+                    <h4 className="text-xs font-bold uppercase tracking-widest text-gold border-b border-gold/30 pb-3 mb-5">
+                      Church Account Details
+                      <span className="block text-white/40 font-normal normal-case tracking-normal text-xs mt-0.5">
+                        For Tithes and Offerings Only
+                      </span>
+                    </h4>
+                    {[
+                      {
+                        label: "Account Name",
+                        value: "NEW LIFE EVANGELIC MINISTRIES WORSHIP CENTRE",
+                      },
+                      { label: "Account Number", value: "93992489" },
+                      { label: "Sort Code", value: "20-18-93" },
+                      { label: "Bank", value: "BARCLAYS BANK" },
+                      { label: "Charity Reg. No.", value: "01187115" },
+                    ].map(({ label, value }) => (
+                      <div
+                        key={label}
+                        className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1"
+                      >
+                        <span className="text-xs font-semibold uppercase tracking-wider text-gold/80">
+                          {label}
+                        </span>
+                        <span className="text-sm font-medium text-white sm:text-right">
+                          {value}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Welfare Card */}
+              <div className="relative rounded-2xl bg-white/5 border border-white/10 overflow-hidden shadow-card">
+                <div className="h-1.5 w-full bg-gold" />
+                <div className="p-8">
+                  <h3 className="font-display text-xl font-bold uppercase tracking-widest text-gold mb-4">
+                    Welfare
+                  </h3>
+                  <p className="text-white/75 text-sm leading-relaxed mb-8">
+                    The church has a welfare scheme to assist and support
+                    individuals in times of emergencies or other unforeseen
+                    circumstances. If you are interested, you will become an
+                    automatic member and will be required to pay a £60
+                    membership fee, as well as monthly dues of £10.
+                  </p>
+
+                  <div className="rounded-xl bg-white/5 border border-gold/30 p-6 space-y-4">
+                    <h4 className="text-xs font-bold uppercase tracking-widest text-gold border-b border-gold/30 pb-3 mb-5">
+                      Welfare Dues Account Details
+                      <span className="block text-white/40 font-normal normal-case tracking-normal text-xs mt-0.5">
+                        For Welfare Only
+                      </span>
+                    </h4>
+                    {[
+                      {
+                        label: "Account Name",
+                        value: "NEW LIFE EVANGELIC MINISTRIES WORSHIP CENTRE",
+                      },
+                      { label: "Account Number", value: "93514382" },
+                      { label: "Sort Code", value: "20-18-93" },
+                      { label: "Bank", value: "BARCLAYS BANK" },
+                    ].map(({ label, value }) => (
+                      <div
+                        key={label}
+                        className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1"
+                      >
+                        <span className="text-xs font-semibold uppercase tracking-wider text-gold/80">
+                          {label}
+                        </span>
+                        <span className="text-sm font-medium text-white sm:text-right">
+                          {value}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Closing blessing */}
+            <p
+              className="mt-14 text-center font-display text-2xl italic text-gold tracking-wide"
+              data-ocid="giving.section"
+            >
+              "Thank You for Your Generous Giving"
+            </p>
           </div>
         </section>
       </main>
