@@ -4,6 +4,7 @@ import { Textarea } from "@/components/ui/textarea";
 import {
   Baby,
   BookOpen,
+  Calendar,
   ChevronRight,
   Clock,
   Cross,
@@ -29,6 +30,20 @@ import {
 } from "lucide-react";
 import { useEffect, useState } from "react";
 
+function TikTokIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <title>TikTok</title>
+      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z" />
+    </svg>
+  );
+}
+
 const NAV_LINKS = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
@@ -38,6 +53,7 @@ const NAV_LINKS = [
   { label: "Sermons", href: "#sermons" },
   { label: "Events", href: "#events" },
   { label: "Ministries", href: "#ministries" },
+  { label: "Prayers", href: "#prayers" },
   { label: "Leadership", href: "#leadership" },
   { label: "Gallery", href: "#gallery" },
   { label: "Contact", href: "#contact" },
@@ -85,32 +101,34 @@ const MISSION_POINTS = [
 const SERMONS = [
   {
     title: "The Power of Faith",
-    speaker: "Pastor Samuel",
+    speaker: "Samuel",
     date: "March 17, 2026",
     img: "/assets/generated/sermon-faith.dim_600x400.jpg",
   },
   {
     title: "Walking in Grace",
-    speaker: "Pastor Solomon",
+    speaker: "Solomon",
     date: "March 10, 2026",
     img: "/assets/generated/sermon-grace.dim_600x400.jpg",
   },
   {
     title: "A New Beginning",
-    speaker: "Pastor Augustine",
+    speaker: "Augustine",
     date: "March 3, 2026",
     img: "/assets/generated/sermon-beginning.dim_600x400.jpg",
   },
 ];
 
-const EVENTS = [
-  {
-    title: "Easter Sunday Celebration",
-    date: "April 20, 2026",
-    description:
-      "Join us for a powerful Easter service celebrating the resurrection of Jesus Christ with special music, family activities, and a message of hope.",
-    img: "/assets/generated/event-easter.dim_600x400.jpg",
-  },
+const SCHEDULE = [
+  { activity: "Midweek Services", timing: "Every Wednesday, 7PM" },
+  { activity: "Worship Nights", timing: "Every Third Wednesday of the Month" },
+  { activity: "Half Night Service", timing: "Every 1st Friday of the Month" },
+  { activity: "Easter", timing: "5th April" },
+  { activity: "Church Outreach (Evangelism)", timing: "July" },
+  { activity: "Church Outing", timing: "August" },
+  { activity: "Annual Thanksgiving Services", timing: "October" },
+  { activity: "Christmas", timing: "25th December" },
+  { activity: "New Year Service", timing: "31st December" },
 ];
 
 const MINISTRIES = [
@@ -146,41 +164,48 @@ const MINISTRIES = [
   },
 ];
 
+const MINISTRIES_MEETUP = [
+  { ministry: "Men", times: "Every First Sunday of the Month (Online)" },
+  { ministry: "Women", times: "Every 1st and 3rd Sunday (Online)" },
+  { ministry: "Youth", times: "Every 2nd and 4th Sunday (Online)" },
+  { ministry: "Children", times: "Face to Face at Church" },
+];
+
 const LEADERSHIP = [
   {
-    name: "Pastor Samuel",
+    name: "Samuel",
     title: "Resident Pastor",
-    img: "/assets/generated/pastor-john.dim_400x400.jpg",
+    img: "/assets/uploads/image-019d2731-6d48-725b-adbd-74657b634684-1.png",
   },
   {
-    name: "Pastor Ebenezer",
+    name: "Ebenezer",
     title: "Men Ministry Leader",
-    img: "/assets/generated/pastor-sarah.dim_400x400.jpg",
+    img: "/assets/uploads/image-019d272c-7fad-713a-b272-6709a9919520-1.png",
   },
   {
-    name: "Pastor Augustine",
+    name: "Augustine",
     title: "Children Ministry Leader",
-    img: "/assets/generated/elder-david.dim_400x400.jpg",
+    img: "/assets/generated/leader-augustine.dim_400x400.jpg",
   },
   {
-    name: "Mrs Koomson",
+    name: "Koomson",
     title: "Ushering / Hospitality",
-    img: "/assets/generated/leader-koomson.dim_400x400.jpg",
+    img: "/assets/generated/leader-koomson-real.dim_400x400.jpg",
   },
   {
-    name: "Dr Joyce Adu Amankwah",
+    name: "Joyce",
     title: "Women Ministry Leader",
-    img: "/assets/generated/leader-joyce.dim_400x400.jpg",
+    img: "/assets/uploads/image-019d272e-a57b-7293-9398-217ce7171823-1.png",
   },
   {
-    name: "Pastor Solomon",
+    name: "Solomon",
     title: "Youth Coordinator",
-    img: "/assets/generated/leader-solomon.dim_400x400.jpg",
+    img: "/assets/generated/leader-solomon-real.dim_400x400.jpg",
   },
   {
-    name: "Minister Audrey",
+    name: "Audrey",
     title: "Worship Team Leader",
-    img: "/assets/generated/leader-audrey.dim_400x400.jpg",
+    img: "/assets/generated/leader-audrey-real.dim_400x400.jpg",
   },
 ];
 
@@ -205,12 +230,15 @@ const GALLERY = [
     src: "/assets/generated/gallery-5.dim_400x300.jpg",
     alt: "Christmas service",
   },
-  { src: "/assets/generated/gallery-6.dim_400x300.jpg", alt: "Church picnic" },
+  {
+    src: "/assets/generated/gallery-6.dim_400x300.jpg",
+    alt: "Congregation picnic",
+  },
 ];
 
 const WORSHIP_TIMES = [
   {
-    service: "Sunday Church Service",
+    service: "Sunday Service",
     time: "10:30 AM",
     location: "Christ Church Chapel",
     address:
@@ -220,7 +248,7 @@ const WORSHIP_TIMES = [
   {
     service: "Wednesday Midweek Service",
     time: "7:00 PM",
-    location: "St George's Church",
+    location: "St George's",
     address: "Vancouver Road, London SE23 2AG",
     note: "",
   },
@@ -280,9 +308,11 @@ export default function App() {
             className="flex items-center gap-2"
             data-ocid="nav.link"
           >
-            <div className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-gold">
-              <Cross className="h-4 w-4 text-gold" />
-            </div>
+            <img
+              src="/assets/uploads/image-019d2744-0590-7000-a088-3bc29cadcb87-1.png"
+              alt="New Life Evangelistic Ministries Worship Centre Logo"
+              className="h-12 w-12 object-contain rounded-full"
+            />
             <span className="font-display text-lg font-bold tracking-wide text-white">
               New Life Evangelistic Ministries Worship Centre
             </span>
@@ -358,16 +388,9 @@ export default function App() {
         {/* ── HERO ── */}
         <section
           id="home"
-          className="relative flex min-h-screen items-center"
+          className="relative flex min-h-screen items-center bg-navy"
           aria-label="Hero"
         >
-          <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{
-              backgroundImage: `url('/assets/generated/hero-church.dim_1920x1080.jpg')`,
-            }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30" />
           <div className="relative z-10 mx-auto max-w-7xl px-6 pt-24">
             <div className="max-w-2xl animate-fade-in-up">
               <h1 className="font-display text-5xl font-bold leading-tight text-white drop-shadow-lg sm:text-6xl lg:text-7xl">
@@ -376,8 +399,6 @@ export default function App() {
                 <span className="text-gold">
                   New Life Evangelistic Ministries Worship Centre
                 </span>
-                <br />
-                Church
               </h1>
               <p className="mt-6 text-lg text-white/85 sm:text-xl">
                 A place to belong, grow, and serve. Join our family as we
@@ -429,10 +450,10 @@ export default function App() {
                       Our Vision
                     </h3>
                     <p>
-                      We envision a church where every person finds belonging,
-                      purpose, and spiritual growth. A community that reflects
-                      the diversity of God's kingdom and extends His grace to
-                      the world around us.
+                      We envision a congregation where every person finds
+                      belonging, purpose, and spiritual growth. A community that
+                      reflects the diversity of God's kingdom and extends His
+                      grace to the world around us.
                     </p>
                   </div>
                   <div>
@@ -444,7 +465,8 @@ export default function App() {
                       Centre has grown into a vibrant congregation committed to
                       spreading the Word of God to all nations. Through decades
                       of faithful ministry, we have baptised many, planted
-                      daughter churches, and served thousands in our community.
+                      daughter congregations, and served thousands in our
+                      community.
                     </p>
                   </div>
                 </div>
@@ -504,8 +526,8 @@ export default function App() {
                   A warm and special greeting to you! As the head pastor of New
                   Life Evangelistic Ministries International Worship Centre, I
                   am overjoyed and deeply thankful to lead such an incredible
-                  body of Christ. New Life Church was established in 1997. Our
-                  core mission is to spread the{" "}
+                  body of Christ. New Life was established in 1997. Our core
+                  mission is to spread the{" "}
                   <strong className="text-navy font-bold">
                     WHOLE WORD OF GOD TO THE WHOLE WORLD
                   </strong>
@@ -523,8 +545,8 @@ export default function App() {
                   to His teachings every day.
                 </p>
                 <p>
-                  Our church is a family, deeply rooted in love, committed to
-                  God, and with a strong desire to grow together in faith and
+                  Our congregation is a family, deeply rooted in love, committed
+                  to God, and with a strong desire to grow together in faith and
                   service. All are welcome to fellowship with us, come as you
                   are and expect to leave with a renewed sense of hope and
                   understanding of Christ.
@@ -543,7 +565,7 @@ export default function App() {
             {/* Attribution */}
             <div className="mt-10 flex flex-col items-center gap-3">
               <img
-                src="/assets/generated/pastor-founder.dim_400x400.jpg"
+                src="/assets/uploads/image-019d2734-d054-755b-a44b-213924140b31-1.png"
                 alt="Rev Patrick Adu Amankwah"
                 className="h-32 w-32 rounded-full border-4 border-gold shadow-card object-cover mx-auto mb-4"
               />
@@ -623,6 +645,34 @@ export default function App() {
                 </div>
               ))}
             </div>
+
+            {/* ── How to Get There ── */}
+            <div className="mt-14 text-center">
+              <h3 className="font-display text-xl font-bold uppercase tracking-widest text-navy">
+                How to Get There?
+              </h3>
+              <div className="mx-auto mt-2 h-0.5 w-12 rounded-full bg-gold" />
+              <div className="mt-6 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-10">
+                <a
+                  href="https://maps.google.com/?q=Christ+Church+Chapel+Church+Rise+Forest+Hill+London+SE23+2UJ"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm font-bold uppercase tracking-wider text-gold underline underline-offset-4 hover:text-gold/80 transition-colors"
+                  data-ocid="worship.link"
+                >
+                  Sunday Service: View Directions Here
+                </a>
+                <a
+                  href="https://maps.google.com/?q=St+Georges+Church+Vancouver+Road+London+SE23+2AG"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm font-bold uppercase tracking-wider text-gold underline underline-offset-4 hover:text-gold/80 transition-colors"
+                  data-ocid="worship.link"
+                >
+                  Wednesday Service: View Directions Here
+                </a>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -701,38 +751,38 @@ export default function App() {
           aria-label="Events"
         >
           <div className="mx-auto max-w-7xl px-6">
-            <SectionHeading>Upcoming Events</SectionHeading>
-            <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-1 max-w-md mx-auto">
-              {EVENTS.map((event, i) => (
+            <SectionHeading>Upcoming Events &amp; Activities</SectionHeading>
+            <p className="mt-4 text-center text-foreground/60 text-sm max-w-xl mx-auto">
+              Stay connected with all our services, special events, and ministry
+              activities throughout the year.
+            </p>
+
+            <div className="mt-10 max-w-3xl mx-auto rounded-xl overflow-hidden shadow-card">
+              {/* Table header */}
+              <div className="grid grid-cols-2 bg-navy px-6 py-4">
+                <p className="text-xs font-bold uppercase tracking-widest text-gold">
+                  Activity / Program
+                </p>
+                <p className="text-xs font-bold uppercase tracking-widest text-gold">
+                  Timing
+                </p>
+              </div>
+
+              {/* Table rows */}
+              {SCHEDULE.map(({ activity, timing }, i) => (
                 <div
-                  key={event.title}
-                  className="rounded-xl overflow-hidden bg-white shadow-card hover:shadow-card-hover transition-shadow group"
+                  key={activity}
+                  className={`grid grid-cols-2 px-6 py-4 border-b border-gray-100 last:border-b-0 ${
+                    i % 2 === 0 ? "bg-white" : "bg-gray-50"
+                  }`}
                   data-ocid={`events.item.${i + 1}`}
                 >
-                  <div className="relative aspect-video overflow-hidden">
-                    <img
-                      src={event.img}
-                      alt={event.title}
-                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                    <div className="absolute top-3 right-3 rounded-lg bg-gold px-3 py-1 text-xs font-bold text-navy">
-                      {event.date}
-                    </div>
-                  </div>
-                  <div className="p-5">
-                    <h3 className="font-bold text-navy text-lg">
-                      {event.title}
-                    </h3>
-                    <p className="mt-2 text-sm text-foreground/70 leading-relaxed line-clamp-3">
-                      {event.description}
-                    </p>
-                    <button
-                      type="button"
-                      className="mt-4 inline-flex items-center text-sm font-bold text-gold hover:underline uppercase tracking-wider"
-                      data-ocid={`events.button.${i + 1}`}
-                    >
-                      Learn More <ChevronRight className="ml-1 h-4 w-4" />
-                    </button>
+                  <p className="font-bold text-navy text-sm leading-snug pr-4">
+                    {activity}
+                  </p>
+                  <div className="flex items-center gap-2">
+                    <Calendar className="h-4 w-4 shrink-0 text-gold" />
+                    <p className="text-sm text-foreground/70">{timing}</p>
                   </div>
                 </div>
               ))}
@@ -765,6 +815,50 @@ export default function App() {
                 </div>
               ))}
             </div>
+
+            {/* ── Ministries Meet Up Times ── */}
+            <div className="mt-14">
+              <div className="flex flex-col items-center gap-3 mb-6">
+                <h3 className="font-display text-xl font-bold uppercase tracking-widest text-navy">
+                  Ministries Meet Up Times
+                </h3>
+                <div className="h-0.5 w-12 rounded-full bg-gold" />
+              </div>
+              <div className="max-w-2xl mx-auto rounded-xl overflow-hidden shadow-card">
+                <div className="grid grid-cols-2 bg-navy px-6 py-4">
+                  <p className="text-xs font-bold uppercase tracking-widest text-gold">
+                    Ministries
+                  </p>
+                  <p className="text-xs font-bold uppercase tracking-widest text-gold">
+                    Meet Up Times
+                  </p>
+                </div>
+                {MINISTRIES_MEETUP.map(({ ministry, times }, i) => (
+                  <div
+                    key={ministry}
+                    className={`grid grid-cols-2 px-6 py-4 border-b border-gray-100 last:border-b-0 ${
+                      i % 2 === 0 ? "bg-white" : "bg-gray-50"
+                    }`}
+                    data-ocid={`ministries.item.${i + 1}`}
+                  >
+                    <p className="font-bold text-navy text-sm">{ministry}</p>
+                    <p className="text-sm text-foreground/70">{times}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-5 text-center">
+                <a
+                  href="https://join.freeconferencecall.com/revdpatrick3"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block rounded-lg bg-navy px-6 py-3 text-sm font-bold uppercase tracking-wider text-gold hover:bg-navy/90 transition-colors"
+                  data-ocid="ministries.link"
+                >
+                  Link to Join All Online Meetings
+                </a>
+              </div>
+            </div>
+
             <div className="mt-10 text-center">
               <Button
                 className="bg-gold hover:bg-gold/90 text-navy font-bold uppercase tracking-wider"
@@ -772,6 +866,127 @@ export default function App() {
               >
                 View All Ministries
               </Button>
+            </div>
+          </div>
+        </section>
+
+        {/* ── PRAYERS ── */}
+        <section id="prayers" className="py-20 bg-sky-50" aria-label="Prayers">
+          <div className="mx-auto max-w-7xl px-6">
+            <SectionHeading>Prayer</SectionHeading>
+
+            {/* Prayer description */}
+            <div className="mt-10 max-w-3xl mx-auto rounded-xl bg-white p-8 shadow-card text-center">
+              <p className="text-foreground/80 leading-relaxed">
+                Prayer is our direct line of communication with God. It's a way
+                for us to express our gratitude, seek guidance, and find comfort
+                in times of need. Through prayer, we can build a stronger
+                relationship with God and experience His presence in our lives.
+                Praying and standing together are important aspects of the
+                church. The church has designated prayer times for communal
+                worship and intercession.
+              </p>
+            </div>
+
+            {/* Two-column layout */}
+            <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-2">
+              {/* Join Us card */}
+              <div className="rounded-xl bg-white p-8 shadow-card">
+                <h3 className="font-display text-lg font-bold uppercase tracking-widest text-navy mb-4">
+                  Join Us
+                </h3>
+                <div className="h-0.5 w-10 rounded-full bg-gold mb-6" />
+                <div className="space-y-4 text-sm text-foreground/80 leading-relaxed">
+                  <p>
+                    Simply download the{" "}
+                    <strong className="text-navy">FREE CONFERENCE APP</strong>{" "}
+                    and use{" "}
+                    <strong className="text-navy">
+                      Meeting ID: REVDPATRICK3
+                    </strong>
+                  </p>
+                  <p>Join online for video and screen sharing:</p>
+                  <a
+                    href="https://join.freeconferencecall.com/revdpatrick3"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block text-blue-600 underline underline-offset-2 font-medium break-all hover:text-blue-800 transition-colors"
+                    data-ocid="prayers.link"
+                  >
+                    https://join.freeconferencecall.com/revdpatrick3
+                  </a>
+                  <p className="pt-2 font-semibold text-navy">
+                    Additional options to connect:
+                  </p>
+                  <p>
+                    <span className="font-bold text-navy">
+                      Dial-in Number (GB):
+                    </span>{" "}
+                    0330 777 2413
+                  </p>
+                  <p>
+                    <span className="font-bold text-navy">Access Code:</span>{" "}
+                    197361#
+                  </p>
+                </div>
+              </div>
+
+              {/* Weekly Prayer Activities card */}
+              <div className="rounded-xl bg-navy p-8 shadow-card">
+                <h3 className="font-display text-lg font-bold uppercase tracking-widest text-gold mb-4">
+                  Weekly Prayer Activities
+                </h3>
+                <div className="h-0.5 w-10 rounded-full bg-gold mb-6" />
+                <div className="space-y-3 text-sm text-white/85">
+                  <p className="font-bold uppercase tracking-wider text-gold">
+                    Prayers Happen Every Day (except Sunday):
+                  </p>
+                  {[
+                    "06.00–06.30",
+                    "12.00–12.30",
+                    "17.00–17.30",
+                    "20.00–20.30",
+                    "00.00–00.30",
+                  ].map((t) => (
+                    <p key={t} className="pl-3 border-l-2 border-gold/40">
+                      {t}
+                    </p>
+                  ))}
+                  <p className="pt-3 font-bold uppercase tracking-wider text-gold">
+                    Sundays
+                  </p>
+                  <p className="pl-3 border-l-2 border-gold/40">
+                    06.00–06.30{" "}
+                    <span className="text-white/50 text-xs">(Prayer Time)</span>
+                  </p>
+                  <p className="pl-3 border-l-2 border-gold/40">
+                    10.30–13.30{" "}
+                    <span className="text-white/50 text-xs">
+                      (Church Service)
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Counselling banner */}
+            <div className="mt-10 rounded-xl bg-navy px-8 py-6 text-center shadow-card">
+              <p className="text-sm font-bold uppercase tracking-widest text-gold sm:text-base">
+                For Counselling, Prayers, Direction Call:{" "}
+                <a
+                  href="tel:+44788860800"
+                  className="text-white hover:text-gold transition-colors"
+                >
+                  +44788860800
+                </a>{" "}
+                /{" "}
+                <a
+                  href="tel:+447733399248"
+                  className="text-white hover:text-gold transition-colors"
+                >
+                  +447733399248
+                </a>
+              </p>
             </div>
           </div>
         </section>
@@ -826,7 +1041,7 @@ export default function App() {
           aria-label="Gallery"
         >
           <div className="mx-auto max-w-7xl px-6">
-            <SectionHeading>Church Life Gallery</SectionHeading>
+            <SectionHeading>Ministry Life Gallery</SectionHeading>
             <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3">
               {GALLERY.map(({ src, alt }, i) => (
                 <div
@@ -950,7 +1165,9 @@ export default function App() {
                         Phone
                       </p>
                       <p className="text-sm text-white/70 mt-0.5">
-                        (217) 555-0182
+                        Tel: 07888608000
+                        <br />
+                        Mobile: 07733399248
                       </p>
                     </div>
                   </div>
@@ -960,8 +1177,8 @@ export default function App() {
                       <p className="text-xs font-bold uppercase tracking-wider text-gold">
                         Email
                       </p>
-                      <p className="text-sm text-white/70 mt-0.5">
-                        info@gracecommunity.org
+                      <p className="text-sm text-white/70 mt-0.5 break-all">
+                        Nlem.worshipcentre@gmail.com
                       </p>
                     </div>
                   </div>
@@ -1001,25 +1218,57 @@ export default function App() {
               <h4 className="text-sm font-bold uppercase tracking-widest text-gold mb-4">
                 Follow Us
               </h4>
-              <div className="flex gap-3">
-                {[
-                  { Icon: Facebook, label: "Facebook" },
-                  { Icon: Instagram, label: "Instagram" },
-                  { Icon: Twitter, label: "Twitter" },
-                  { Icon: Youtube, label: "YouTube" },
-                ].map(({ Icon, label }) => (
-                  <a
-                    key={label}
-                    href="https://www.facebook.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={label}
-                    className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white/60 hover:border-gold hover:text-gold transition-colors"
-                    data-ocid="footer.link"
-                  >
-                    <Icon className="h-4 w-4" />
-                  </a>
-                ))}
+              <div className="flex flex-wrap gap-3">
+                <a
+                  href="https://www.facebook.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white/60 hover:border-gold hover:text-gold transition-colors"
+                  data-ocid="footer.link"
+                >
+                  <Facebook className="h-4 w-4" />
+                </a>
+                <a
+                  href="https://www.instagram.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white/60 hover:border-gold hover:text-gold transition-colors"
+                  data-ocid="footer.link"
+                >
+                  <Instagram className="h-4 w-4" />
+                </a>
+                <a
+                  href="https://www.twitter.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Twitter"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white/60 hover:border-gold hover:text-gold transition-colors"
+                  data-ocid="footer.link"
+                >
+                  <Twitter className="h-4 w-4" />
+                </a>
+                <a
+                  href="https://www.youtube.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="YouTube"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white/60 hover:border-gold hover:text-gold transition-colors"
+                  data-ocid="footer.link"
+                >
+                  <Youtube className="h-4 w-4" />
+                </a>
+                <a
+                  href="https://www.tiktok.com/@_newlifechurch?_r=1&_t=ZN-94uYSzhAUzO"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="TikTok"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white/60 hover:border-gold hover:text-gold transition-colors"
+                  data-ocid="footer.link"
+                >
+                  <TikTokIcon className="h-4 w-4" />
+                </a>
               </div>
               <div className="mt-6 space-y-2">
                 <div className="flex items-center gap-2 text-sm text-white/60">
@@ -1028,7 +1277,11 @@ export default function App() {
                 </div>
                 <div className="flex items-center gap-2 text-sm text-white/60">
                   <Phone className="h-4 w-4 text-gold" />
-                  <span>(217) 555-0182</span>
+                  <span>07888608000 | 07733399248</span>
+                </div>
+                <div className="flex items-center gap-2 text-sm text-white/60">
+                  <Mail className="h-4 w-4 text-gold" />
+                  <span>Nlem.worshipcentre@gmail.com</span>
                 </div>
               </div>
             </div>
@@ -1039,14 +1292,15 @@ export default function App() {
                 Connect With Us
               </h4>
               <div className="flex items-center gap-3 mb-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-gold">
-                  <Cross className="h-4 w-4 text-gold" />
-                </div>
+                <img
+                  src="/assets/uploads/image-019d2744-0590-7000-a088-3bc29cadcb87-1.png"
+                  alt="New Life Evangelistic Ministries Worship Centre Logo"
+                  className="h-14 w-14 object-contain rounded-full"
+                />
                 <div>
                   <p className="font-display font-bold text-white text-lg leading-tight">
                     New Life Evangelistic Ministries Worship Centre
                   </p>
-                  <p className="text-xs text-gold">Church</p>
                 </div>
               </div>
               <p className="text-sm text-white/60 leading-relaxed">
