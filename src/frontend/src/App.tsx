@@ -100,22 +100,33 @@ const MISSION_POINTS = [
 
 const SERMONS = [
   {
+    title: "What Can I Do for the Lord?",
+    speaker: "Rev. Patrick",
+    date: "March 26, 2026",
+    img: "/assets/generated/sermon-faith.dim_600x400.jpg",
+    summary:
+      "The Parable of the Workers in the Vineyard (Matthew 20:1-16) • Habakkuk 2:2 — Run with the vision • The Lord is always seeking workers • It is possible to be present in church activities without being productive and active for the kingdom • Matthew 9:35-38 — The Harvest Is Plentiful, the Laborers Few • It is time to work for the Lord!",
+  },
+  {
     title: "The Power of Faith",
     speaker: "Pastor Samuel",
     date: "March 17, 2026",
     img: "/assets/generated/sermon-faith.dim_600x400.jpg",
+    summary: "",
   },
   {
     title: "Walking in Grace",
     speaker: "Pastor Solomon",
     date: "March 10, 2026",
     img: "/assets/generated/sermon-grace.dim_600x400.jpg",
+    summary: "",
   },
   {
     title: "A New Beginning",
     speaker: "Pastor Augustine",
     date: "March 3, 2026",
     img: "/assets/generated/sermon-beginning.dim_600x400.jpg",
+    summary: "",
   },
 ];
 
@@ -704,7 +715,19 @@ export default function App() {
                     {s.location}
                   </p>
                   <p className="mt-1 text-xs text-muted-foreground">
-                    {s.address}
+                    {s.service === "Wednesday Midweek Service" ? (
+                      <a
+                        href="https://www.google.com/maps?q=St+Georges+Church+Vancouver+Road+London+SE23+2AG"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-gold hover:underline transition-colors"
+                        data-ocid="worship.link"
+                      >
+                        {s.address}
+                      </a>
+                    ) : (
+                      s.address
+                    )}
                   </p>
                 </div>
               ))}
@@ -776,6 +799,11 @@ export default function App() {
                       <p className="mt-0.5 text-xs text-muted-foreground">
                         {sermon.date}
                       </p>
+                      {sermon.summary && (
+                        <p className="mt-2 text-xs text-muted-foreground leading-relaxed line-clamp-4">
+                          {sermon.summary}
+                        </p>
+                      )}
                       <div className="mt-4 flex gap-3">
                         <button
                           type="button"
