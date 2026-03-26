@@ -212,6 +212,26 @@ const LEADERSHIP = [
 
 const GALLERY = [
   {
+    src: "/assets/uploads/image-019d2889-a8df-7383-a07b-e93eeb86d096-1.png",
+    alt: "Ministry life - congregation worship",
+  },
+  {
+    src: "/assets/uploads/image-019d2889-acce-7701-8017-c16d1e68789c-2.png",
+    alt: "Ministry life - praise team",
+  },
+  {
+    src: "/assets/uploads/image-019d2889-adf2-72a9-8a24-89f0dc0d2096-3.png",
+    alt: "Ministry life - congregation standing in worship",
+  },
+  {
+    src: "/assets/uploads/image-019d2889-adc1-7084-9470-a36bacd58d30-4.png",
+    alt: "Ministry life - worship team leading praise",
+  },
+  {
+    src: "/assets/uploads/image-019d2889-aef1-776b-a7b4-12de04740859-5.png",
+    alt: "Ministry life - congregation in prayer",
+  },
+  {
     src: "/assets/generated/gallery-1.dim_400x300.jpg",
     alt: "Children's Sunday school",
   },
