@@ -545,7 +545,7 @@ export default function App() {
               </div>
               <div className="relative">
                 <img
-                  src="/assets/generated/about-church.dim_800x600.jpg"
+                  src="/assets/uploads/image-019d2898-2ce3-710e-ac51-463f444a8bf7-1.png"
                   alt="Our congregation worshipping together"
                   className="rounded-2xl shadow-card-hover w-full object-cover aspect-[4/3]"
                 />
