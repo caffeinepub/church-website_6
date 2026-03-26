@@ -302,8 +302,59 @@ function SectionHeading({
   );
 }
 
+function useNextFridayCountdown() {
+  const getTimeLeft = () => {
+    const now = new Date();
+    // Get current time in Europe/London
+    const londonNow = new Date(
+      now.toLocaleString("en-GB", { timeZone: "Europe/London" }),
+    );
+    const target = new Date(londonNow);
+    // Find next Friday
+    const day = target.getDay(); // 0=Sun,1=Mon,...,5=Fri
+    const daysUntilFriday = (5 - day + 7) % 7 || 7;
+    target.setDate(target.getDate() + daysUntilFriday);
+    target.setHours(16, 0, 0, 0);
+    const diff = target.getTime() - londonNow.getTime();
+    if (diff <= 0) return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+    const days = Math.floor(diff / 86400000);
+    const hours = Math.floor((diff % 86400000) / 3600000);
+    const minutes = Math.floor((diff % 3600000) / 60000);
+    const seconds = Math.floor((diff % 60000) / 1000);
+    return { days, hours, minutes, seconds };
+  };
+  const [timeLeft, setTimeLeft] = useState(getTimeLeft);
+  useEffect(() => {
+    const id = setInterval(() => {
+      const now = new Date();
+      const londonNow = new Date(
+        now.toLocaleString("en-GB", { timeZone: "Europe/London" }),
+      );
+      const target = new Date(londonNow);
+      const day = target.getDay();
+      const daysUntilFriday = (5 - day + 7) % 7 || 7;
+      target.setDate(target.getDate() + daysUntilFriday);
+      target.setHours(16, 0, 0, 0);
+      const diff = target.getTime() - londonNow.getTime();
+      if (diff <= 0) {
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+        return;
+      }
+      setTimeLeft({
+        days: Math.floor(diff / 86400000),
+        hours: Math.floor((diff % 86400000) / 3600000),
+        minutes: Math.floor((diff % 3600000) / 60000),
+        seconds: Math.floor((diff % 60000) / 1000),
+      });
+    }, 1000);
+    return () => clearInterval(id);
+  }, []);
+  return timeLeft;
+}
+
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const countdown = useNextFridayCountdown();
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -1165,37 +1216,29 @@ export default function App() {
         <section
           id="tv-ministry"
           className="py-24 relative overflow-hidden"
-          style={{
-            background:
-              "linear-gradient(135deg, #060e1c 0%, #0a1628 50%, #0d1e38 100%)",
-          }}
+          style={{ background: "#f8f6f0" }}
           aria-label="TV Ministry"
         >
-          {/* Cinematic background grid */}
+          {/* Subtle gold dot pattern */}
           <div
-            className="absolute inset-0 opacity-[0.04]"
+            className="absolute inset-0 opacity-[0.06]"
             style={{
               backgroundImage:
-                "linear-gradient(rgba(212,175,55,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(212,175,55,0.5) 1px, transparent 1px)",
-              backgroundSize: "60px 60px",
-            }}
-          />
-          {/* Glow accents */}
-          <div
-            className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[200px] rounded-full opacity-10"
-            style={{
-              background:
-                "radial-gradient(ellipse, #d4af37 0%, transparent 70%)",
+                "radial-gradient(rgba(212,175,55,0.8) 1px, transparent 1px)",
+              backgroundSize: "24px 24px",
             }}
           />
 
           <div className="relative mx-auto max-w-4xl px-6">
-            <SectionHeading light>TV Ministry</SectionHeading>
+            <SectionHeading>TV Ministry</SectionHeading>
 
             {/* Main broadcast card */}
             <div
-              className="mt-12 rounded-2xl overflow-hidden shadow-2xl"
-              style={{ border: "1px solid rgba(212,175,55,0.35)" }}
+              className="mt-12 rounded-2xl overflow-hidden"
+              style={{
+                border: "1px solid rgba(212,175,55,0.5)",
+                boxShadow: "0 8px 40px rgba(0,0,0,0.12)",
+              }}
             >
               {/* Card header bar */}
               <div
@@ -1227,10 +1270,61 @@ export default function App() {
               <div
                 id="hy2wpk"
                 className="p-8"
-                style={{ background: "rgba(6,14,28,0.95)" }}
+                style={{ background: "#ffffff" }}
               >
                 {/* Schedule grid */}
-                <p className="text-center text-xs font-black uppercase tracking-[0.35em] text-gold/60 mb-6">
+                <p className="text-center text-xs font-black uppercase tracking-[0.35em] text-navy/50 mb-6">
+                  {/* Countdown Timer */}
+                  <div
+                    className="mb-8 rounded-2xl p-6"
+                    style={{
+                      background:
+                        "linear-gradient(135deg, #060e1c 0%, #0d1f3c 100%)",
+                      border: "1px solid rgba(212,175,55,0.4)",
+                      boxShadow: "0 4px 24px rgba(6,14,28,0.18)",
+                    }}
+                  >
+                    <p
+                      className="text-center text-[10px] font-black uppercase tracking-[0.35em] mb-5"
+                      style={{ color: "rgba(212,175,55,0.7)" }}
+                    >
+                      Next Broadcast In
+                    </p>
+                    <div className="grid grid-cols-4 gap-3">
+                      {[
+                        { value: countdown.days, label: "Days" },
+                        { value: countdown.hours, label: "Hours" },
+                        { value: countdown.minutes, label: "Mins" },
+                        { value: countdown.seconds, label: "Secs" },
+                      ].map(({ value, label }) => (
+                        <div
+                          key={label}
+                          className="flex flex-col items-center gap-1"
+                        >
+                          <div
+                            className="w-full rounded-xl flex items-center justify-center py-3 tabular-nums"
+                            style={{
+                              background: "rgba(212,175,55,0.12)",
+                              border: "1px solid rgba(212,175,55,0.35)",
+                            }}
+                          >
+                            <span
+                              className="text-3xl font-black"
+                              style={{
+                                color: "#d4af37",
+                                fontVariantNumeric: "tabular-nums",
+                              }}
+                            >
+                              {String(value).padStart(2, "0")}
+                            </span>
+                          </div>
+                          <span className="text-[9px] font-black uppercase tracking-[0.25em] text-white/40">
+                            {label}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                   Every Friday · Weekly Broadcast
                 </p>
                 <div className="grid grid-cols-3 gap-4">
@@ -1243,15 +1337,15 @@ export default function App() {
                       key={region}
                       className="flex flex-col items-center gap-2 rounded-xl p-4"
                       style={{
-                        background: "rgba(212,175,55,0.07)",
-                        border: "1px solid rgba(212,175,55,0.18)",
+                        background: "rgba(212,175,55,0.08)",
+                        border: "1px solid rgba(212,175,55,0.3)",
                       }}
                     >
                       <span className="text-2xl">{flag}</span>
-                      <span className="text-[10px] font-black uppercase tracking-[0.2em] text-gold/70">
+                      <span className="text-[10px] font-black uppercase tracking-[0.2em] text-navy/60">
                         {region}
                       </span>
-                      <span className="text-white font-bold text-sm tabular-nums">
+                      <span className="text-navy font-bold text-sm tabular-nums">
                         {time}
                       </span>
                     </div>
@@ -1260,7 +1354,7 @@ export default function App() {
 
                 {/* Channel badges */}
                 <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-                  <span className="text-xs uppercase tracking-widest text-white/50 font-semibold">
+                  <span className="text-xs uppercase tracking-widest text-navy/50 font-semibold">
                     Watch on
                   </span>
                   <a
@@ -1277,19 +1371,21 @@ export default function App() {
                     Faithworld TV
                   </a>
                   <span
-                    className="rounded-full px-3 py-1 text-xs font-bold tracking-widest text-gold uppercase"
+                    className="rounded-full px-3 py-1 text-xs font-bold tracking-widest uppercase"
                     style={{
-                      border: "1px solid rgba(212,175,55,0.4)",
-                      background: "rgba(212,175,55,0.08)",
+                      border: "1px solid rgba(212,175,55,0.6)",
+                      background: "rgba(212,175,55,0.15)",
+                      color: "#7a5c00",
                     }}
                   >
                     SKY 589
                   </span>
                   <span
-                    className="rounded-full px-3 py-1 text-xs font-bold tracking-widest text-gold uppercase"
+                    className="rounded-full px-3 py-1 text-xs font-bold tracking-widest uppercase"
                     style={{
-                      border: "1px solid rgba(212,175,55,0.4)",
-                      background: "rgba(212,175,55,0.08)",
+                      border: "1px solid rgba(212,175,55,0.6)",
+                      background: "rgba(212,175,55,0.15)",
+                      color: "#7a5c00",
                     }}
                   >
                     FREEVIEW 269
@@ -1300,23 +1396,23 @@ export default function App() {
                 <div
                   className="mt-8 rounded-xl p-6"
                   style={{
-                    background:
-                      "linear-gradient(135deg, rgba(212,175,55,0.08), rgba(212,175,55,0.03))",
-                    border: "1px solid rgba(212,175,55,0.2)",
+                    background: "rgba(212,175,55,0.06)",
+                    border: "1px solid rgba(212,175,55,0.3)",
                   }}
                 >
                   <div className="flex items-center justify-center gap-2 mb-3">
-                    <div className="h-px flex-1 bg-gold/20" />
-                    <h4 className="font-display text-sm font-black uppercase tracking-[0.25em] text-gold">
+                    <div className="h-px flex-1 bg-navy/20" />
+                    <h4 className="font-display text-sm font-black uppercase tracking-[0.25em] text-navy">
                       Prayer Request
                     </h4>
-                    <div className="h-px flex-1 bg-gold/20" />
+                    <div className="h-px flex-1 bg-navy/20" />
                   </div>
-                  <p className="text-center text-white/70 text-sm leading-relaxed">
+                  <p className="text-center text-navy/70 text-sm leading-relaxed">
                     Please feel free to send any prayer requests to{" "}
                     <a
                       href="tel:07920035100"
-                      className="font-bold text-gold hover:text-gold/80 transition-colors"
+                      className="font-bold text-gold hover:opacity-80 transition-opacity"
+                      style={{ color: "#b8962e" }}
                     >
                       07920035100
                     </a>
