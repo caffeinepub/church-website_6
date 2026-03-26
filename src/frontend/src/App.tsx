@@ -120,7 +120,6 @@ const SERMONS = [
 
 const SCHEDULE = [
   { activity: "Midweek Services", timing: "Every Wednesday, 7PM" },
-  { activity: "Worship Nights", timing: "Every Third Wednesday of the Month" },
   { activity: "Half Night Service", timing: "Every 1st Friday of the Month" },
   { activity: "Easter", timing: "5th April" },
   { activity: "Church Outreach (Evangelism)", timing: "July" },
