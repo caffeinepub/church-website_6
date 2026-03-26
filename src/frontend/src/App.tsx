@@ -102,19 +102,19 @@ const MISSION_POINTS = [
 const SERMONS = [
   {
     title: "The Power of Faith",
-    speaker: "Samuel",
+    speaker: "Pastor Samuel",
     date: "March 17, 2026",
     img: "/assets/generated/sermon-faith.dim_600x400.jpg",
   },
   {
     title: "Walking in Grace",
-    speaker: "Solomon",
+    speaker: "Pastor Solomon",
     date: "March 10, 2026",
     img: "/assets/generated/sermon-grace.dim_600x400.jpg",
   },
   {
     title: "A New Beginning",
-    speaker: "Augustine",
+    speaker: "Pastor Augustine",
     date: "March 3, 2026",
     img: "/assets/generated/sermon-beginning.dim_600x400.jpg",
   },
@@ -174,37 +174,37 @@ const MINISTRIES_MEETUP = [
 
 const LEADERSHIP = [
   {
-    name: "Samuel",
+    name: "Pastor Samuel",
     title: "Resident Pastor",
     img: "/assets/uploads/image-019d2731-6d48-725b-adbd-74657b634684-1.png",
   },
   {
-    name: "Ebenezer",
+    name: "Pastor Ebenezer",
     title: "Men Ministry Leader",
     img: "/assets/uploads/image-019d272c-7fad-713a-b272-6709a9919520-1.png",
   },
   {
-    name: "Augustine",
+    name: "Pastor Augustine",
     title: "Children Ministry Leader",
     img: "/assets/generated/leader-augustine.dim_400x400.jpg",
   },
   {
-    name: "Koomson",
+    name: "Mrs Koomson",
     title: "Ushering / Hospitality",
     img: "/assets/generated/leader-koomson-real.dim_400x400.jpg",
   },
   {
-    name: "Joyce",
+    name: "Dr Joyce",
     title: "Women Ministry Leader",
     img: "/assets/uploads/image-019d272e-a57b-7293-9398-217ce7171823-1.png",
   },
   {
-    name: "Solomon",
+    name: "Pastor Solomon",
     title: "Youth Coordinator",
     img: "/assets/generated/leader-solomon-real.dim_400x400.jpg",
   },
   {
-    name: "Audrey",
+    name: "Minister Audrey",
     title: "Worship Team Leader",
     img: "/assets/generated/leader-audrey-real.dim_400x400.jpg",
   },
@@ -1242,19 +1242,19 @@ export default function App() {
         </section>
 
         {/* ── GIVING SECTION ── */}
-        <section id="giving" className="py-24 bg-navy-deep" aria-label="Giving">
+        <section id="giving" className="py-24 bg-slate-50" aria-label="Giving">
           <div className="mx-auto max-w-6xl px-6">
-            <SectionHeading light>Giving</SectionHeading>
+            <SectionHeading>Giving</SectionHeading>
 
             <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 mt-12">
               {/* Tithes & Offerings Card */}
-              <div className="relative rounded-2xl bg-white/5 border border-white/10 overflow-hidden shadow-card">
+              <div className="relative rounded-2xl bg-white border border-gold/30 overflow-hidden shadow-lg">
                 <div className="h-1.5 w-full bg-gold" />
                 <div className="p-8">
                   <h3 className="font-display text-xl font-bold uppercase tracking-widest text-gold mb-4">
                     Tithes and Offerings
                   </h3>
-                  <p className="text-white/75 text-sm leading-relaxed mb-8">
+                  <p className="text-gray-700 text-sm leading-relaxed mb-8">
                     Your generous tithes and offerings are vital for the
                     financial support of the church. Your faithful giving helps
                     cover the ministry&apos;s operating expenses and
@@ -1263,10 +1263,10 @@ export default function App() {
                     the Church Account using the following methods.
                   </p>
 
-                  <div className="rounded-xl bg-white/5 border border-gold/30 p-6 space-y-4">
+                  <div className="rounded-xl bg-navy/5 border border-gold/30 p-6 space-y-4">
                     <h4 className="text-xs font-bold uppercase tracking-widest text-gold border-b border-gold/30 pb-3 mb-5">
                       Church Account Details
-                      <span className="block text-white/40 font-normal normal-case tracking-normal text-xs mt-0.5">
+                      <span className="block text-gray-500 font-normal normal-case tracking-normal text-xs mt-0.5">
                         For Tithes and Offerings Only
                       </span>
                     </h4>
@@ -1287,7 +1287,7 @@ export default function App() {
                         <span className="text-xs font-semibold uppercase tracking-wider text-gold/80">
                           {label}
                         </span>
-                        <span className="text-sm font-medium text-white sm:text-right">
+                        <span className="text-sm font-semibold text-navy sm:text-right">
                           {value}
                         </span>
                       </div>
@@ -1297,13 +1297,13 @@ export default function App() {
               </div>
 
               {/* Welfare Card */}
-              <div className="relative rounded-2xl bg-white/5 border border-white/10 overflow-hidden shadow-card">
+              <div className="relative rounded-2xl bg-white border border-gold/30 overflow-hidden shadow-lg">
                 <div className="h-1.5 w-full bg-gold" />
                 <div className="p-8">
                   <h3 className="font-display text-xl font-bold uppercase tracking-widest text-gold mb-4">
                     Welfare
                   </h3>
-                  <p className="text-white/75 text-sm leading-relaxed mb-8">
+                  <p className="text-gray-700 text-sm leading-relaxed mb-8">
                     The church has a welfare scheme to assist and support
                     individuals in times of emergencies or other unforeseen
                     circumstances. If you are interested, you will become an
@@ -1311,10 +1311,10 @@ export default function App() {
                     membership fee, as well as monthly dues of £10.
                   </p>
 
-                  <div className="rounded-xl bg-white/5 border border-gold/30 p-6 space-y-4">
+                  <div className="rounded-xl bg-navy/5 border border-gold/30 p-6 space-y-4">
                     <h4 className="text-xs font-bold uppercase tracking-widest text-gold border-b border-gold/30 pb-3 mb-5">
                       Welfare Dues Account Details
-                      <span className="block text-white/40 font-normal normal-case tracking-normal text-xs mt-0.5">
+                      <span className="block text-gray-500 font-normal normal-case tracking-normal text-xs mt-0.5">
                         For Welfare Only
                       </span>
                     </h4>
@@ -1334,7 +1334,7 @@ export default function App() {
                         <span className="text-xs font-semibold uppercase tracking-wider text-gold/80">
                           {label}
                         </span>
-                        <span className="text-sm font-medium text-white sm:text-right">
+                        <span className="text-sm font-semibold text-navy sm:text-right">
                           {value}
                         </span>
                       </div>
