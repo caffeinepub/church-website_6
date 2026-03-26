@@ -22,6 +22,7 @@ import {
   Play,
   Share2,
   Sparkles,
+  Tv,
   Twitter,
   Users,
   X,
@@ -100,33 +101,20 @@ const MISSION_POINTS = [
 
 const SERMONS = [
   {
+    title: "Knowing The Truth",
+    speaker: "Pastor Solomon",
+    date: "March 26, 2026",
+    img: "/assets/generated/sermon-knowing-truth.dim_800x500.jpg",
+    summary:
+      "Do you truly know God? (John 14:1-7)\n\nHow do you thoroughly know God? Be truthful and honest in your walk with Christ (Matthew 16:13 onwards)\n\nTruth is the revelation of who Christ is \u2014 the truth of Christ should influence your actions, decisions, choices, and beliefs.\n\nGod reveals the truth to honest, sincere and genuine people who have a relationship with Him.\n\nGod sometimes gives us personal revelations \u2014 Proverbs 23:23: \u201cBuy the truth and do not sell it \u2014 wisdom, instruction and insight as well.\u201d\n\nThe amount of revelation you have is what is going to make you successful (Matthew 11:25 onwards)\n\nGod is a great rewarder to those who honour Him.",
+  },
+  {
     title: "What Can I Do for the Lord?",
     speaker: "Rev. Patrick",
-    date: "March 26, 2026",
-    img: "/assets/generated/sermon-faith.dim_600x400.jpg",
+    date: "March 19, 2026",
+    img: "/assets/generated/sermon-what-can-i-do.dim_800x600.jpg",
     summary:
-      "The Parable of the Workers in the Vineyard (Matthew 20:1-16) • Habakkuk 2:2 — Run with the vision • The Lord is always seeking workers • It is possible to be present in church activities without being productive and active for the kingdom • Matthew 9:35-38 — The Harvest Is Plentiful, the Laborers Few • It is time to work for the Lord!",
-  },
-  {
-    title: "The Power of Faith",
-    speaker: "Pastor Samuel",
-    date: "March 17, 2026",
-    img: "/assets/generated/sermon-faith.dim_600x400.jpg",
-    summary: "",
-  },
-  {
-    title: "Walking in Grace",
-    speaker: "Pastor Solomon",
-    date: "March 10, 2026",
-    img: "/assets/generated/sermon-grace.dim_600x400.jpg",
-    summary: "",
-  },
-  {
-    title: "A New Beginning",
-    speaker: "Pastor Augustine",
-    date: "March 3, 2026",
-    img: "/assets/generated/sermon-beginning.dim_600x400.jpg",
-    summary: "",
+      "The Parable of the Workers in the Vineyard (Matthew 20:1-16)\n\nHabakkuk 2:2 \u2014 Run with the vision\n\nThe Lord is always seeking workers. It is possible to be present in church activities without being productive and active for the kingdom.\n\nMatthew 9:35-38 \u2014 The Harvest Is Plentiful, the Laborers Few\n\nIt is time to work for the Lord!",
   },
 ];
 
@@ -481,6 +469,21 @@ export default function App() {
               (NLT)
             </p>
 
+            {/* 2026 Theme Banner */}
+            <div className="mt-7 mx-auto max-w-xl rounded-xl border border-amber-400/60 bg-amber-400/10 px-6 py-4 text-center backdrop-blur-sm">
+              <p className="text-xs font-bold uppercase tracking-widest text-amber-300 mb-1">
+                2026 Theme
+              </p>
+              <p className="text-sm font-bold uppercase tracking-wider text-amber-200 leading-snug">
+                Your Year of Abundance
+              </p>
+              <p className="text-xs font-semibold text-amber-300/90 mt-1">
+                Moving from Lack to Abundance
+              </p>
+              <p className="text-xs text-amber-400 font-bold mt-1.5 tracking-wide">
+                1 Kings 18:41–45
+              </p>
+            </div>
             <div className="mt-10 flex flex-wrap justify-center gap-4">
               <Button
                 onClick={() => handleNavClick("#worship")}
@@ -540,9 +543,8 @@ export default function App() {
                       Founded in 1997, New Life Evangelistic Ministries Worship
                       Centre has grown into a vibrant congregation committed to
                       spreading the Word of God to all nations. Through decades
-                      of faithful ministry, we have baptised many, planted
-                      daughter congregations, and served thousands in our
-                      community.
+                      of faithful ministry, we have baptised many, trained many
+                      leaders, and served thousands in our community.
                     </p>
                   </div>
                 </div>
@@ -800,9 +802,27 @@ export default function App() {
                         {sermon.date}
                       </p>
                       {sermon.summary && (
-                        <p className="mt-2 text-xs text-muted-foreground leading-relaxed line-clamp-4">
-                          {sermon.summary}
-                        </p>
+                        <div className="mt-3 space-y-2">
+                          {sermon.summary.split("\n\n").map((para) => (
+                            <p
+                              key={para.slice(0, 30)}
+                              className="text-xs text-muted-foreground leading-relaxed"
+                            >
+                              {para.split(/(\([^)]+\))/).map((part) =>
+                                /^\([^)]+\)$/.test(part) ? (
+                                  <em
+                                    key={part}
+                                    className="text-gold not-italic font-semibold"
+                                  >
+                                    {part}
+                                  </em>
+                                ) : (
+                                  part
+                                ),
+                              )}
+                            </p>
+                          ))}
+                        </div>
                       )}
                       <div className="mt-4 flex gap-3">
                         <button
@@ -1137,6 +1157,176 @@ export default function App() {
               >
                 View Full Team
               </Button>
+            </div>
+          </div>
+        </section>
+
+        {/* ── TV MINISTRY ── */}
+        <section
+          id="tv-ministry"
+          className="py-24 relative overflow-hidden"
+          style={{
+            background:
+              "linear-gradient(135deg, #060e1c 0%, #0a1628 50%, #0d1e38 100%)",
+          }}
+          aria-label="TV Ministry"
+        >
+          {/* Cinematic background grid */}
+          <div
+            className="absolute inset-0 opacity-[0.04]"
+            style={{
+              backgroundImage:
+                "linear-gradient(rgba(212,175,55,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(212,175,55,0.5) 1px, transparent 1px)",
+              backgroundSize: "60px 60px",
+            }}
+          />
+          {/* Glow accents */}
+          <div
+            className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[200px] rounded-full opacity-10"
+            style={{
+              background:
+                "radial-gradient(ellipse, #d4af37 0%, transparent 70%)",
+            }}
+          />
+
+          <div className="relative mx-auto max-w-4xl px-6">
+            <SectionHeading light>TV Ministry</SectionHeading>
+
+            {/* Main broadcast card */}
+            <div
+              className="mt-12 rounded-2xl overflow-hidden shadow-2xl"
+              style={{ border: "1px solid rgba(212,175,55,0.35)" }}
+            >
+              {/* Card header bar */}
+              <div
+                className="px-8 py-4 flex items-center justify-between"
+                style={{
+                  background:
+                    "linear-gradient(90deg, #d4af37 0%, #b8962e 100%)",
+                }}
+              >
+                <div className="flex items-center gap-3">
+                  <Tv className="h-5 w-5 text-navy" />
+                  <h3
+                    id="1vgc5i0"
+                    className="font-display text-base font-black uppercase tracking-[0.2em] text-navy"
+                  >
+                    New Life TV Programme
+                  </h3>
+                </div>
+                {/* On Air badge */}
+                <div className="flex items-center gap-1.5 bg-red-600 rounded-full px-3 py-1">
+                  <span className="h-2 w-2 rounded-full bg-white animate-pulse" />
+                  <span className="text-[10px] font-black tracking-widest text-white uppercase">
+                    On Air
+                  </span>
+                </div>
+              </div>
+
+              {/* Card body */}
+              <div
+                id="hy2wpk"
+                className="p-8"
+                style={{ background: "rgba(6,14,28,0.95)" }}
+              >
+                {/* Schedule grid */}
+                <p className="text-center text-xs font-black uppercase tracking-[0.35em] text-gold/60 mb-6">
+                  Every Friday · Weekly Broadcast
+                </p>
+                <div className="grid grid-cols-3 gap-4">
+                  {[
+                    { flag: "🇬🇧", region: "U.K", time: "16:00–17:00" },
+                    { flag: "🇬🇭", region: "Ghana", time: "15:00–16:00" },
+                    { flag: "🇺🇸", region: "USA", time: "11:00–12:00" },
+                  ].map(({ flag, region, time }) => (
+                    <div
+                      key={region}
+                      className="flex flex-col items-center gap-2 rounded-xl p-4"
+                      style={{
+                        background: "rgba(212,175,55,0.07)",
+                        border: "1px solid rgba(212,175,55,0.18)",
+                      }}
+                    >
+                      <span className="text-2xl">{flag}</span>
+                      <span className="text-[10px] font-black uppercase tracking-[0.2em] text-gold/70">
+                        {region}
+                      </span>
+                      <span className="text-white font-bold text-sm tabular-nums">
+                        {time}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Channel badges */}
+                <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+                  <span className="text-xs uppercase tracking-widest text-white/50 font-semibold">
+                    Watch on
+                  </span>
+                  <a
+                    href="https://www.faithworldtv.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-xs font-black uppercase tracking-widest transition-all hover:opacity-80"
+                    style={{
+                      background: "linear-gradient(90deg, #d4af37, #b8962e)",
+                      color: "#060e1c",
+                    }}
+                  >
+                    <Tv className="h-3 w-3" />
+                    Faithworld TV
+                  </a>
+                  <span
+                    className="rounded-full px-3 py-1 text-xs font-bold tracking-widest text-gold uppercase"
+                    style={{
+                      border: "1px solid rgba(212,175,55,0.4)",
+                      background: "rgba(212,175,55,0.08)",
+                    }}
+                  >
+                    SKY 589
+                  </span>
+                  <span
+                    className="rounded-full px-3 py-1 text-xs font-bold tracking-widest text-gold uppercase"
+                    style={{
+                      border: "1px solid rgba(212,175,55,0.4)",
+                      background: "rgba(212,175,55,0.08)",
+                    }}
+                  >
+                    FREEVIEW 269
+                  </span>
+                </div>
+
+                {/* Prayer Request */}
+                <div
+                  className="mt-8 rounded-xl p-6"
+                  style={{
+                    background:
+                      "linear-gradient(135deg, rgba(212,175,55,0.08), rgba(212,175,55,0.03))",
+                    border: "1px solid rgba(212,175,55,0.2)",
+                  }}
+                >
+                  <div className="flex items-center justify-center gap-2 mb-3">
+                    <div className="h-px flex-1 bg-gold/20" />
+                    <h4 className="font-display text-sm font-black uppercase tracking-[0.25em] text-gold">
+                      Prayer Request
+                    </h4>
+                    <div className="h-px flex-1 bg-gold/20" />
+                  </div>
+                  <p className="text-center text-white/70 text-sm leading-relaxed">
+                    Please feel free to send any prayer requests to{" "}
+                    <a
+                      href="tel:07920035100"
+                      className="font-bold text-gold hover:text-gold/80 transition-colors"
+                    >
+                      07920035100
+                    </a>
+                    .
+                    <br />
+                    We have intercessors who will be happy to stand in the gap
+                    with you.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </section>
