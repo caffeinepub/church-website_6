@@ -232,28 +232,20 @@ const GALLERY = [
     alt: "Ministry life - congregation in prayer",
   },
   {
-    src: "/assets/generated/gallery-1.dim_400x300.jpg",
-    alt: "Children's Sunday school",
+    src: "/assets/uploads/image-019d2891-01dc-7332-b855-244f11d8f372-1.png",
+    alt: "Ministry life - worship team singing",
   },
   {
-    src: "/assets/generated/gallery-2.dim_400x300.jpg",
-    alt: "Women's ministry fellowship",
+    src: "/assets/uploads/image-019d2891-035d-746f-bd48-3d7241a523b1-2.png",
+    alt: "Ministry life - pastor speaking",
   },
   {
-    src: "/assets/generated/gallery-3.dim_400x300.jpg",
-    alt: "Men's ministry retreat",
+    src: "/assets/uploads/image-019d2891-03e8-7738-9021-b71c810e04f5-3.png",
+    alt: "Ministry life - worship leader in prayer",
   },
   {
-    src: "/assets/generated/gallery-4.dim_400x300.jpg",
-    alt: "Choir performance",
-  },
-  {
-    src: "/assets/generated/gallery-5.dim_400x300.jpg",
-    alt: "Christmas service",
-  },
-  {
-    src: "/assets/generated/gallery-6.dim_400x300.jpg",
-    alt: "Congregation picnic",
+    src: "/assets/uploads/image-019d2891-0421-71ff-a689-05aabd285343-4.png",
+    alt: "Ministry life - congregation standing in worship",
   },
 ];
 
