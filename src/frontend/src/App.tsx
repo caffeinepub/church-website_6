@@ -302,51 +302,28 @@ function SectionHeading({
   );
 }
 
-function useNextFridayCountdown() {
-  const getTimeLeft = () => {
-    const now = new Date();
-    // Get current time in Europe/London
-    const londonNow = new Date(
-      now.toLocaleString("en-GB", { timeZone: "Europe/London" }),
-    );
-    const target = new Date(londonNow);
-    // Find next Friday
-    const day = target.getDay(); // 0=Sun,1=Mon,...,5=Fri
-    const daysUntilFriday = (5 - day + 7) % 7 || 7;
-    target.setDate(target.getDate() + daysUntilFriday);
-    target.setHours(16, 0, 0, 0);
-    const diff = target.getTime() - londonNow.getTime();
-    if (diff <= 0) return { days: 0, hours: 0, minutes: 0, seconds: 0 };
-    const days = Math.floor(diff / 86400000);
-    const hours = Math.floor((diff % 86400000) / 3600000);
-    const minutes = Math.floor((diff % 3600000) / 60000);
-    const seconds = Math.floor((diff % 60000) / 1000);
-    return { days, hours, minutes, seconds };
+function getNextFridayTimeLeft() {
+  const now = new Date();
+  const nowUtc = now.getTime();
+  const target = new Date(now);
+  target.setUTCHours(16, 0, 0, 0);
+  const dayUtc = target.getUTCDay();
+  const daysUntilFriday = (5 - dayUtc + 7) % 7 || 7;
+  target.setUTCDate(target.getUTCDate() + daysUntilFriday);
+  const diff = target.getTime() - nowUtc;
+  if (diff <= 0) return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+  return {
+    days: Math.floor(diff / 86400000),
+    hours: Math.floor((diff % 86400000) / 3600000),
+    minutes: Math.floor((diff % 3600000) / 60000),
+    seconds: Math.floor((diff % 60000) / 1000),
   };
-  const [timeLeft, setTimeLeft] = useState(getTimeLeft);
+}
+
+function useNextFridayCountdown() {
+  const [timeLeft, setTimeLeft] = useState(getNextFridayTimeLeft);
   useEffect(() => {
-    const id = setInterval(() => {
-      const now = new Date();
-      const londonNow = new Date(
-        now.toLocaleString("en-GB", { timeZone: "Europe/London" }),
-      );
-      const target = new Date(londonNow);
-      const day = target.getDay();
-      const daysUntilFriday = (5 - day + 7) % 7 || 7;
-      target.setDate(target.getDate() + daysUntilFriday);
-      target.setHours(16, 0, 0, 0);
-      const diff = target.getTime() - londonNow.getTime();
-      if (diff <= 0) {
-        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-        return;
-      }
-      setTimeLeft({
-        days: Math.floor(diff / 86400000),
-        hours: Math.floor((diff % 86400000) / 3600000),
-        minutes: Math.floor((diff % 3600000) / 60000),
-        seconds: Math.floor((diff % 60000) / 1000),
-      });
-    }, 1000);
+    const id = setInterval(() => setTimeLeft(getNextFridayTimeLeft()), 1000);
     return () => clearInterval(id);
   }, []);
   return timeLeft;
@@ -356,6 +333,22 @@ export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const countdown = useNextFridayCountdown();
   const [scrolled, setScrolled] = useState(false);
+  const [contactName, setContactName] = useState("");
+  const [contactEmail, setContactEmail] = useState("");
+  const [contactMessage, setContactMessage] = useState("");
+
+  const handleContactSubmit = () => {
+    const subject = encodeURIComponent(
+      `Message from ${contactName} via NLEM Website`,
+    );
+    const body = encodeURIComponent(`Name: ${contactName}
+Email: ${contactEmail}
+
+Message:
+${contactMessage}`);
+    const mailtoUrl = `mailto:nlem.worshipcentre@gmail.com,youthministry248@gmail.com?subject=${subject}&body=${body}`;
+    window.location.href = mailtoUrl;
+  };
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -532,7 +525,14 @@ export default function App() {
                 Moving from Lack to Abundance
               </p>
               <p className="text-xs text-amber-400 font-bold mt-1.5 tracking-wide">
-                1 Kings 18:41–45
+                <a
+                  href="https://www.biblegateway.com/passage/?search=1+Kings+18%3A41-45&version=NIV"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline"
+                >
+                  1 Kings 18:41–45
+                </a>
               </p>
             </div>
             <div className="mt-10 flex flex-wrap justify-center gap-4">
@@ -599,12 +599,6 @@ export default function App() {
                     </p>
                   </div>
                 </div>
-                <Button
-                  className="mt-8 bg-gold hover:bg-gold/90 text-navy font-bold uppercase tracking-wider"
-                  data-ocid="about.primary_button"
-                >
-                  Read More <ChevronRight className="ml-1 h-4 w-4" />
-                </Button>
               </div>
               <div className="relative">
                 <img
@@ -893,15 +887,6 @@ export default function App() {
                   </div>
                 ))}
               </div>
-              <div className="mt-10 text-center">
-                <Button
-                  variant="outline"
-                  className="border-navy text-navy hover:bg-navy hover:text-white font-bold uppercase tracking-wider"
-                  data-ocid="sermons.secondary_button"
-                >
-                  View All Sermons
-                </Button>
-              </div>
             </div>
           </div>
         </section>
@@ -1020,15 +1005,6 @@ export default function App() {
                   Link to Join All Online Meetings
                 </a>
               </div>
-            </div>
-
-            <div className="mt-10 text-center">
-              <Button
-                className="bg-gold hover:bg-gold/90 text-navy font-bold uppercase tracking-wider"
-                data-ocid="ministries.primary_button"
-              >
-                View All Ministries
-              </Button>
             </div>
           </div>
         </section>
@@ -1200,14 +1176,6 @@ export default function App() {
                   </p>
                 </div>
               ))}
-            </div>
-            <div className="mt-12 text-center">
-              <Button
-                className="bg-gold hover:bg-gold/90 text-navy font-bold uppercase tracking-wider"
-                data-ocid="leadership.primary_button"
-              >
-                View Full Team
-              </Button>
             </div>
           </div>
         </section>
@@ -1497,6 +1465,8 @@ export default function App() {
                       placeholder="Your name"
                       className="bg-white/10 border-white/20 text-white placeholder:text-white/40 focus:border-gold"
                       data-ocid="contact.input"
+                      value={contactName}
+                      onChange={(e) => setContactName(e.target.value)}
                     />
                   </div>
                   <div>
@@ -1512,6 +1482,8 @@ export default function App() {
                       placeholder="your@email.com"
                       className="bg-white/10 border-white/20 text-white placeholder:text-white/40 focus:border-gold"
                       data-ocid="contact.input"
+                      value={contactEmail}
+                      onChange={(e) => setContactEmail(e.target.value)}
                     />
                   </div>
                 </div>
@@ -1528,11 +1500,14 @@ export default function App() {
                     rows={5}
                     className="bg-white/10 border-white/20 text-white placeholder:text-white/40 focus:border-gold"
                     data-ocid="contact.textarea"
+                    value={contactMessage}
+                    onChange={(e) => setContactMessage(e.target.value)}
                   />
                 </div>
                 <Button
                   className="w-full bg-gold hover:bg-gold/90 text-navy font-bold uppercase tracking-wider"
                   data-ocid="contact.submit_button"
+                  onClick={handleContactSubmit}
                 >
                   Send Message
                 </Button>
