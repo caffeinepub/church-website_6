@@ -47,9 +47,8 @@ function TikTokIcon({ className }: { className?: string }) {
 const NAV_LINKS = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
-  { label: "Founder", href: "#founder" },
   { label: "Mission", href: "#mission" },
-  { label: "Worship", href: "#worship" },
+  { label: "Services", href: "#worship" },
   { label: "Sermons", href: "#sermons" },
   { label: "Events", href: "#events" },
   { label: "Ministries", href: "#ministries" },
@@ -191,7 +190,7 @@ const LEADERSHIP = [
   {
     name: "Mrs Koomson",
     title: "Ushering / Hospitality",
-    img: "/assets/generated/leader-koomson-real.dim_400x400.jpg",
+    img: "/assets/uploads/image-019d289c-3697-7765-843f-435c896f66b7-1.png",
   },
   {
     name: "Dr Joyce",
@@ -963,13 +962,29 @@ export default function App() {
                 <div className="h-0.5 w-10 rounded-full bg-gold mb-6" />
                 <div className="space-y-4 text-sm text-foreground/80 leading-relaxed">
                   <p>
-                    Simply download the{" "}
-                    <strong className="text-navy">FREE CONFERENCE APP</strong>{" "}
-                    and use{" "}
+                    Simply download the FREE CONFERENCE APP and use{" "}
                     <strong className="text-navy">
                       Meeting ID: REVDPATRICK3
                     </strong>
                   </p>
+                  <div className="flex flex-wrap gap-3 mt-1">
+                    <a
+                      href="https://play.google.com/store/apps/details?id=com.freeconferencecall.fccmeetingclient&pcampaignid=web_share"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-navy text-white text-xs font-semibold rounded-full hover:bg-navy/80 transition-colors"
+                    >
+                      ▶ Google Play
+                    </a>
+                    <a
+                      href="https://apps.apple.com/app/freeconferencecall/id1076539547"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-navy text-white text-xs font-semibold rounded-full hover:bg-navy/80 transition-colors"
+                    >
+                      Apple App Store
+                    </a>
+                  </div>
                   <p>Join online for video and screen sharing:</p>
                   <a
                     href="https://join.freeconferencecall.com/revdpatrick3"
@@ -1130,22 +1145,28 @@ export default function App() {
           <div className="mx-auto max-w-7xl px-6">
             <SectionHeading light>Contact Us</SectionHeading>
             <div className="mt-12 grid grid-cols-1 gap-10 lg:grid-cols-2">
-              {/* Map placeholder */}
-              <div className="rounded-xl overflow-hidden border border-white/10">
+              {/* Map link */}
+              <a
+                href="https://www.google.com/maps?q=Christ+Church+Chapel+Church+Rise+Forest+Hill+London+SE23+2UJ"
+                target="_blank"
+                rel="noopener noreferrer"
+                data-ocid="contact.map_marker"
+                className="rounded-xl overflow-hidden border border-white/10 block hover:border-gold/50 transition-colors group"
+              >
                 <div className="bg-white/10 flex flex-col items-center justify-center h-64 lg:h-full min-h-[300px] text-white/60 gap-3">
-                  <MapPin className="h-10 w-10 text-gold" />
+                  <MapPin className="h-10 w-10 text-gold group-hover:scale-110 transition-transform" />
                   <p className="text-sm font-medium text-white/80">
                     New Life Evangelistic Ministries Worship Centre
                   </p>
-                  <p className="text-xs text-white/50">
+                  <p className="text-xs text-white/50 text-center px-4">
                     Christ Church Chapel, The Chapel On The Hill, Church Rise/
                     South Road, Forest Hill, London SE23 2UJ
                   </p>
-                  <div className="mt-4 rounded-lg bg-white/10 px-4 py-2 text-xs text-white/50">
-                    📍 Map Loading...
+                  <div className="mt-4 rounded-lg bg-gold/20 border border-gold/40 px-4 py-2 text-xs text-gold font-medium group-hover:bg-gold/30 transition-colors">
+                    📍 View on Google Maps →
                   </div>
                 </div>
-              </div>
+              </a>
 
               {/* Form */}
               <div className="space-y-6">
@@ -1210,7 +1231,12 @@ export default function App() {
                       <p className="text-xs font-bold uppercase tracking-wider text-gold">
                         Address
                       </p>
-                      <p className="text-sm text-white/70 mt-0.5">
+                      <a
+                        href="https://www.google.com/maps?q=Christ+Church+Chapel+Church+Rise+Forest+Hill+London+SE23+2UJ"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm text-white/70 mt-0.5 hover:text-gold transition-colors block"
+                      >
                         Christ Church Chapel
                         <br />
                         The Chapel On The Hill
@@ -1220,7 +1246,7 @@ export default function App() {
                         Forest Hill, London
                         <br />
                         SE23 2UJ
-                      </p>
+                      </a>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
