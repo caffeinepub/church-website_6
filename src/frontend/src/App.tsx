@@ -235,6 +235,7 @@ const GALLERY = [
   {
     src: "/assets/uploads/image-019d2891-035d-746f-bd48-3d7241a523b1-2.png",
     alt: "Ministry life - pastor speaking",
+    objectPosition: "top",
   },
   {
     src: "/assets/uploads/image-019d2891-03e8-7738-9021-b71c810e04f5-3.png",
@@ -335,6 +336,7 @@ export default function App() {
   const [contactName, setContactName] = useState("");
   const [contactEmail, setContactEmail] = useState("");
   const [contactMessage, setContactMessage] = useState("");
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   const handleContactSubmit = () => {
     const subject = encodeURIComponent(
@@ -354,6 +356,15 @@ ${contactMessage}`);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (lightboxIndex === null) return;
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setLightboxIndex(null);
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [lightboxIndex]);
 
   const handleNavClick = (href: string) => {
     setMenuOpen(false);
@@ -1404,22 +1415,94 @@ ${contactMessage}`);
           <div className="mx-auto max-w-7xl px-6">
             <SectionHeading>Ministry Life Gallery</SectionHeading>
             <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3">
-              {GALLERY.map(({ src, alt }, i) => (
-                <div
+              {GALLERY.map(({ src, alt, objectPosition }, i) => (
+                <button
                   key={alt}
-                  className="overflow-hidden rounded-xl shadow-card hover:shadow-card-hover transition-shadow group cursor-pointer"
+                  type="button"
+                  className="overflow-hidden rounded-xl shadow-card hover:shadow-card-hover transition-shadow group cursor-pointer w-full p-0 border-0 bg-transparent text-left"
                   data-ocid={`gallery.item.${i + 1}`}
+                  onClick={() => setLightboxIndex(i)}
                 >
                   <img
                     src={src}
                     alt={alt}
                     className="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    style={objectPosition ? { objectPosition } : undefined}
                   />
-                </div>
+                </button>
               ))}
             </div>
           </div>
         </section>
+
+        {/* ── LIGHTBOX OVERLAY ── */}
+        {lightboxIndex !== null && (
+          <div
+            className="fixed inset-0 z-[200] flex items-center justify-center bg-black/85 backdrop-blur-sm"
+            onClick={() => setLightboxIndex(null)}
+            onKeyDown={(e) => {
+              if (e.key === "Escape") setLightboxIndex(null);
+            }}
+            data-ocid="gallery.modal"
+            aria-modal="true"
+            aria-label="Photo lightbox"
+          >
+            {/* Prev arrow */}
+            <button
+              type="button"
+              className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-black/50 p-3 text-white hover:bg-black/80 transition-colors"
+              onClick={(e) => {
+                e.stopPropagation();
+                setLightboxIndex(
+                  (lightboxIndex - 1 + GALLERY.length) % GALLERY.length,
+                );
+              }}
+              data-ocid="gallery.pagination_prev"
+              aria-label="Previous photo"
+            >
+              <ChevronRight className="h-6 w-6 rotate-180" />
+            </button>
+
+            {/* Image */}
+            <img
+              src={GALLERY[lightboxIndex].src}
+              alt={GALLERY[lightboxIndex].alt}
+              className="max-h-[90vh] max-w-[90vw] rounded-xl shadow-2xl object-contain"
+              onClick={(e) => e.stopPropagation()}
+              onKeyDown={(e) => e.stopPropagation()}
+            />
+
+            {/* Next arrow */}
+            <button
+              type="button"
+              className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-black/50 p-3 text-white hover:bg-black/80 transition-colors"
+              onClick={(e) => {
+                e.stopPropagation();
+                setLightboxIndex((lightboxIndex + 1) % GALLERY.length);
+              }}
+              data-ocid="gallery.pagination_next"
+              aria-label="Next photo"
+            >
+              <ChevronRight className="h-6 w-6" />
+            </button>
+
+            {/* Close button */}
+            <button
+              type="button"
+              className="absolute right-4 top-4 rounded-full bg-black/50 p-2 text-white hover:bg-black/80 transition-colors"
+              onClick={() => setLightboxIndex(null)}
+              data-ocid="gallery.close_button"
+              aria-label="Close lightbox"
+            >
+              <X className="h-5 w-5" />
+            </button>
+
+            {/* Counter */}
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 rounded-full bg-black/50 px-4 py-1 text-sm text-white/80">
+              {lightboxIndex + 1} / {GALLERY.length}
+            </div>
+          </div>
+        )}
 
         {/* ── CONTACT ── */}
         <section id="contact" className="py-20 bg-navy" aria-label="Contact">
