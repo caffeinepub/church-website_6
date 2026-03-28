@@ -116,6 +116,38 @@ const SERMONS = [
     summary:
       "The Parable of the Workers in the Vineyard (Matthew 20:1-16)\n\nHabakkuk 2:2 \u2014 Run with the vision\n\nThe Lord is always seeking workers. It is possible to be present in church activities without being productive and active for the kingdom.\n\nMatthew 9:35-38 \u2014 The Harvest Is Plentiful, the Laborers Few\n\nIt is time to work for the Lord!",
   },
+  {
+    title: "THE HARVEST IS PLENTY, BUT LABORERS ARE FEW",
+    speaker: "Pastor Samuel",
+    date: "April 6, 2025",
+    img: "/assets/generated/sermon-harvest-laborers.dim_800x500.jpg",
+    summary:
+      "Preached on 6/04/25\n\nScriptures: Luke 10:1-5, Luke 10:17, Acts 1:8\n\nThere is a need for more workers: 'The harvest is plentiful, but the labourers are few' (Luke 10:2). There is a lot of work to be done, but not enough people are doing it. This is a call for more individuals to get involved and contribute.\n\nWe need to make sure the Word is preached accurately and in a way that can be received by all. In Luke 10:5, there is an idea to focus on those who are open and receptive to the message. Discern who is ready, but always be willing and eager to share the gospel.\n\nWe have been given authority and power: Acts 1:8 — 'You will receive power when the Holy Spirit has come upon you, and you will be my witnesses in Jerusalem and in all Judea and Samaria, and to the end of the earth.' Those sent out are given power and authority from God.",
+  },
+  {
+    title: "The Lord Is In Need of You",
+    speaker: "Rev. Patrick",
+    date: "Palm Sunday",
+    img: "/assets/generated/sermon-palm-sunday.dim_800x500.jpg",
+    summary:
+      "Palm Sunday Sermon\n\nScriptures: Mark 10:17 (The Rich Young Ruler), Matthew 21 — Jesus Comes to Jerusalem as King\n\nKey Takeaways:\n• God is looking for our commitment\n• Authentic living is found in Christ — eternal life is not found in possessions\n• God wants you to focus on the right things\n• 'Go and untie' — for the Lord has need of them",
+  },
+];
+const BULLETIN = [
+  {
+    icon: "🌅",
+    event: "Easter Sunday",
+    date: "5th April 2026",
+    message:
+      "Join us for a special Resurrection Sunday celebration! Come and commemorate the risen Christ with the whole family.",
+  },
+  {
+    icon: "👨‍👧‍👦",
+    event: "Father's Day",
+    date: "21st June 2026",
+    message:
+      "Honoring all fathers and father figures in our congregation. A special service to celebrate the gift of fatherhood.",
+  },
 ];
 
 const SCHEDULE = [
@@ -186,8 +218,8 @@ const LEADERSHIP = [
     img: "/assets/generated/leader-augustine.dim_400x400.jpg",
   },
   {
-    name: "Mrs Koomson",
-    title: "Ushering / Hospitality",
+    name: "Deaconess Koomson",
+    title: "Ushering / Hospitality Leader",
     img: "/assets/uploads/image-019d289c-3697-7765-843f-435c896f66b7-1.png",
   },
   {
@@ -302,15 +334,30 @@ function SectionHeading({
   );
 }
 
-function getNextFridayTimeLeft() {
+function getNextFridayTarget(): Date {
   const now = new Date();
-  const nowUtc = now.getTime();
   const target = new Date(now);
   target.setUTCHours(16, 0, 0, 0);
-  const dayUtc = target.getUTCDay();
-  const daysUntilFriday = (5 - dayUtc + 7) % 7 || 7;
-  target.setUTCDate(target.getUTCDate() + daysUntilFriday);
-  const diff = target.getTime() - nowUtc;
+  const day = target.getUTCDay();
+  let daysUntil = (5 - day + 7) % 7;
+  if (daysUntil === 0) {
+    const hours = now.getUTCHours();
+    const minutes = now.getUTCMinutes();
+    if (hours > 17 || (hours === 17 && minutes >= 15)) {
+      daysUntil = 7;
+    }
+  }
+  target.setUTCDate(target.getUTCDate() + daysUntil);
+  return target;
+}
+
+function isBroadcastingNow(): boolean {
+  const now = new Date();
+  return now.getUTCDay() === 5 && now.getUTCHours() === 16;
+}
+
+function calcTimeLeft(target: Date) {
+  const diff = target.getTime() - Date.now();
   if (diff <= 0) return { days: 0, hours: 0, minutes: 0, seconds: 0 };
   return {
     days: Math.floor(diff / 86400000),
@@ -320,18 +367,26 @@ function getNextFridayTimeLeft() {
   };
 }
 
-function useNextFridayCountdown() {
-  const [timeLeft, setTimeLeft] = useState(getNextFridayTimeLeft);
+function useTVBroadcastState() {
+  const [state, setState] = useState(() => ({
+    isBroadcasting: isBroadcastingNow(),
+    timeLeft: calcTimeLeft(getNextFridayTarget()),
+  }));
   useEffect(() => {
-    const id = setInterval(() => setTimeLeft(getNextFridayTimeLeft()), 1000);
+    const id = setInterval(() => {
+      setState({
+        isBroadcasting: isBroadcastingNow(),
+        timeLeft: calcTimeLeft(getNextFridayTarget()),
+      });
+    }, 1000);
     return () => clearInterval(id);
   }, []);
-  return timeLeft;
+  return state;
 }
 
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const countdown = useNextFridayCountdown();
+  const { isBroadcasting, timeLeft: countdown } = useTVBroadcastState();
   const [scrolled, setScrolled] = useState(false);
   const [contactName, setContactName] = useState("");
   const [contactEmail, setContactEmail] = useState("");
@@ -1252,57 +1307,88 @@ ${contactMessage}`);
               >
                 {/* Schedule grid */}
                 <p className="text-center text-xs font-black uppercase tracking-[0.35em] text-navy/50 mb-6">
-                  {/* Countdown Timer */}
-                  <div
-                    className="mb-8 rounded-2xl p-6"
-                    style={{
-                      background:
-                        "linear-gradient(135deg, #060e1c 0%, #0d1f3c 100%)",
-                      border: "1px solid rgba(212,175,55,0.4)",
-                      boxShadow: "0 4px 24px rgba(6,14,28,0.18)",
-                    }}
-                  >
-                    <p
-                      className="text-center text-[10px] font-black uppercase tracking-[0.35em] mb-5"
-                      style={{ color: "rgba(212,175,55,0.7)" }}
+                  {/* Countdown Timer / Now Broadcasting */}
+                  {isBroadcasting ? (
+                    <div
+                      className="mb-8 rounded-2xl p-8 flex flex-col items-center gap-4"
+                      style={{
+                        background:
+                          "linear-gradient(135deg, #060e1c 0%, #0d1f3c 100%)",
+                        border: "1px solid rgba(212,175,55,0.4)",
+                        boxShadow: "0 4px 24px rgba(6,14,28,0.18)",
+                      }}
                     >
-                      Next Broadcast In
-                    </p>
-                    <div className="grid grid-cols-4 gap-3">
-                      {[
-                        { value: countdown.days, label: "Days" },
-                        { value: countdown.hours, label: "Hours" },
-                        { value: countdown.minutes, label: "Mins" },
-                        { value: countdown.seconds, label: "Secs" },
-                      ].map(({ value, label }) => (
-                        <div
-                          key={label}
-                          className="flex flex-col items-center gap-1"
+                      <div className="flex items-center gap-3">
+                        <span className="w-3 h-3 rounded-full bg-red-500 animate-pulse" />
+                        <span
+                          className="text-sm font-black uppercase tracking-[0.3em]"
+                          style={{ color: "#d4af37" }}
                         >
+                          Now Broadcasting
+                        </span>
+                      </div>
+                      <a
+                        href="https://www.faithworldtv.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-2 px-6 py-3 rounded-xl font-bold text-navy text-sm uppercase tracking-widest transition-opacity hover:opacity-90"
+                        style={{ background: "#d4af37" }}
+                      >
+                        Watch Live on Faithworld TV →
+                      </a>
+                    </div>
+                  ) : (
+                    <div
+                      className="mb-8 rounded-2xl p-6"
+                      style={{
+                        background:
+                          "linear-gradient(135deg, #060e1c 0%, #0d1f3c 100%)",
+                        border: "1px solid rgba(212,175,55,0.4)",
+                        boxShadow: "0 4px 24px rgba(6,14,28,0.18)",
+                      }}
+                    >
+                      <p
+                        className="text-center text-[10px] font-black uppercase tracking-[0.35em] mb-5"
+                        style={{ color: "rgba(212,175,55,0.7)" }}
+                      >
+                        Next Broadcast In
+                      </p>
+                      <div className="grid grid-cols-4 gap-3">
+                        {[
+                          { value: countdown.days, label: "Days" },
+                          { value: countdown.hours, label: "Hours" },
+                          { value: countdown.minutes, label: "Mins" },
+                          { value: countdown.seconds, label: "Secs" },
+                        ].map(({ value, label }) => (
                           <div
-                            className="w-full rounded-xl flex items-center justify-center py-3 tabular-nums"
-                            style={{
-                              background: "rgba(212,175,55,0.12)",
-                              border: "1px solid rgba(212,175,55,0.35)",
-                            }}
+                            key={label}
+                            className="flex flex-col items-center gap-1"
                           >
-                            <span
-                              className="text-3xl font-black"
+                            <div
+                              className="w-full rounded-xl flex items-center justify-center py-3 tabular-nums"
                               style={{
-                                color: "#d4af37",
-                                fontVariantNumeric: "tabular-nums",
+                                background: "rgba(212,175,55,0.12)",
+                                border: "1px solid rgba(212,175,55,0.35)",
                               }}
                             >
-                              {String(value).padStart(2, "0")}
+                              <span
+                                className="text-3xl font-black"
+                                style={{
+                                  color: "#d4af37",
+                                  fontVariantNumeric: "tabular-nums",
+                                }}
+                              >
+                                {String(value).padStart(2, "0")}
+                              </span>
+                            </div>
+                            <span className="text-[9px] font-black uppercase tracking-[0.25em] text-white/40">
+                              {label}
                             </span>
                           </div>
-                          <span className="text-[9px] font-black uppercase tracking-[0.25em] text-white/40">
-                            {label}
-                          </span>
-                        </div>
-                      ))}
+                        ))}
+                      </div>
                     </div>
-                  </div>
+                  )}
                   Every Friday · Weekly Broadcast
                 </p>
                 <div className="grid grid-cols-3 gap-4">
@@ -1765,6 +1851,48 @@ ${contactMessage}`);
       </main>
 
       {/* ── FOOTER ── */}
+
+      {/* ── CHURCH BULLETIN ── */}
+      <section
+        id="bulletin"
+        className="py-20 bg-white"
+        aria-label="Church Bulletin"
+      >
+        <div className="mx-auto max-w-7xl px-6">
+          <SectionHeading>Church Bulletin</SectionHeading>
+          <p className="text-center text-navy/60 mb-10 max-w-2xl mx-auto">
+            Upcoming news, information and programme updates for our
+            congregation.
+          </p>
+          <div className="grid gap-6 sm:grid-cols-2 max-w-3xl mx-auto">
+            {BULLETIN.map((item) => (
+              <div
+                key={item.event}
+                className="rounded-2xl border-2 p-6"
+                style={{
+                  borderColor: "rgba(212,175,55,0.4)",
+                  background: "#fffbeb",
+                }}
+              >
+                <div className="text-3xl mb-3">{item.icon}</div>
+                <p
+                  className="text-xs font-black uppercase tracking-widest mb-1"
+                  style={{ color: "#d4af37" }}
+                >
+                  {item.date}
+                </p>
+                <h3 className="font-bold text-lg text-navy mb-2">
+                  {item.event}
+                </h3>
+                <p className="text-navy/70 text-sm leading-relaxed">
+                  {item.message}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <footer className="bg-navy border-t border-white/10">
         <div className="mx-auto max-w-7xl px-6 py-14">
           <div className="grid grid-cols-1 gap-10 sm:grid-cols-3">
