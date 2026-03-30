@@ -56,8 +56,8 @@ const NAV_LINKS = [
   { label: "Prayers", href: "#prayers" },
   { label: "Leadership", href: "#leadership" },
   { label: "Gallery", href: "#gallery" },
-  { label: "Contact", href: "#contact" },
   { label: "Giving", href: "#giving" },
+  { label: "Contact", href: "#contact" },
 ];
 
 const MISSION_POINTS = [
@@ -122,7 +122,7 @@ const SERMONS = [
     date: "April 6, 2025",
     img: "/assets/generated/sermon-harvest-laborers.dim_800x500.jpg",
     summary:
-      "Preached on 6/04/25\n\nScriptures: Luke 10:1-5, Luke 10:17, Acts 1:8\n\nThere is a need for more workers: 'The harvest is plentiful, but the labourers are few' (Luke 10:2). There is a lot of work to be done, but not enough people are doing it. This is a call for more individuals to get involved and contribute.\n\nWe need to make sure the Word is preached accurately and in a way that can be received by all. In Luke 10:5, there is an idea to focus on those who are open and receptive to the message. Discern who is ready, but always be willing and eager to share the gospel.\n\nWe have been given authority and power: Acts 1:8 — 'You will receive power when the Holy Spirit has come upon you, and you will be my witnesses in Jerusalem and in all Judea and Samaria, and to the end of the earth.' Those sent out are given power and authority from God.",
+      "Preached on 6/04/25\n\nScriptures: Luke 10:1-5, Luke 10:17, Acts 1:8\n\nThere is a need for more workers: 'The harvest is plentiful, but the labourers are few' (Luke 10:2). There is a lot of work to be done, but not enough people are doing it. This is a call for more individuals to get involved and contribute.\n\nWe need to make sure the Word is preached accurately and in a way that can be received by all. In Luke 10:5, there is an idea to focus on those who are open and receptive to the message. Discern who is ready, but always be willing and eager to share the gospel.\n\nWe have been given authority and power: Acts 1:8 \u2014 'You will receive power when the Holy Spirit has come upon you, and you will be my witnesses in Jerusalem and in all Judea and Samaria, and to the end of the earth.' Those sent out are given power and authority from God.",
   },
   {
     title: "The Lord Is In Need of You",
@@ -130,19 +130,20 @@ const SERMONS = [
     date: "Palm Sunday",
     img: "/assets/generated/sermon-palm-sunday.dim_800x500.jpg",
     summary:
-      "Palm Sunday Sermon\n\nScriptures: Mark 10:17 (The Rich Young Ruler), Matthew 21 — Jesus Comes to Jerusalem as King\n\nKey Takeaways:\n• God is looking for our commitment\n• Authentic living is found in Christ — eternal life is not found in possessions\n• God wants you to focus on the right things\n• 'Go and untie' — for the Lord has need of them",
+      "Palm Sunday Sermon\n\nScriptures: Mark 10:17 (The Rich Young Ruler), Matthew 21 \u2014 Jesus Comes to Jerusalem as King\n\nKey Takeaways:\n\u2022 God is looking for our commitment\n\u2022 Authentic living is found in Christ \u2014 eternal life is not found in possessions\n\u2022 God wants you to focus on the right things\n\u2022 'Go and untie' \u2014 for the Lord has need of them",
   },
 ];
+
 const BULLETIN = [
   {
-    icon: "🌅",
+    icon: "\uD83C\uDF05",
     event: "Easter Sunday",
     date: "5th April 2026",
     message:
       "Join us for a special Resurrection Sunday celebration! Come and commemorate the risen Christ with the whole family.",
   },
   {
-    icon: "👨‍👧‍👦",
+    icon: "\uD83D\uDC68\u200D\uD83D\uDC67\u200D\uD83D\uDC66",
     event: "Father's Day",
     date: "21st June 2026",
     message:
@@ -519,7 +520,7 @@ ${contactMessage}`);
       </header>
 
       <main>
-        {/* ── HERO ── */}
+        {/* ── 1. HERO ── */}
         <section
           id="home"
           className="relative flex min-h-screen items-center justify-center overflow-hidden bg-navy"
@@ -620,8 +621,8 @@ ${contactMessage}`);
           </div>
         </section>
 
-        {/* ── ABOUT ── */}
-        <section id="about" className="py-20 bg-white" aria-label="About Us">
+        {/* ── 2. ABOUT ── */}
+        <section id="about" className="py-24 bg-sky-50" aria-label="About Us">
           <div className="mx-auto max-w-7xl px-6">
             <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 items-center">
               <div>
@@ -647,7 +648,7 @@ ${contactMessage}`);
                     <p>
                       We envision a congregation where every person finds
                       belonging, purpose, and spiritual growth. A community that
-                      reflects the diversity of God's kingdom and extends His
+                      reflects the diversity of God’s kingdom and extends His
                       grace to the world around us.
                     </p>
                   </div>
@@ -671,7 +672,7 @@ ${contactMessage}`);
                   alt="Our congregation worshipping together"
                   className="rounded-2xl shadow-card-hover w-full object-cover aspect-[4/3]"
                 />
-                <div className="absolute -bottom-6 -left-6 bg-navy rounded-xl p-5 shadow-card">
+                <div className="absolute -bottom-6 -left-6 bg-navy rounded-2xl p-5 shadow-card">
                   <p className="text-3xl font-display font-bold text-gold">
                     Est.
                   </p>
@@ -682,14 +683,14 @@ ${contactMessage}`);
           </div>
         </section>
 
-        {/* ── FOUNDER'S MESSAGE ── */}
+        {/* ── 3. FOUNDER'S MESSAGE ── */}
         <section
           id="founder"
-          className="py-20 section-gold-muted"
+          className="py-24 section-gold-muted"
           aria-label="Founder's Message"
         >
           <div className="mx-auto max-w-4xl px-6">
-            <SectionHeading>Founder's Message</SectionHeading>
+            <SectionHeading>Founder’s Message</SectionHeading>
 
             {/* Decorative divider */}
             <div className="mt-6 flex items-center justify-center gap-4">
@@ -770,10 +771,10 @@ ${contactMessage}`);
           </div>
         </section>
 
-        {/* ── OUR MISSION ── */}
+        {/* ── 4. OUR MISSION ── */}
         <section
           id="mission"
-          className="py-20 bg-navy"
+          className="py-24 bg-navy"
           aria-label="Our Mission"
         >
           <div className="mx-auto max-w-7xl px-6">
@@ -782,7 +783,7 @@ ${contactMessage}`);
               {MISSION_POINTS.map(({ Icon, title, description }, i) => (
                 <div
                   key={title}
-                  className="flex items-start gap-5 rounded-xl bg-white/10 p-6 hover:bg-white/15 transition-colors"
+                  className="flex items-start gap-5 rounded-2xl bg-white/10 p-6 hover:bg-white/15 transition-all duration-300"
                   data-ocid={`mission.item.${i + 1}`}
                 >
                   <div className="shrink-0 flex h-12 w-12 items-center justify-center rounded-full border-2 border-gold">
@@ -800,10 +801,10 @@ ${contactMessage}`);
           </div>
         </section>
 
-        {/* ── WORSHIP TIMES ── */}
+        {/* ── 5. SERVICES / WORSHIP TIMES ── */}
         <section
           id="worship"
-          className="py-20 bg-gray-50"
+          className="py-24 bg-sky-50"
           aria-label="Worship Times"
         >
           <div className="mx-auto max-w-7xl px-6">
@@ -812,7 +813,7 @@ ${contactMessage}`);
               {WORSHIP_TIMES.map((s, i) => (
                 <div
                   key={s.time}
-                  className="flex flex-col items-center rounded-xl border border-border bg-white p-8 shadow-card hover:shadow-card-hover transition-shadow text-center"
+                  className="flex flex-col items-center rounded-2xl border border-border bg-white p-8 shadow-card hover:shadow-card-hover transition-all duration-300 text-center"
                   data-ocid={`worship.item.${i + 1}`}
                 >
                   <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full border-2 border-gold">
@@ -875,91 +876,87 @@ ${contactMessage}`);
           </div>
         </section>
 
-        {/* ── SERMONS ── */}
-        <section id="sermons" className="py-0" aria-label="Sermons">
-          <div className="bg-navy py-6 px-6">
-            <SectionHeading light>Latest Sermons</SectionHeading>
-          </div>
-          <div className="bg-white py-12">
-            <div className="mx-auto max-w-7xl px-6">
-              <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
-                {SERMONS.map((sermon, i) => (
-                  <div
-                    key={sermon.title}
-                    className="rounded-xl overflow-hidden border border-border shadow-card hover:shadow-card-hover transition-shadow group"
-                    data-ocid={`sermons.item.${i + 1}`}
-                  >
-                    <div className="relative aspect-video overflow-hidden bg-navy">
-                      <img
-                        src={sermon.img}
-                        alt={sermon.title}
-                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
-                      <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-                        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gold/90 text-navy shadow-lg">
-                          <Play className="h-5 w-5 fill-current" />
-                        </div>
-                      </div>
-                    </div>
-                    <div className="p-5">
-                      <h3 className="font-bold text-navy text-lg leading-snug">
-                        {sermon.title}
-                      </h3>
-                      <p className="mt-1 text-sm text-muted-foreground">
-                        {sermon.speaker}
-                      </p>
-                      <p className="mt-0.5 text-xs text-muted-foreground">
-                        {sermon.date}
-                      </p>
-                      {sermon.summary && (
-                        <div className="mt-3 space-y-2">
-                          {sermon.summary.split("\n\n").map((para) => (
-                            <p
-                              key={para.slice(0, 30)}
-                              className="text-xs text-muted-foreground leading-relaxed"
-                            >
-                              {para.split(/(\([^)]+\))/).map((part) =>
-                                /^\([^)]+\)$/.test(part) ? (
-                                  <em
-                                    key={part}
-                                    className="text-gold not-italic font-semibold"
-                                  >
-                                    {part}
-                                  </em>
-                                ) : (
-                                  part
-                                ),
-                              )}
-                            </p>
-                          ))}
-                        </div>
-                      )}
-                      <div className="mt-4 flex gap-3">
-                        <button
-                          type="button"
-                          className="text-xs font-bold uppercase tracking-wider text-gold hover:underline flex items-center gap-1"
-                        >
-                          <Play className="h-3 w-3" /> Watch
-                        </button>
-                        <button
-                          type="button"
-                          className="text-xs font-bold uppercase tracking-wider text-navy hover:underline flex items-center gap-1"
-                        >
-                          <Music className="h-3 w-3" /> Listen
-                        </button>
+        {/* ── 6. LATEST SERMONS ── */}
+        <section id="sermons" className="py-24 bg-sky-50" aria-label="Sermons">
+          <div className="mx-auto max-w-7xl px-6">
+            <SectionHeading>Latest Sermons</SectionHeading>
+            <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {SERMONS.map((sermon, i) => (
+                <div
+                  key={sermon.title}
+                  className="rounded-2xl overflow-hidden border border-border shadow-card hover:shadow-card-hover transition-all duration-300 group"
+                  data-ocid={`sermons.item.${i + 1}`}
+                >
+                  <div className="relative aspect-video overflow-hidden bg-navy">
+                    <img
+                      src={sermon.img}
+                      alt={sermon.title}
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gold/90 text-navy shadow-lg">
+                        <Play className="h-5 w-5 fill-current" />
                       </div>
                     </div>
                   </div>
-                ))}
-              </div>
+                  <div className="p-5">
+                    <h3 className="font-bold text-navy text-lg leading-snug">
+                      {sermon.title}
+                    </h3>
+                    <p className="mt-1 text-sm text-muted-foreground">
+                      {sermon.speaker}
+                    </p>
+                    <p className="mt-0.5 text-xs text-muted-foreground">
+                      {sermon.date}
+                    </p>
+                    {sermon.summary && (
+                      <div className="mt-3 space-y-2">
+                        {sermon.summary.split("\n\n").map((para) => (
+                          <p
+                            key={para.slice(0, 30)}
+                            className="text-xs text-muted-foreground leading-relaxed"
+                          >
+                            {para.split(/(\([^)]+\))/).map((part) =>
+                              /^\([^)]+\)$/.test(part) ? (
+                                <em
+                                  key={part}
+                                  className="text-gold not-italic font-semibold"
+                                >
+                                  {part}
+                                </em>
+                              ) : (
+                                part
+                              ),
+                            )}
+                          </p>
+                        ))}
+                      </div>
+                    )}
+                    <div className="mt-4 flex gap-3">
+                      <button
+                        type="button"
+                        className="text-xs font-bold uppercase tracking-wider text-gold hover:underline flex items-center gap-1"
+                      >
+                        <Play className="h-3 w-3" /> Watch
+                      </button>
+                      <button
+                        type="button"
+                        className="text-xs font-bold uppercase tracking-wider text-navy hover:underline flex items-center gap-1"
+                      >
+                        <Music className="h-3 w-3" /> Listen
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* ── EVENTS ── */}
+        {/* ── 7. EVENTS ── */}
         <section
           id="events"
-          className="py-20"
+          className="py-24"
           style={{ background: "oklch(var(--gold) / 0.12)" }}
           aria-label="Events"
         >
@@ -970,7 +967,7 @@ ${contactMessage}`);
               activities throughout the year.
             </p>
 
-            <div className="mt-10 max-w-3xl mx-auto rounded-xl overflow-hidden shadow-card">
+            <div className="mt-10 max-w-3xl mx-auto rounded-2xl overflow-hidden shadow-card">
               {/* Table header */}
               <div className="grid grid-cols-2 bg-navy px-6 py-4">
                 <p className="text-xs font-bold uppercase tracking-widest text-gold">
@@ -986,7 +983,7 @@ ${contactMessage}`);
                 <div
                   key={activity}
                   className={`grid grid-cols-2 px-6 py-4 border-b border-gray-100 last:border-b-0 ${
-                    i % 2 === 0 ? "bg-white" : "bg-gray-50"
+                    i % 2 === 0 ? "bg-white" : "bg-sky-100"
                   }`}
                   data-ocid={`events.item.${i + 1}`}
                 >
@@ -1003,249 +1000,7 @@ ${contactMessage}`);
           </div>
         </section>
 
-        {/* ── MINISTRIES ── */}
-        <section
-          id="ministries"
-          className="py-20 bg-white"
-          aria-label="Ministries"
-        >
-          <div className="mx-auto max-w-7xl px-6">
-            <SectionHeading>Our Ministries</SectionHeading>
-            <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {MINISTRIES.map(({ Icon, name, description }, i) => (
-                <div
-                  key={name}
-                  className="flex flex-col items-center rounded-xl border border-border p-8 text-center shadow-card hover:shadow-card-hover transition-all hover:-translate-y-1"
-                  data-ocid={`ministries.item.${i + 1}`}
-                >
-                  <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-gold">
-                    <Icon className="h-6 w-6 text-navy" />
-                  </div>
-                  <h3 className="font-bold text-navy text-lg">{name}</h3>
-                  <p className="mt-2 text-sm text-foreground/70 leading-relaxed">
-                    {description}
-                  </p>
-                </div>
-              ))}
-            </div>
-
-            {/* ── Ministries Meet Up Times ── */}
-            <div className="mt-14">
-              <div className="flex flex-col items-center gap-3 mb-6">
-                <h3 className="font-display text-xl font-bold uppercase tracking-widest text-navy">
-                  Ministries Meet Up Times
-                </h3>
-                <div className="h-0.5 w-12 rounded-full bg-gold" />
-              </div>
-              <div className="max-w-2xl mx-auto rounded-xl overflow-hidden shadow-card">
-                <div className="grid grid-cols-2 bg-navy px-6 py-4">
-                  <p className="text-xs font-bold uppercase tracking-widest text-gold">
-                    Ministries
-                  </p>
-                  <p className="text-xs font-bold uppercase tracking-widest text-gold">
-                    Meet Up Times
-                  </p>
-                </div>
-                {MINISTRIES_MEETUP.map(({ ministry, times }, i) => (
-                  <div
-                    key={ministry}
-                    className={`grid grid-cols-2 px-6 py-4 border-b border-gray-100 last:border-b-0 ${
-                      i % 2 === 0 ? "bg-white" : "bg-gray-50"
-                    }`}
-                    data-ocid={`ministries.item.${i + 1}`}
-                  >
-                    <p className="font-bold text-navy text-sm">{ministry}</p>
-                    <p className="text-sm text-foreground/70">{times}</p>
-                  </div>
-                ))}
-              </div>
-              <div className="mt-5 text-center">
-                <a
-                  href="https://join.freeconferencecall.com/revdpatrick3"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block rounded-lg bg-navy px-6 py-3 text-sm font-bold uppercase tracking-wider text-gold hover:bg-navy/90 transition-colors"
-                  data-ocid="ministries.link"
-                >
-                  Link to Join All Online Meetings
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ── PRAYERS ── */}
-        <section id="prayers" className="py-20 bg-sky-50" aria-label="Prayers">
-          <div className="mx-auto max-w-7xl px-6">
-            <SectionHeading>Prayer</SectionHeading>
-
-            {/* Prayer description */}
-            <div className="mt-10 max-w-3xl mx-auto rounded-xl bg-white p-8 shadow-card text-center">
-              <p className="text-foreground/80 leading-relaxed">
-                Prayer is our direct line of communication with God. It's a way
-                for us to express our gratitude, seek guidance, and find comfort
-                in times of need. Through prayer, we can build a stronger
-                relationship with God and experience His presence in our lives.
-                Praying and standing together are important aspects of the
-                church. The church has designated prayer times for communal
-                worship and intercession.
-              </p>
-            </div>
-
-            {/* Two-column layout */}
-            <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-2">
-              {/* Join Us card */}
-              <div className="rounded-xl bg-white p-8 shadow-card">
-                <h3 className="font-display text-lg font-bold uppercase tracking-widest text-navy mb-4">
-                  Join Us
-                </h3>
-                <div className="h-0.5 w-10 rounded-full bg-gold mb-6" />
-                <div className="space-y-4 text-sm text-foreground/80 leading-relaxed">
-                  <p>
-                    Simply download the FREE CONFERENCE APP and use{" "}
-                    <strong className="text-navy">
-                      Meeting ID: REVDPATRICK3
-                    </strong>
-                  </p>
-                  <div className="flex flex-wrap gap-3 mt-1">
-                    <a
-                      href="https://play.google.com/store/apps/details?id=com.freeconferencecall.fccmeetingclient&pcampaignid=web_share"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-navy text-white text-xs font-semibold rounded-full hover:bg-navy/80 transition-colors"
-                    >
-                      ▶ Google Play
-                    </a>
-                    <a
-                      href="https://apps.apple.com/app/freeconferencecall/id1076539547"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-navy text-white text-xs font-semibold rounded-full hover:bg-navy/80 transition-colors"
-                    >
-                      Apple App Store
-                    </a>
-                  </div>
-                  <p>Join online for video and screen sharing:</p>
-                  <a
-                    href="https://join.freeconferencecall.com/revdpatrick3"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block text-blue-600 underline underline-offset-2 font-medium break-all hover:text-blue-800 transition-colors"
-                    data-ocid="prayers.link"
-                  >
-                    https://join.freeconferencecall.com/revdpatrick3
-                  </a>
-                  <p className="pt-2 font-semibold text-navy">
-                    Additional options to connect:
-                  </p>
-                  <p>
-                    <span className="font-bold text-navy">
-                      Dial-in Number (GB):
-                    </span>{" "}
-                    0330 777 2413
-                  </p>
-                  <p>
-                    <span className="font-bold text-navy">Access Code:</span>{" "}
-                    197361#
-                  </p>
-                </div>
-              </div>
-
-              {/* Weekly Prayer Activities card */}
-              <div className="rounded-xl bg-navy p-8 shadow-card">
-                <h3 className="font-display text-lg font-bold uppercase tracking-widest text-gold mb-4">
-                  Weekly Prayer Activities
-                </h3>
-                <div className="h-0.5 w-10 rounded-full bg-gold mb-6" />
-                <div className="space-y-3 text-sm text-white/85">
-                  <p className="font-bold uppercase tracking-wider text-gold">
-                    Prayers Happen Every Day (except Sunday):
-                  </p>
-                  {[
-                    "06.00–06.30",
-                    "12.00–12.30",
-                    "17.00–17.30",
-                    "20.00–20.30",
-                    "00.00–00.30",
-                  ].map((t) => (
-                    <p key={t} className="pl-3 border-l-2 border-gold/40">
-                      {t}
-                    </p>
-                  ))}
-                  <p className="pt-3 font-bold uppercase tracking-wider text-gold">
-                    Sundays
-                  </p>
-                  <p className="pl-3 border-l-2 border-gold/40">
-                    06.00–06.30{" "}
-                    <span className="text-white/50 text-xs">(Prayer Time)</span>
-                  </p>
-                  <p className="pl-3 border-l-2 border-gold/40">
-                    10.30–13.30{" "}
-                    <span className="text-white/50 text-xs">
-                      (Church Service)
-                    </span>
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Counselling banner */}
-            <div className="mt-10 rounded-xl bg-navy px-8 py-6 text-center shadow-card">
-              <p className="text-sm font-bold uppercase tracking-widest text-gold sm:text-base">
-                For Counselling, Prayers, Direction Call:{" "}
-                <a
-                  href="tel:+44788860800"
-                  className="text-white hover:text-gold transition-colors"
-                >
-                  +44788860800
-                </a>{" "}
-                /{" "}
-                <a
-                  href="tel:+447733399248"
-                  className="text-white hover:text-gold transition-colors"
-                >
-                  +447733399248
-                </a>
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* ── LEADERSHIP ── */}
-        <section
-          id="leadership"
-          className="py-20 bg-navy"
-          aria-label="Leadership"
-        >
-          <div className="mx-auto max-w-7xl px-6">
-            <SectionHeading light>Meet the Leadership</SectionHeading>
-            <div className="mt-12 grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-4">
-              {LEADERSHIP.map((leader, i) => (
-                <div
-                  key={leader.name}
-                  className="flex flex-col items-center text-center"
-                  data-ocid={`leadership.item.${i + 1}`}
-                >
-                  <div className="relative mb-5">
-                    <img
-                      src={leader.img}
-                      alt={leader.name}
-                      className="h-28 w-28 rounded-full object-cover border-4 border-gold shadow-card"
-                    />
-                  </div>
-                  <h3 className="font-display font-bold text-white text-base">
-                    {leader.name}
-                  </h3>
-                  <p className="mt-1 text-xs font-semibold uppercase tracking-wider text-gold">
-                    {leader.title}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ── TV MINISTRY ── */}
+        {/* ── 8. TV MINISTRY ── */}
         <section
           id="tv-ministry"
           className="py-24 relative overflow-hidden"
@@ -1283,10 +1038,7 @@ ${contactMessage}`);
               >
                 <div className="flex items-center gap-3">
                   <Tv className="h-5 w-5 text-navy" />
-                  <h3
-                    id="1vgc5i0"
-                    className="font-display text-base font-black uppercase tracking-[0.2em] text-navy"
-                  >
+                  <h3 className="font-display text-base font-black uppercase tracking-[0.2em] text-navy">
                     New Life TV Programme
                   </h3>
                 </div>
@@ -1300,102 +1052,114 @@ ${contactMessage}`);
               </div>
 
               {/* Card body */}
-              <div
-                id="hy2wpk"
-                className="p-8"
-                style={{ background: "#ffffff" }}
-              >
-                {/* Schedule grid */}
+              <div className="p-8" style={{ background: "#ffffff" }}>
+                {/* Countdown Timer / Now Broadcasting */}
                 <p className="text-center text-xs font-black uppercase tracking-[0.35em] text-navy/50 mb-6">
-                  {/* Countdown Timer / Now Broadcasting */}
                   {isBroadcasting ? (
-                    <div
-                      className="mb-8 rounded-2xl p-8 flex flex-col items-center gap-4"
-                      style={{
-                        background:
-                          "linear-gradient(135deg, #060e1c 0%, #0d1f3c 100%)",
-                        border: "1px solid rgba(212,175,55,0.4)",
-                        boxShadow: "0 4px 24px rgba(6,14,28,0.18)",
-                      }}
-                    >
-                      <div className="flex items-center gap-3">
-                        <span className="w-3 h-3 rounded-full bg-red-500 animate-pulse" />
-                        <span
-                          className="text-sm font-black uppercase tracking-[0.3em]"
-                          style={{ color: "#d4af37" }}
-                        >
-                          Now Broadcasting
-                        </span>
-                      </div>
-                      <a
-                        href="https://www.faithworldtv.com/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="mt-2 px-6 py-3 rounded-xl font-bold text-navy text-sm uppercase tracking-widest transition-opacity hover:opacity-90"
-                        style={{ background: "#d4af37" }}
-                      >
-                        Watch Live on Faithworld TV →
-                      </a>
-                    </div>
+                    <span />
                   ) : (
-                    <div
-                      className="mb-8 rounded-2xl p-6"
-                      style={{
-                        background:
-                          "linear-gradient(135deg, #060e1c 0%, #0d1f3c 100%)",
-                        border: "1px solid rgba(212,175,55,0.4)",
-                        boxShadow: "0 4px 24px rgba(6,14,28,0.18)",
-                      }}
-                    >
-                      <p
-                        className="text-center text-[10px] font-black uppercase tracking-[0.35em] mb-5"
-                        style={{ color: "rgba(212,175,55,0.7)" }}
+                    <span>Every Friday &middot; Weekly Broadcast</span>
+                  )}
+                </p>
+                {isBroadcasting ? (
+                  <div
+                    className="mb-8 rounded-2xl p-8 flex flex-col items-center gap-4"
+                    style={{
+                      background:
+                        "linear-gradient(135deg, #060e1c 0%, #0d1f3c 100%)",
+                      border: "1px solid rgba(212,175,55,0.4)",
+                      boxShadow: "0 4px 24px rgba(6,14,28,0.18)",
+                    }}
+                  >
+                    <div className="flex items-center gap-3">
+                      <span className="w-3 h-3 rounded-full bg-red-500 animate-pulse" />
+                      <span
+                        className="text-sm font-black uppercase tracking-[0.3em]"
+                        style={{ color: "#d4af37" }}
                       >
-                        Next Broadcast In
-                      </p>
-                      <div className="grid grid-cols-4 gap-3">
-                        {[
-                          { value: countdown.days, label: "Days" },
-                          { value: countdown.hours, label: "Hours" },
-                          { value: countdown.minutes, label: "Mins" },
-                          { value: countdown.seconds, label: "Secs" },
-                        ].map(({ value, label }) => (
+                        Now Broadcasting
+                      </span>
+                    </div>
+                    <a
+                      href="https://www.faithworldtv.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-2 px-6 py-3 rounded-xl font-bold text-navy text-sm uppercase tracking-widest transition-opacity hover:opacity-90"
+                      style={{ background: "#d4af37" }}
+                    >
+                      Watch Live on Faithworld TV &rarr;
+                    </a>
+                  </div>
+                ) : (
+                  <div
+                    className="mb-8 rounded-2xl p-6"
+                    style={{
+                      background:
+                        "linear-gradient(135deg, #060e1c 0%, #0d1f3c 100%)",
+                      border: "1px solid rgba(212,175,55,0.4)",
+                      boxShadow: "0 4px 24px rgba(6,14,28,0.18)",
+                    }}
+                  >
+                    <p
+                      className="text-center text-[10px] font-black uppercase tracking-[0.35em] mb-5"
+                      style={{ color: "rgba(212,175,55,0.7)" }}
+                    >
+                      Next Broadcast In
+                    </p>
+                    <div className="grid grid-cols-4 gap-3">
+                      {[
+                        { value: countdown.days, label: "Days" },
+                        { value: countdown.hours, label: "Hours" },
+                        { value: countdown.minutes, label: "Mins" },
+                        { value: countdown.seconds, label: "Secs" },
+                      ].map(({ value, label }) => (
+                        <div
+                          key={label}
+                          className="flex flex-col items-center gap-1"
+                        >
                           <div
-                            key={label}
-                            className="flex flex-col items-center gap-1"
+                            className="w-full rounded-xl flex items-center justify-center py-3 tabular-nums"
+                            style={{
+                              background: "rgba(212,175,55,0.12)",
+                              border: "1px solid rgba(212,175,55,0.35)",
+                            }}
                           >
-                            <div
-                              className="w-full rounded-xl flex items-center justify-center py-3 tabular-nums"
+                            <span
+                              className="text-3xl font-black"
                               style={{
-                                background: "rgba(212,175,55,0.12)",
-                                border: "1px solid rgba(212,175,55,0.35)",
+                                color: "#d4af37",
+                                fontVariantNumeric: "tabular-nums",
                               }}
                             >
-                              <span
-                                className="text-3xl font-black"
-                                style={{
-                                  color: "#d4af37",
-                                  fontVariantNumeric: "tabular-nums",
-                                }}
-                              >
-                                {String(value).padStart(2, "0")}
-                              </span>
-                            </div>
-                            <span className="text-[9px] font-black uppercase tracking-[0.25em] text-white/40">
-                              {label}
+                              {String(value).padStart(2, "0")}
                             </span>
                           </div>
-                        ))}
-                      </div>
+                          <span className="text-[9px] font-black uppercase tracking-[0.25em] text-white/40">
+                            {label}
+                          </span>
+                        </div>
+                      ))}
                     </div>
-                  )}
-                  Every Friday · Weekly Broadcast
-                </p>
+                  </div>
+                )}
+
                 <div className="grid grid-cols-3 gap-4">
                   {[
-                    { flag: "🇬🇧", region: "U.K", time: "16:00–17:00" },
-                    { flag: "🇬🇭", region: "Ghana", time: "15:00–16:00" },
-                    { flag: "🇺🇸", region: "USA", time: "11:00–12:00" },
+                    {
+                      flag: "\uD83C\uDDEC\uD83C\uDDE7",
+                      region: "U.K",
+                      time: "16:00\u201317:00",
+                    },
+                    {
+                      flag: "\uD83C\uDDEC\uD83C\uDDED",
+                      region: "Ghana",
+                      time: "15:00\u201316:00",
+                    },
+                    {
+                      flag: "\uD83C\uDDFA\uD83C\uDDF8",
+                      region: "USA",
+                      time: "11:00\u201312:00",
+                    },
                   ].map(({ flag, region, time }) => (
                     <div
                       key={region}
@@ -1458,7 +1222,7 @@ ${contactMessage}`);
 
                 {/* Prayer Request */}
                 <div
-                  className="mt-8 rounded-xl p-6"
+                  className="mt-8 rounded-2xl p-6"
                   style={{
                     background: "rgba(212,175,55,0.06)",
                     border: "1px solid rgba(212,175,55,0.3)",
@@ -1475,7 +1239,7 @@ ${contactMessage}`);
                     Please feel free to send any prayer requests to{" "}
                     <a
                       href="tel:07920035100"
-                      className="font-bold text-gold hover:opacity-80 transition-opacity"
+                      className="font-bold hover:opacity-80 transition-opacity"
                       style={{ color: "#b8962e" }}
                     >
                       07920035100
@@ -1491,13 +1255,250 @@ ${contactMessage}`);
           </div>
         </section>
 
-        {/* ── GALLERY ── */}
+        {/* ── 9. MINISTRIES ── */}
         <section
-          id="gallery"
-          className="py-20"
-          style={{ background: "oklch(var(--gold) / 0.08)" }}
-          aria-label="Gallery"
+          id="ministries"
+          className="py-24 bg-sky-50"
+          aria-label="Ministries"
         >
+          <div className="mx-auto max-w-7xl px-6">
+            <SectionHeading>Our Ministries</SectionHeading>
+            <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {MINISTRIES.map(({ Icon, name, description }, i) => (
+                <div
+                  key={name}
+                  className="flex flex-col items-center rounded-2xl border border-border p-8 text-center shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1"
+                  data-ocid={`ministries.item.${i + 1}`}
+                >
+                  <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-gold">
+                    <Icon className="h-6 w-6 text-navy" />
+                  </div>
+                  <h3 className="font-bold text-navy text-lg">{name}</h3>
+                  <p className="mt-2 text-sm text-foreground/70 leading-relaxed">
+                    {description}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            {/* ── Ministries Meet Up Times ── */}
+            <div className="mt-14">
+              <div className="flex flex-col items-center gap-3 mb-6">
+                <h3 className="font-display text-xl font-bold uppercase tracking-widest text-navy">
+                  Ministries Meet Up Times
+                </h3>
+                <div className="h-0.5 w-12 rounded-full bg-gold" />
+              </div>
+              <div className="max-w-2xl mx-auto rounded-2xl overflow-hidden shadow-card">
+                <div className="grid grid-cols-2 bg-navy px-6 py-4">
+                  <p className="text-xs font-bold uppercase tracking-widest text-gold">
+                    Ministries
+                  </p>
+                  <p className="text-xs font-bold uppercase tracking-widest text-gold">
+                    Meet Up Times
+                  </p>
+                </div>
+                {MINISTRIES_MEETUP.map(({ ministry, times }, i) => (
+                  <div
+                    key={ministry}
+                    className={`grid grid-cols-2 px-6 py-4 border-b border-gray-100 last:border-b-0 ${
+                      i % 2 === 0 ? "bg-white" : "bg-sky-100"
+                    }`}
+                    data-ocid={`ministries.item.${i + 1}`}
+                  >
+                    <p className="font-bold text-navy text-sm">{ministry}</p>
+                    <p className="text-sm text-foreground/70">{times}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-5 text-center">
+                <a
+                  href="https://join.freeconferencecall.com/revdpatrick3"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block rounded-2xl bg-navy px-6 py-3 text-sm font-bold uppercase tracking-wider text-gold hover:bg-navy/90 transition-colors"
+                  data-ocid="ministries.link"
+                >
+                  Link to Join All Online Meetings
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── 10. PRAYERS ── */}
+        <section id="prayers" className="py-24 bg-sky-50" aria-label="Prayers">
+          <div className="mx-auto max-w-7xl px-6">
+            <SectionHeading>Prayer</SectionHeading>
+
+            {/* Prayer description */}
+            <div className="mt-10 max-w-3xl mx-auto rounded-2xl bg-white p-8 shadow-card text-center">
+              <p className="text-foreground/80 leading-relaxed">
+                Prayer is our direct line of communication with God. It’s a way
+                for us to express our gratitude, seek guidance, and find comfort
+                in times of need. Through prayer, we can build a stronger
+                relationship with God and experience His presence in our lives.
+                Praying and standing together are important aspects of the
+                church. The church has designated prayer times for communal
+                worship and intercession.
+              </p>
+            </div>
+
+            {/* Two-column layout */}
+            <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-2">
+              {/* Join Us card */}
+              <div className="rounded-2xl bg-white p-8 shadow-card">
+                <h3 className="font-display text-lg font-bold uppercase tracking-widest text-navy mb-4">
+                  Join Us
+                </h3>
+                <div className="h-0.5 w-10 rounded-full bg-gold mb-6" />
+                <div className="space-y-4 text-sm text-foreground/80 leading-relaxed">
+                  <p>
+                    Simply download the FREE CONFERENCE APP and use{" "}
+                    <strong className="text-navy">
+                      Meeting ID: REVDPATRICK3
+                    </strong>
+                  </p>
+                  <div className="flex flex-wrap gap-3 mt-1">
+                    <a
+                      href="https://play.google.com/store/apps/details?id=com.freeconferencecall.fccmeetingclient&pcampaignid=web_share"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-navy text-white text-xs font-semibold rounded-full hover:bg-navy/80 transition-colors"
+                    >
+                      &#9654; Google Play
+                    </a>
+                    <a
+                      href="https://apps.apple.com/app/freeconferencecall/id1076539547"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-navy text-white text-xs font-semibold rounded-full hover:bg-navy/80 transition-colors"
+                    >
+                      Apple App Store
+                    </a>
+                  </div>
+                  <p>Join online for video and screen sharing:</p>
+                  <a
+                    href="https://join.freeconferencecall.com/revdpatrick3"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block text-blue-600 underline underline-offset-2 font-medium break-all hover:text-blue-800 transition-colors"
+                    data-ocid="prayers.link"
+                  >
+                    https://join.freeconferencecall.com/revdpatrick3
+                  </a>
+                  <p className="pt-2 font-semibold text-navy">
+                    Additional options to connect:
+                  </p>
+                  <p>
+                    <span className="font-bold text-navy">
+                      Dial-in Number (GB):
+                    </span>{" "}
+                    0330 777 2413
+                  </p>
+                  <p>
+                    <span className="font-bold text-navy">Access Code:</span>{" "}
+                    197361#
+                  </p>
+                </div>
+              </div>
+
+              {/* Weekly Prayer Activities card */}
+              <div className="rounded-2xl bg-navy p-8 shadow-card">
+                <h3 className="font-display text-lg font-bold uppercase tracking-widest text-gold mb-4">
+                  Weekly Prayer Activities
+                </h3>
+                <div className="h-0.5 w-10 rounded-full bg-gold mb-6" />
+                <div className="space-y-3 text-sm text-white/85">
+                  <p className="font-bold uppercase tracking-wider text-gold">
+                    Prayers Happen Every Day (except Sunday):
+                  </p>
+                  {[
+                    "06.00\u201306.30",
+                    "12.00\u201312.30",
+                    "17.00\u201317.30",
+                    "20.00\u201320.30",
+                    "00.00\u201300.30",
+                  ].map((t) => (
+                    <p key={t} className="pl-3 border-l-2 border-gold/40">
+                      {t}
+                    </p>
+                  ))}
+                  <p className="pt-3 font-bold uppercase tracking-wider text-gold">
+                    Sundays
+                  </p>
+                  <p className="pl-3 border-l-2 border-gold/40">
+                    06.00\u201306.30{" "}
+                    <span className="text-white/50 text-xs">(Prayer Time)</span>
+                  </p>
+                  <p className="pl-3 border-l-2 border-gold/40">
+                    10.30\u201313.30{" "}
+                    <span className="text-white/50 text-xs">
+                      (Church Service)
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Counselling banner */}
+            <div className="mt-10 rounded-2xl bg-navy px-8 py-6 text-center shadow-card">
+              <p className="text-sm font-bold uppercase tracking-widest text-gold sm:text-base">
+                For Counselling, Prayers, Direction Call:{" "}
+                <a
+                  href="tel:+44788860800"
+                  className="text-white hover:text-gold transition-colors"
+                >
+                  +44788860800
+                </a>{" "}
+                /{" "}
+                <a
+                  href="tel:+447733399248"
+                  className="text-white hover:text-gold transition-colors"
+                >
+                  +447733399248
+                </a>
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* ── 11. LEADERSHIP ── */}
+        <section
+          id="leadership"
+          className="py-24 bg-navy"
+          aria-label="Leadership"
+        >
+          <div className="mx-auto max-w-7xl px-6">
+            <SectionHeading light>Meet the Leadership</SectionHeading>
+            <div className="mt-12 grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-4">
+              {LEADERSHIP.map((leader, i) => (
+                <div
+                  key={leader.name}
+                  className="group flex flex-col items-center text-center"
+                  data-ocid={`leadership.item.${i + 1}`}
+                >
+                  <div className="relative mb-5">
+                    <img
+                      src={leader.img}
+                      alt={leader.name}
+                      className="h-32 w-32 rounded-full object-cover border-4 border-gold shadow-card transition-all duration-300 group-hover:ring-2 group-hover:ring-gold/60 group-hover:ring-offset-2 group-hover:ring-offset-navy"
+                    />
+                  </div>
+                  <h3 className="font-display font-bold text-white text-base">
+                    {leader.name}
+                  </h3>
+                  <p className="mt-1 text-xs font-semibold uppercase tracking-wider text-gold">
+                    {leader.title}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── 12. GALLERY ── */}
+        <section id="gallery" className="py-24 bg-sky-50" aria-label="Gallery">
           <div className="mx-auto max-w-7xl px-6">
             <SectionHeading>Ministry Life Gallery</SectionHeading>
             <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3">
@@ -1505,7 +1506,7 @@ ${contactMessage}`);
                 <button
                   key={alt}
                   type="button"
-                  className="overflow-hidden rounded-xl shadow-card hover:shadow-card-hover transition-shadow group cursor-pointer w-full p-0 border-0 bg-transparent text-left"
+                  className="overflow-hidden rounded-2xl shadow-card hover:shadow-card-hover transition-all duration-300 group cursor-pointer w-full p-0 border-0 bg-transparent text-left"
                   data-ocid={`gallery.item.${i + 1}`}
                   onClick={() => setLightboxIndex(i)}
                 >
@@ -1590,160 +1591,14 @@ ${contactMessage}`);
           </div>
         )}
 
-        {/* ── CONTACT ── */}
-        <section id="contact" className="py-20 bg-navy" aria-label="Contact">
-          <div className="mx-auto max-w-7xl px-6">
-            <SectionHeading light>Contact Us</SectionHeading>
-            <div className="mt-12 grid grid-cols-1 gap-10 lg:grid-cols-2">
-              {/* Map link */}
-              <a
-                href="https://www.google.com/maps?q=Christ+Church+Chapel+Church+Rise+Forest+Hill+London+SE23+2UJ"
-                target="_blank"
-                rel="noopener noreferrer"
-                data-ocid="contact.map_marker"
-                className="rounded-xl overflow-hidden border border-white/10 block hover:border-gold/50 transition-colors group"
-              >
-                <div className="bg-white/10 flex flex-col items-center justify-center h-64 lg:h-full min-h-[300px] text-white/60 gap-3">
-                  <MapPin className="h-10 w-10 text-gold group-hover:scale-110 transition-transform" />
-                  <p className="text-sm font-medium text-white/80">
-                    New Life Evangelistic Ministries Worship Centre
-                  </p>
-                  <p className="text-xs text-white/50 text-center px-4">
-                    Christ Church Chapel, The Chapel On The Hill, Church Rise/
-                    South Road, Forest Hill, London SE23 2UJ
-                  </p>
-                  <div className="mt-4 rounded-lg bg-gold/20 border border-gold/40 px-4 py-2 text-xs text-gold font-medium group-hover:bg-gold/30 transition-colors">
-                    📍 View on Google Maps →
-                  </div>
-                </div>
-              </a>
-
-              {/* Form */}
-              <div className="space-y-6">
-                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                  <div>
-                    <label
-                      className="text-sm font-medium text-white/80 mb-1 block"
-                      htmlFor="contact-name"
-                    >
-                      Full Name
-                    </label>
-                    <Input
-                      id="contact-name"
-                      placeholder="Your name"
-                      className="bg-white/10 border-white/20 text-white placeholder:text-white/40 focus:border-gold"
-                      data-ocid="contact.input"
-                      value={contactName}
-                      onChange={(e) => setContactName(e.target.value)}
-                    />
-                  </div>
-                  <div>
-                    <label
-                      className="text-sm font-medium text-white/80 mb-1 block"
-                      htmlFor="contact-email"
-                    >
-                      Email Address
-                    </label>
-                    <Input
-                      id="contact-email"
-                      type="email"
-                      placeholder="your@email.com"
-                      className="bg-white/10 border-white/20 text-white placeholder:text-white/40 focus:border-gold"
-                      data-ocid="contact.input"
-                      value={contactEmail}
-                      onChange={(e) => setContactEmail(e.target.value)}
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label
-                    className="text-sm font-medium text-white/80 mb-1 block"
-                    htmlFor="contact-message"
-                  >
-                    Message
-                  </label>
-                  <Textarea
-                    id="contact-message"
-                    placeholder="How can we help you?"
-                    rows={5}
-                    className="bg-white/10 border-white/20 text-white placeholder:text-white/40 focus:border-gold"
-                    data-ocid="contact.textarea"
-                    value={contactMessage}
-                    onChange={(e) => setContactMessage(e.target.value)}
-                  />
-                </div>
-                <Button
-                  className="w-full bg-gold hover:bg-gold/90 text-navy font-bold uppercase tracking-wider"
-                  data-ocid="contact.submit_button"
-                  onClick={handleContactSubmit}
-                >
-                  Send Message
-                </Button>
-
-                {/* Contact Info */}
-                <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3 border-t border-white/10 pt-6">
-                  <div className="flex items-start gap-3">
-                    <MapPin className="h-4 w-4 text-gold mt-0.5 shrink-0" />
-                    <div>
-                      <p className="text-xs font-bold uppercase tracking-wider text-gold">
-                        Address
-                      </p>
-                      <a
-                        href="https://www.google.com/maps?q=Christ+Church+Chapel+Church+Rise+Forest+Hill+London+SE23+2UJ"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-sm text-white/70 mt-0.5 hover:text-gold transition-colors block"
-                      >
-                        Christ Church Chapel
-                        <br />
-                        The Chapel On The Hill
-                        <br />
-                        Church Rise/ South Road
-                        <br />
-                        Forest Hill, London
-                        <br />
-                        SE23 2UJ
-                      </a>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Phone className="h-4 w-4 text-gold mt-0.5 shrink-0" />
-                    <div>
-                      <p className="text-xs font-bold uppercase tracking-wider text-gold">
-                        Phone
-                      </p>
-                      <p className="text-sm text-white/70 mt-0.5">
-                        Tel: 07888608000
-                        <br />
-                        Mobile: 07733399248
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Mail className="h-4 w-4 text-gold mt-0.5 shrink-0" />
-                    <div>
-                      <p className="text-xs font-bold uppercase tracking-wider text-gold">
-                        Email
-                      </p>
-                      <p className="text-sm text-white/70 mt-0.5 break-all">
-                        Nlem.worshipcentre@gmail.com
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ── GIVING SECTION ── */}
-        <section id="giving" className="py-24 bg-slate-50" aria-label="Giving">
+        {/* ── 13. GIVING ── */}
+        <section id="giving" className="py-24 bg-sky-50" aria-label="Giving">
           <div className="mx-auto max-w-6xl px-6">
             <SectionHeading>Giving</SectionHeading>
 
             <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 mt-12">
               {/* Tithes & Offerings Card */}
-              <div className="relative rounded-2xl bg-white border border-gold/30 overflow-hidden shadow-lg">
+              <div className="relative rounded-2xl bg-white border border-gold/30 overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300">
                 <div className="h-1.5 w-full bg-gold" />
                 <div className="p-8">
                   <h3 className="font-display text-xl font-bold uppercase tracking-widest text-gold mb-4">
@@ -1758,7 +1613,7 @@ ${contactMessage}`);
                     the Church Account using the following methods.
                   </p>
 
-                  <div className="rounded-xl bg-navy/5 border border-gold/30 p-6 space-y-4">
+                  <div className="rounded-2xl bg-navy/5 border border-gold/30 p-6 space-y-4">
                     <h4 className="text-xs font-bold uppercase tracking-widest text-gold border-b border-gold/30 pb-3 mb-5">
                       Church Account Details
                       <span className="block text-gray-500 font-normal normal-case tracking-normal text-xs mt-0.5">
@@ -1792,7 +1647,7 @@ ${contactMessage}`);
               </div>
 
               {/* Welfare Card */}
-              <div className="relative rounded-2xl bg-white border border-gold/30 overflow-hidden shadow-lg">
+              <div className="relative rounded-2xl bg-white border border-gold/30 overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300">
                 <div className="h-1.5 w-full bg-gold" />
                 <div className="p-8">
                   <h3 className="font-display text-xl font-bold uppercase tracking-widest text-gold mb-4">
@@ -1806,7 +1661,7 @@ ${contactMessage}`);
                     membership fee, as well as monthly dues of £10.
                   </p>
 
-                  <div className="rounded-xl bg-navy/5 border border-gold/30 p-6 space-y-4">
+                  <div className="rounded-2xl bg-navy/5 border border-gold/30 p-6 space-y-4">
                     <h4 className="text-xs font-bold uppercase tracking-widest text-gold border-b border-gold/30 pb-3 mb-5">
                       Welfare Dues Account Details
                       <span className="block text-gray-500 font-normal normal-case tracking-normal text-xs mt-0.5">
@@ -1844,55 +1699,190 @@ ${contactMessage}`);
               className="mt-14 text-center font-display text-2xl italic text-gold tracking-wide"
               data-ocid="giving.section"
             >
-              "Thank You for Your Generous Giving"
+              &ldquo;Thank You for Your Generous Giving&rdquo;
             </p>
+          </div>
+        </section>
+
+        {/* ── 14. CHURCH BULLETIN ── */}
+        <section
+          id="bulletin"
+          className="py-24 bg-navy"
+          aria-label="Church Bulletin"
+        >
+          <div className="mx-auto max-w-7xl px-6">
+            <SectionHeading light>Church Bulletin</SectionHeading>
+            <p className="text-center text-white/60 mb-10 mt-4 max-w-2xl mx-auto">
+              Upcoming news, information and programme updates for our
+              congregation.
+            </p>
+            <div className="grid gap-6 sm:grid-cols-2 max-w-3xl mx-auto">
+              {BULLETIN.map((item) => (
+                <div
+                  key={item.event}
+                  className="rounded-2xl border border-gold/40 bg-white/10 p-6 hover:bg-white/15 transition-all duration-300"
+                >
+                  <div className="text-3xl mb-3">{item.icon}</div>
+                  <p className="text-xs font-black uppercase tracking-widest mb-1 text-gold">
+                    {item.date}
+                  </p>
+                  <h3 className="font-bold text-lg text-white mb-2">
+                    {item.event}
+                  </h3>
+                  <p className="text-white/70 text-sm leading-relaxed">
+                    {item.message}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── 15. CONTACT ── */}
+        <section id="contact" className="py-24 bg-sky-50" aria-label="Contact">
+          <div className="mx-auto max-w-7xl px-6">
+            <SectionHeading>Contact Us</SectionHeading>
+            <div className="mt-12 grid grid-cols-1 gap-10 lg:grid-cols-2">
+              {/* Map link */}
+              <a
+                href="https://www.google.com/maps?q=Christ+Church+Chapel+Church+Rise+Forest+Hill+London+SE23+2UJ"
+                target="_blank"
+                rel="noopener noreferrer"
+                data-ocid="contact.map_marker"
+                className="rounded-2xl overflow-hidden border border-border block hover:border-gold/60 transition-colors group"
+              >
+                <div className="bg-navy/5 flex flex-col items-center justify-center h-64 lg:h-full min-h-[300px] text-navy/50 gap-3">
+                  <MapPin className="h-10 w-10 text-gold group-hover:scale-110 transition-transform" />
+                  <p className="text-sm font-medium text-navy/80">
+                    New Life Evangelistic Ministries Worship Centre
+                  </p>
+                  <p className="text-xs text-navy/50 text-center px-4">
+                    Christ Church Chapel, The Chapel On The Hill, Church Rise/
+                    South Road, Forest Hill, London SE23 2UJ
+                  </p>
+                  <div className="mt-4 rounded-lg bg-gold/20 border border-gold/40 px-4 py-2 text-xs text-gold font-medium group-hover:bg-gold/30 transition-colors">
+                    &#128205; View on Google Maps &rarr;
+                  </div>
+                </div>
+              </a>
+
+              {/* Form */}
+              <div className="space-y-6">
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                  <div>
+                    <label
+                      className="text-sm font-medium text-foreground/80 mb-1 block"
+                      htmlFor="contact-name"
+                    >
+                      Full Name
+                    </label>
+                    <Input
+                      id="contact-name"
+                      placeholder="Your name"
+                      data-ocid="contact.input"
+                      value={contactName}
+                      onChange={(e) => setContactName(e.target.value)}
+                    />
+                  </div>
+                  <div>
+                    <label
+                      className="text-sm font-medium text-foreground/80 mb-1 block"
+                      htmlFor="contact-email"
+                    >
+                      Email Address
+                    </label>
+                    <Input
+                      id="contact-email"
+                      type="email"
+                      placeholder="your@email.com"
+                      data-ocid="contact.input"
+                      value={contactEmail}
+                      onChange={(e) => setContactEmail(e.target.value)}
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label
+                    className="text-sm font-medium text-foreground/80 mb-1 block"
+                    htmlFor="contact-message"
+                  >
+                    Message
+                  </label>
+                  <Textarea
+                    id="contact-message"
+                    placeholder="How can we help you?"
+                    rows={5}
+                    data-ocid="contact.textarea"
+                    value={contactMessage}
+                    onChange={(e) => setContactMessage(e.target.value)}
+                  />
+                </div>
+                <Button
+                  className="w-full bg-navy hover:bg-navy/90 text-gold font-bold uppercase tracking-wider"
+                  data-ocid="contact.submit_button"
+                  onClick={handleContactSubmit}
+                >
+                  Send Message
+                </Button>
+
+                {/* Contact Info */}
+                <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3 border-t border-border pt-6">
+                  <div className="flex items-start gap-3">
+                    <MapPin className="h-4 w-4 text-gold mt-0.5 shrink-0" />
+                    <div>
+                      <p className="text-xs font-bold uppercase tracking-wider text-gold">
+                        Address
+                      </p>
+                      <a
+                        href="https://www.google.com/maps?q=Christ+Church+Chapel+Church+Rise+Forest+Hill+London+SE23+2UJ"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm text-foreground/70 mt-0.5 hover:text-gold transition-colors block"
+                      >
+                        Christ Church Chapel
+                        <br />
+                        The Chapel On The Hill
+                        <br />
+                        Church Rise/ South Road
+                        <br />
+                        Forest Hill, London
+                        <br />
+                        SE23 2UJ
+                      </a>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <Phone className="h-4 w-4 text-gold mt-0.5 shrink-0" />
+                    <div>
+                      <p className="text-xs font-bold uppercase tracking-wider text-gold">
+                        Phone
+                      </p>
+                      <p className="text-sm text-foreground/70 mt-0.5">
+                        Tel: 07888608000
+                        <br />
+                        Mobile: 07733399248
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <Mail className="h-4 w-4 text-gold mt-0.5 shrink-0" />
+                    <div>
+                      <p className="text-xs font-bold uppercase tracking-wider text-gold">
+                        Email
+                      </p>
+                      <p className="text-sm text-foreground/70 mt-0.5 break-all">
+                        Nlem.worshipcentre@gmail.com
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
       </main>
 
       {/* ── FOOTER ── */}
-
-      {/* ── CHURCH BULLETIN ── */}
-      <section
-        id="bulletin"
-        className="py-20 bg-white"
-        aria-label="Church Bulletin"
-      >
-        <div className="mx-auto max-w-7xl px-6">
-          <SectionHeading>Church Bulletin</SectionHeading>
-          <p className="text-center text-navy/60 mb-10 max-w-2xl mx-auto">
-            Upcoming news, information and programme updates for our
-            congregation.
-          </p>
-          <div className="grid gap-6 sm:grid-cols-2 max-w-3xl mx-auto">
-            {BULLETIN.map((item) => (
-              <div
-                key={item.event}
-                className="rounded-2xl border-2 p-6"
-                style={{
-                  borderColor: "rgba(212,175,55,0.4)",
-                  background: "#fffbeb",
-                }}
-              >
-                <div className="text-3xl mb-3">{item.icon}</div>
-                <p
-                  className="text-xs font-black uppercase tracking-widest mb-1"
-                  style={{ color: "#d4af37" }}
-                >
-                  {item.date}
-                </p>
-                <h3 className="font-bold text-lg text-navy mb-2">
-                  {item.event}
-                </h3>
-                <p className="text-navy/70 text-sm leading-relaxed">
-                  {item.message}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <footer className="bg-navy border-t border-white/10">
         <div className="mx-auto max-w-7xl px-6 py-14">
           <div className="grid grid-cols-1 gap-10 sm:grid-cols-3">
@@ -2025,7 +2015,7 @@ ${contactMessage}`);
         <div className="border-t border-white/10 px-6 py-5">
           <div className="mx-auto max-w-7xl flex flex-col items-center justify-between gap-2 sm:flex-row">
             <p className="text-xs text-white/40">
-              © {new Date().getFullYear()} New Life Evangelistic Ministries
+              &copy; {new Date().getFullYear()} New Life Evangelistic Ministries
               Worship Centre. All rights reserved.
             </p>
             <p className="text-xs text-white/40">
