@@ -134,7 +134,47 @@ const SERMONS = [
   },
 ];
 
-const BULLETIN = [
+const BULLETIN: {
+  icon: string;
+  event: string;
+  date: string;
+  message: string;
+  scriptures?: string[];
+}[] = [
+  {
+    icon: "📖",
+    event: "Youth Bible Reading Challenge",
+    date: "Starting April 1st",
+    message:
+      "The Youth of New Life Evangelistic Church will embark on a challenge to read through the Bible in a year. The plan is to read two chapters a day. Join us on this journey!",
+  },
+  {
+    icon: "🙏",
+    event: "Week of Prayer and Fasting",
+    date: "Starting March 30th",
+    message:
+      "The church will begin a week of prayer and fasting. Let's come together in unity and seek God's guidance.",
+  },
+  {
+    icon: "✝️",
+    event: "Good Friday Service",
+    date: "Friday, April 3rd at 3:30 PM",
+    message:
+      "Join us for our Good Friday service as we reflect on the sacrifice of Jesus Christ.",
+  },
+  {
+    icon: "🌟",
+    event: "Witnessing Opportunity",
+    date: "This Saturday at 11 AM",
+    message:
+      "There will be a witnessing opportunity this Saturday. We will meet here at 11 AM to spread the word of God.\n\nTheme: The Power, The Mystery's, & The Virtue of the Cross",
+    scriptures: [
+      "1 Corinthians 1:17-18",
+      "Galatians 6:14",
+      "Isaiah 52:13, 33:12",
+      "Philippians 2:5-11, 3:20-21",
+    ],
+  },
   {
     icon: "\uD83C\uDF05",
     event: "Easter Sunday",
@@ -434,7 +474,7 @@ ${contactMessage}`);
       <header
         className={`fixed inset-x-0 top-0 z-50 transition-shadow duration-300 ${
           scrolled ? "shadow-card" : ""
-        } bg-navy`}
+        } bg-light-blue`}
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
           {/* Logo */}
@@ -448,7 +488,7 @@ ${contactMessage}`);
               alt="New Life Evangelistic Ministries Worship Centre Logo"
               className="h-12 w-12 object-contain rounded-full"
             />
-            <span className="font-display text-base font-bold tracking-wide text-white hidden xl:block">
+            <span className="font-display text-base font-bold tracking-wide text-navy hidden xl:block">
               NLEM Worship Centre
             </span>
           </a>
@@ -462,7 +502,7 @@ ${contactMessage}`);
               <a
                 key={link.href}
                 href={link.href}
-                className="text-xs font-medium text-white/80 transition-colors hover:text-gold"
+                className="text-xs font-medium text-navy/80 transition-colors hover:text-gold"
                 data-ocid="nav.link"
               >
                 {link.label}
@@ -481,7 +521,7 @@ ${contactMessage}`);
             </Button>
             <button
               type="button"
-              className="lg:hidden text-white p-1"
+              className="lg:hidden text-navy p-1"
               onClick={() => setMenuOpen(!menuOpen)}
               aria-label="Toggle menu"
               data-ocid="nav.toggle"
@@ -497,12 +537,12 @@ ${contactMessage}`);
 
         {/* Mobile Menu */}
         {menuOpen && (
-          <nav className="lg:hidden bg-navy border-t border-white/10 px-6 py-4 flex flex-col gap-3">
+          <nav className="lg:hidden bg-light-blue border-t border-navy/20 px-6 py-4 flex flex-col gap-3">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium text-white/80 hover:text-gold py-2 pl-0 hover:border-l-2 hover:border-gold hover:pl-2 transition-all"
+                className="text-sm font-medium text-navy/80 hover:text-gold py-2 pl-0 hover:border-l-2 hover:border-gold hover:pl-2 transition-all"
                 data-ocid="nav.link"
               >
                 {link.label}
@@ -1738,7 +1778,7 @@ ${contactMessage}`);
               Upcoming news, information and programme updates for our
               congregation.
             </p>
-            <div className="grid gap-6 sm:grid-cols-2 max-w-3xl mx-auto">
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto">
               {BULLETIN.map((item) => (
                 <div
                   key={item.event}
@@ -1753,9 +1793,29 @@ ${contactMessage}`);
                   <h3 className="font-bold text-lg text-white mb-2">
                     {item.event}
                   </h3>
-                  <p className="text-white/70 text-sm leading-relaxed">
-                    {item.message}
-                  </p>
+                  <div className="text-white/70 text-sm leading-relaxed space-y-1">
+                    {item.message.split("\n").map((line) => (
+                      <p key={line}>{line}</p>
+                    ))}
+                  </div>
+                  {item.scriptures && (
+                    <div className="mt-3 pt-3 border-t border-gold/20">
+                      <p className="text-xs font-bold text-gold uppercase tracking-widest mb-2">
+                        Relevant Scriptures:
+                      </p>
+                      <ul className="space-y-1">
+                        {item.scriptures.map((s) => (
+                          <li
+                            key={s}
+                            className="text-white/60 text-xs flex items-start gap-1"
+                          >
+                            <span className="text-gold mt-0.5">•</span>
+                            {s}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
@@ -1912,7 +1972,7 @@ ${contactMessage}`);
 
       {/* ── FOOTER ── */}
       <div className="h-1 bg-gradient-to-r from-transparent via-gold/60 to-transparent" />
-      <footer className="bg-navy border-t border-white/10">
+      <footer className="bg-light-blue border-t border-navy/20">
         <div className="mx-auto max-w-7xl px-6 py-14">
           <div className="grid grid-cols-1 gap-10 sm:grid-cols-3">
             {/* Quick Links */}
@@ -1925,7 +1985,7 @@ ${contactMessage}`);
                   <li key={link.href}>
                     <a
                       href={link.href}
-                      className="text-sm text-white/60 hover:text-gold transition-colors"
+                      className="text-sm text-navy/60 hover:text-gold transition-colors"
                       data-ocid="footer.link"
                     >
                       {link.label}
@@ -1946,7 +2006,7 @@ ${contactMessage}`);
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Facebook"
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white/60 hover:border-gold hover:text-gold transition-colors"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-navy/20 text-navy/60 hover:border-gold hover:text-gold transition-colors"
                   data-ocid="footer.link"
                 >
                   <Facebook className="h-4 w-4" />
@@ -1956,7 +2016,7 @@ ${contactMessage}`);
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Instagram"
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white/60 hover:border-gold hover:text-gold transition-colors"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-navy/20 text-navy/60 hover:border-gold hover:text-gold transition-colors"
                   data-ocid="footer.link"
                 >
                   <Instagram className="h-4 w-4" />
@@ -1966,7 +2026,7 @@ ${contactMessage}`);
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Twitter"
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white/60 hover:border-gold hover:text-gold transition-colors"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-navy/20 text-navy/60 hover:border-gold hover:text-gold transition-colors"
                   data-ocid="footer.link"
                 >
                   <Twitter className="h-4 w-4" />
@@ -1976,7 +2036,7 @@ ${contactMessage}`);
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="YouTube"
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white/60 hover:border-gold hover:text-gold transition-colors"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-navy/20 text-navy/60 hover:border-gold hover:text-gold transition-colors"
                   data-ocid="footer.link"
                 >
                   <Youtube className="h-4 w-4" />
@@ -1986,22 +2046,22 @@ ${contactMessage}`);
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="TikTok"
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white/60 hover:border-gold hover:text-gold transition-colors"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-navy/20 text-navy/60 hover:border-gold hover:text-gold transition-colors"
                   data-ocid="footer.link"
                 >
                   <TikTokIcon className="h-4 w-4" />
                 </a>
               </div>
               <div className="mt-6 space-y-2">
-                <div className="flex items-center gap-2 text-sm text-white/60">
+                <div className="flex items-center gap-2 text-sm text-navy/60">
                   <Clock className="h-4 w-4 text-gold" />
                   <span>Sun: 10:30 AM | Wed: 7:00 PM</span>
                 </div>
-                <div className="flex items-center gap-2 text-sm text-white/60">
+                <div className="flex items-center gap-2 text-sm text-navy/60">
                   <Phone className="h-4 w-4 text-gold" />
                   <span>07888608000 | 07733399248</span>
                 </div>
-                <div className="flex items-center gap-2 text-sm text-white/60">
+                <div className="flex items-center gap-2 text-sm text-navy/60">
                   <Mail className="h-4 w-4 text-gold" />
                   <span>Nlem.worshipcentre@gmail.com</span>
                 </div>
@@ -2020,12 +2080,12 @@ ${contactMessage}`);
                   className="h-14 w-14 object-contain rounded-full"
                 />
                 <div>
-                  <p className="font-display font-bold text-white text-lg leading-tight">
+                  <p className="font-display font-bold text-navy text-lg leading-tight">
                     New Life Evangelistic Ministries Worship Centre
                   </p>
                 </div>
               </div>
-              <p className="text-sm text-white/60 leading-relaxed">
+              <p className="text-sm text-navy/60 leading-relaxed">
                 A place to belong, grow, and serve. Join us as we build a
                 community rooted in faith, love, and the grace of God.
               </p>
@@ -2041,13 +2101,13 @@ ${contactMessage}`);
         </div>
 
         {/* Copyright */}
-        <div className="border-t border-white/10 px-6 py-5">
+        <div className="border-t border-navy/10 px-6 py-5">
           <div className="mx-auto max-w-7xl flex flex-col items-center justify-between gap-2 sm:flex-row">
-            <p className="text-xs text-white/40">
+            <p className="text-xs text-navy/40">
               &copy; {new Date().getFullYear()} New Life Evangelistic Ministries
               Worship Centre. All rights reserved.
             </p>
-            <p className="text-xs text-white/40">
+            <p className="text-xs text-navy/40">
               Built with <Heart className="inline h-3 w-3 text-gold" /> using{" "}
               <a
                 href={`https://caffeine.ai?utm_source=caffeine-footer&utm_medium=referral&utm_content=${encodeURIComponent(typeof window !== "undefined" ? window.location.hostname : "")}`}
