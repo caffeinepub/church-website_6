@@ -233,6 +233,12 @@ const MINISTRIES = [
     description:
       "Extending God's love beyond our walls through local and global mission work.",
   },
+  {
+    Icon: Music2,
+    name: "Worship Ministry",
+    description:
+      "Leading the congregation in Spirit-filled worship through music, song, and praise to glorify God.",
+  },
 ];
 
 const MINISTRIES_MEETUP = [
@@ -262,6 +268,11 @@ const LEADERSHIP = [
     name: "Pastor Augustine Adu Amankwah",
     title: "Children Ministry Leader",
     img: "/assets/generated/leader-augustine.dim_400x400.jpg",
+  },
+  {
+    name: "Pastor Ebenezer Adu Amankwah",
+    title: "Men Ministry Leader",
+    img: "/assets/generated/leader-ebenezer.dim_400x400.jpg",
   },
   {
     name: "Pastor Solomon Mills",
@@ -941,11 +952,6 @@ ${contactMessage}`);
                       alt={sermon.title}
                       className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gold/90 text-navy shadow-lg">
-                        <Play className="h-5 w-5 fill-current" />
-                      </div>
-                    </div>
                   </div>
                   <div className="p-5">
                     <h3 className="font-bold text-navy text-lg leading-snug">
@@ -1524,7 +1530,7 @@ ${contactMessage}`);
           aria-label="Leadership"
         >
           <div className="mx-auto max-w-7xl px-6">
-            <SectionHeading light>Meet the Leadership</SectionHeading>
+            <SectionHeading light>Meet Our Leadership Team</SectionHeading>
             <div className="mt-12 grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-4">
               {LEADERSHIP.map((leader, i) => (
                 <div
