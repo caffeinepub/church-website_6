@@ -244,39 +244,39 @@ const MINISTRIES_MEETUP = [
 
 const LEADERSHIP = [
   {
-    name: "Pastor Samuel",
-    title: "Resident Pastor",
-    img: "/assets/uploads/image-019d2731-6d48-725b-adbd-74657b634684-1.png",
+    name: "Head Pastor Patrick Adu Amankwah",
+    title: "Head Pastor",
+    img: "/assets/uploads/image-019d2734-d054-755b-a44b-213924140b31-1.png",
   },
   {
-    name: "Pastor Ebenezer",
-    title: "Men Ministry Leader",
-    img: "/assets/uploads/image-019d272c-7fad-713a-b272-6709a9919520-1.png",
-  },
-  {
-    name: "Pastor Augustine",
-    title: "Children Ministry Leader",
-    img: "/assets/generated/leader-augustine.dim_400x400.jpg",
-  },
-  {
-    name: "Deaconess Koomson",
-    title: "Ushering / Hospitality Leader",
-    img: "/assets/uploads/image-019d289c-3697-7765-843f-435c896f66b7-1.png",
-  },
-  {
-    name: "Dr Joyce",
+    name: "Dr Joyce Adu Amankwah",
     title: "Women Ministry Leader",
     img: "/assets/uploads/image-019d272e-a57b-7293-9398-217ce7171823-1.png",
   },
   {
-    name: "Pastor Solomon",
+    name: "Pastor Samuel Agyapong",
+    title: "Resident Pastor",
+    img: "/assets/uploads/image-019d2731-6d48-725b-adbd-74657b634684-1.png",
+  },
+  {
+    name: "Pastor Augustine Adu Amankwah",
+    title: "Children Ministry Leader",
+    img: "/assets/generated/leader-augustine.dim_400x400.jpg",
+  },
+  {
+    name: "Pastor Solomon Mills",
     title: "Youth Coordinator",
     img: "/assets/generated/leader-solomon-real.dim_400x400.jpg",
   },
   {
-    name: "Minister Audrey",
+    name: "Minister Audrey Mills",
     title: "Worship Team Leader",
     img: "/assets/generated/leader-audrey-real.dim_400x400.jpg",
+  },
+  {
+    name: "Deaconess Anthoniet Koomson",
+    title: "Ushering / Hospitality Leader",
+    img: "/assets/uploads/image-019d289c-3697-7765-843f-435c896f66b7-1.png",
   },
 ];
 
@@ -474,7 +474,7 @@ ${contactMessage}`);
       <header
         className={`fixed inset-x-0 top-0 z-50 transition-shadow duration-300 ${
           scrolled ? "shadow-card" : ""
-        } bg-light-blue`}
+        } bg-navy`}
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
           {/* Logo */}
@@ -488,7 +488,7 @@ ${contactMessage}`);
               alt="New Life Evangelistic Ministries Worship Centre Logo"
               className="h-12 w-12 object-contain rounded-full"
             />
-            <span className="font-display text-base font-bold tracking-wide text-navy hidden xl:block">
+            <span className="font-display text-base font-bold tracking-wide text-white hidden xl:block">
               NLEM Worship Centre
             </span>
           </a>
@@ -502,7 +502,7 @@ ${contactMessage}`);
               <a
                 key={link.href}
                 href={link.href}
-                className="text-xs font-medium text-navy/80 transition-colors hover:text-gold"
+                className="text-xs font-medium text-white/80 transition-colors hover:text-gold"
                 data-ocid="nav.link"
               >
                 {link.label}
@@ -521,7 +521,7 @@ ${contactMessage}`);
             </Button>
             <button
               type="button"
-              className="lg:hidden text-navy p-1"
+              className="lg:hidden text-white p-1"
               onClick={() => setMenuOpen(!menuOpen)}
               aria-label="Toggle menu"
               data-ocid="nav.toggle"
@@ -537,12 +537,12 @@ ${contactMessage}`);
 
         {/* Mobile Menu */}
         {menuOpen && (
-          <nav className="lg:hidden bg-light-blue border-t border-navy/20 px-6 py-4 flex flex-col gap-3">
+          <nav className="lg:hidden bg-navy border-t border-white/20 px-6 py-4 flex flex-col gap-3">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium text-navy/80 hover:text-gold py-2 pl-0 hover:border-l-2 hover:border-gold hover:pl-2 transition-all"
+                className="text-sm font-medium text-white/80 hover:text-gold py-2 pl-0 hover:border-l-2 hover:border-gold hover:pl-2 transition-all"
                 data-ocid="nav.link"
               >
                 {link.label}
@@ -664,7 +664,7 @@ ${contactMessage}`);
         {/* ── 2. ABOUT ── */}
         <section
           id="about"
-          className="scroll-mt-20 py-24 bg-sky-50"
+          className="scroll-mt-20 py-24 bg-white"
           aria-label="About Us"
         >
           <div className="mx-auto max-w-7xl px-6">
@@ -848,7 +848,7 @@ ${contactMessage}`);
         {/* ── 5. SERVICES / WORSHIP TIMES ── */}
         <section
           id="worship"
-          className="py-24 bg-sky-50"
+          className="py-24 bg-white"
           aria-label="Worship Times"
         >
           <div className="mx-auto max-w-7xl px-6">
@@ -923,7 +923,7 @@ ${contactMessage}`);
         {/* ── 6. LATEST SERMONS ── */}
         <section
           id="sermons"
-          className="scroll-mt-20 py-24 bg-sky-50"
+          className="scroll-mt-20 py-24 bg-white"
           aria-label="Sermons"
         >
           <div className="mx-auto max-w-7xl px-6">
@@ -1033,7 +1033,7 @@ ${contactMessage}`);
                   className={`grid grid-cols-2 px-6 py-5 border-b border-gray-100 last:border-b-0 ${
                     i % 2 === 0
                       ? "bg-white border-l-4 border-l-transparent"
-                      : "bg-sky-100 border-l-4 border-l-gold/40"
+                      : "bg-gray-50 border-l-4 border-l-gold/40"
                   }`}
                   data-ocid={`events.item.${i + 1}`}
                 >
@@ -1308,7 +1308,7 @@ ${contactMessage}`);
         {/* ── 9. MINISTRIES ── */}
         <section
           id="ministries"
-          className="scroll-mt-20 py-24 bg-sky-50"
+          className="scroll-mt-20 py-24 bg-white"
           aria-label="Ministries"
         >
           <div className="mx-auto max-w-7xl px-6">
@@ -1352,7 +1352,7 @@ ${contactMessage}`);
                   <div
                     key={ministry}
                     className={`grid grid-cols-2 px-6 py-4 border-b border-gray-100 last:border-b-0 ${
-                      i % 2 === 0 ? "bg-white" : "bg-sky-100"
+                      i % 2 === 0 ? "bg-white" : "bg-gray-50"
                     }`}
                     data-ocid={`ministries.item.${i + 1}`}
                   >
@@ -1379,7 +1379,7 @@ ${contactMessage}`);
         {/* ── 10. PRAYERS ── */}
         <section
           id="prayers"
-          className="scroll-mt-20 py-24 bg-sky-50"
+          className="scroll-mt-20 py-24 bg-white"
           aria-label="Prayers"
         >
           <div className="mx-auto max-w-7xl px-6">
@@ -1554,7 +1554,7 @@ ${contactMessage}`);
         {/* ── 12. GALLERY ── */}
         <section
           id="gallery"
-          className="scroll-mt-20 py-24 bg-sky-50"
+          className="scroll-mt-20 py-24 bg-white"
           aria-label="Gallery"
         >
           <div className="mx-auto max-w-7xl px-6">
@@ -1652,7 +1652,7 @@ ${contactMessage}`);
         {/* ── 13. GIVING ── */}
         <section
           id="giving"
-          className="scroll-mt-20 py-24 bg-sky-50"
+          className="scroll-mt-20 py-24 bg-white"
           aria-label="Giving"
         >
           <div className="mx-auto max-w-6xl px-6">
@@ -1825,7 +1825,7 @@ ${contactMessage}`);
         {/* ── 15. CONTACT ── */}
         <section
           id="contact"
-          className="scroll-mt-20 py-24 bg-sky-50"
+          className="scroll-mt-20 py-24 bg-white"
           aria-label="Contact"
         >
           <div className="mx-auto max-w-7xl px-6">
@@ -1972,7 +1972,7 @@ ${contactMessage}`);
 
       {/* ── FOOTER ── */}
       <div className="h-1 bg-gradient-to-r from-transparent via-gold/60 to-transparent" />
-      <footer className="bg-light-blue border-t border-navy/20">
+      <footer className="bg-navy border-t border-white/20">
         <div className="mx-auto max-w-7xl px-6 py-14">
           <div className="grid grid-cols-1 gap-10 sm:grid-cols-3">
             {/* Quick Links */}
@@ -1985,7 +1985,7 @@ ${contactMessage}`);
                   <li key={link.href}>
                     <a
                       href={link.href}
-                      className="text-sm text-navy/60 hover:text-gold transition-colors"
+                      className="text-sm text-white/60 hover:text-gold transition-colors"
                       data-ocid="footer.link"
                     >
                       {link.label}
@@ -2006,7 +2006,7 @@ ${contactMessage}`);
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Facebook"
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-navy/20 text-navy/60 hover:border-gold hover:text-gold transition-colors"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white/60 hover:border-gold hover:text-gold transition-colors"
                   data-ocid="footer.link"
                 >
                   <Facebook className="h-4 w-4" />
@@ -2016,7 +2016,7 @@ ${contactMessage}`);
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Instagram"
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-navy/20 text-navy/60 hover:border-gold hover:text-gold transition-colors"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white/60 hover:border-gold hover:text-gold transition-colors"
                   data-ocid="footer.link"
                 >
                   <Instagram className="h-4 w-4" />
@@ -2026,7 +2026,7 @@ ${contactMessage}`);
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Twitter"
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-navy/20 text-navy/60 hover:border-gold hover:text-gold transition-colors"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white/60 hover:border-gold hover:text-gold transition-colors"
                   data-ocid="footer.link"
                 >
                   <Twitter className="h-4 w-4" />
@@ -2036,7 +2036,7 @@ ${contactMessage}`);
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="YouTube"
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-navy/20 text-navy/60 hover:border-gold hover:text-gold transition-colors"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white/60 hover:border-gold hover:text-gold transition-colors"
                   data-ocid="footer.link"
                 >
                   <Youtube className="h-4 w-4" />
@@ -2046,22 +2046,22 @@ ${contactMessage}`);
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="TikTok"
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-navy/20 text-navy/60 hover:border-gold hover:text-gold transition-colors"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white/60 hover:border-gold hover:text-gold transition-colors"
                   data-ocid="footer.link"
                 >
                   <TikTokIcon className="h-4 w-4" />
                 </a>
               </div>
               <div className="mt-6 space-y-2">
-                <div className="flex items-center gap-2 text-sm text-navy/60">
+                <div className="flex items-center gap-2 text-sm text-white/60">
                   <Clock className="h-4 w-4 text-gold" />
                   <span>Sun: 10:30 AM | Wed: 7:00 PM</span>
                 </div>
-                <div className="flex items-center gap-2 text-sm text-navy/60">
+                <div className="flex items-center gap-2 text-sm text-white/60">
                   <Phone className="h-4 w-4 text-gold" />
                   <span>07888608000 | 07733399248</span>
                 </div>
-                <div className="flex items-center gap-2 text-sm text-navy/60">
+                <div className="flex items-center gap-2 text-sm text-white/60">
                   <Mail className="h-4 w-4 text-gold" />
                   <span>Nlem.worshipcentre@gmail.com</span>
                 </div>
@@ -2085,7 +2085,7 @@ ${contactMessage}`);
                   </p>
                 </div>
               </div>
-              <p className="text-sm text-navy/60 leading-relaxed">
+              <p className="text-sm text-white/60 leading-relaxed">
                 A place to belong, grow, and serve. Join us as we build a
                 community rooted in faith, love, and the grace of God.
               </p>
@@ -2101,7 +2101,7 @@ ${contactMessage}`);
         </div>
 
         {/* Copyright */}
-        <div className="border-t border-navy/10 px-6 py-5">
+        <div className="border-t border-white/10 px-6 py-5">
           <div className="mx-auto max-w-7xl flex flex-col items-center justify-between gap-2 sm:flex-row">
             <p className="text-xs text-navy/40">
               &copy; {new Date().getFullYear()} New Life Evangelistic Ministries
