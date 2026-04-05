@@ -272,7 +272,7 @@ const LEADERSHIP = [
   {
     name: "Pastor Ebenezer Adu Amankwah",
     title: "Men Ministry Leader",
-    img: "/assets/generated/leader-ebenezer.dim_400x400.jpg",
+    img: "/assets/uploads/image-019d5a63-c6c6-73d6-b556-b7c5a94c993a-1.png",
   },
   {
     name: "Pastor Solomon Mills",
