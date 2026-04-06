@@ -1,11 +1,18 @@
 import { Button } from "@/components/ui/button";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import {
   Baby,
   BookOpen,
   Calendar,
+  ChevronDown,
   ChevronRight,
+  ChevronUp,
   Clock,
   Cross,
   Facebook,
@@ -29,6 +36,7 @@ import {
   Youtube,
   Zap,
 } from "lucide-react";
+import type React from "react";
 import { useEffect, useState } from "react";
 
 function TikTokIcon({ className }: { className?: string }) {
@@ -140,6 +148,7 @@ const BULLETIN: {
   date: string;
   message: string;
   scriptures?: string[];
+  expiryDate: Date;
 }[] = [
   {
     icon: "📖",
@@ -147,6 +156,7 @@ const BULLETIN: {
     date: "Starting April 1st",
     message:
       "The Youth of New Life Evangelistic Church will embark on a challenge to read through the Bible in a year. The plan is to read two chapters a day. Join us on this journey!",
+    expiryDate: new Date("2026-12-31"),
   },
   {
     icon: "🙏",
@@ -154,6 +164,7 @@ const BULLETIN: {
     date: "Starting March 30th",
     message:
       "The church will begin a week of prayer and fasting. Let's come together in unity and seek God's guidance.",
+    expiryDate: new Date("2026-03-30"),
   },
   {
     icon: "✝️",
@@ -161,6 +172,7 @@ const BULLETIN: {
     date: "Friday, April 3rd at 3:30 PM",
     message:
       "Join us for our Good Friday service as we reflect on the sacrifice of Jesus Christ.",
+    expiryDate: new Date("2026-04-03"),
   },
   {
     icon: "🌟",
@@ -174,6 +186,7 @@ const BULLETIN: {
       "Isaiah 52:13, 33:12",
       "Philippians 2:5-11, 3:20-21",
     ],
+    expiryDate: new Date("2026-04-05"),
   },
   {
     icon: "\uD83C\uDF05",
@@ -181,6 +194,7 @@ const BULLETIN: {
     date: "5th April 2026",
     message:
       "Join us for a special Resurrection Sunday celebration! Come and commemorate the risen Christ with the whole family.",
+    expiryDate: new Date("2026-04-05"),
   },
   {
     icon: "\uD83D\uDC68\u200D\uD83D\uDC67\u200D\uD83D\uDC66",
@@ -188,6 +202,7 @@ const BULLETIN: {
     date: "21st June 2026",
     message:
       "Honoring all fathers and father figures in our congregation. A special service to celebrate the gift of fatherhood.",
+    expiryDate: new Date("2026-06-21"),
   },
 ];
 
@@ -250,8 +265,8 @@ const MINISTRIES_MEETUP = [
 
 const LEADERSHIP = [
   {
-    name: "Head Pastor Patrick Adu Amankwah",
-    title: "Head Pastor",
+    name: "Rev Patrick Adu Amankwah",
+    title: "Senior Pastor",
     img: "/assets/uploads/image-019d2734-d054-755b-a44b-213924140b31-1.png",
   },
   {
@@ -434,6 +449,58 @@ function useTVBroadcastState() {
     return () => clearInterval(id);
   }, []);
   return state;
+}
+
+function PastEventsCollapsible({
+  pastBulletin,
+  BulletinCard,
+}: {
+  pastBulletin: typeof BULLETIN;
+  BulletinCard: ({
+    item,
+  }: { item: (typeof BULLETIN)[0] }) => React.ReactElement;
+}) {
+  const [open, setOpen] = useState(false);
+  return (
+    <Collapsible
+      open={open}
+      onOpenChange={setOpen}
+      className="max-w-5xl mx-auto mt-10"
+    >
+      <CollapsibleTrigger asChild>
+        <button
+          data-ocid="bulletin.past_events.toggle"
+          className="flex w-full items-center justify-between rounded-2xl border border-gold/40 bg-white/5 hover:bg-white/10 transition-all duration-300 px-6 py-4 group"
+          type="button"
+          aria-expanded={open}
+        >
+          <div className="flex items-center gap-3">
+            <span className="text-xl">📋</span>
+            <span className="text-gold font-bold text-sm uppercase tracking-widest">
+              Past Events &amp; Programs
+            </span>
+            <span className="ml-2 rounded-full bg-gold/20 text-gold text-xs font-bold px-2.5 py-0.5">
+              {pastBulletin.length}
+            </span>
+          </div>
+          {open ? (
+            <ChevronUp className="h-5 w-5 text-gold/70 group-hover:text-gold transition-colors" />
+          ) : (
+            <ChevronDown className="h-5 w-5 text-gold/70 group-hover:text-gold transition-colors" />
+          )}
+        </button>
+      </CollapsibleTrigger>
+      <CollapsibleContent className="mt-4">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {pastBulletin.map((item) => (
+            <div key={item.event} className="opacity-75">
+              <BulletinCard item={item} />
+            </div>
+          ))}
+        </div>
+      </CollapsibleContent>
+    </Collapsible>
+  );
 }
 
 export default function App() {
@@ -1784,12 +1851,19 @@ ${contactMessage}`);
               Upcoming news, information and programme updates for our
               congregation.
             </p>
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto">
-              {BULLETIN.map((item) => (
-                <div
-                  key={item.event}
-                  className="rounded-2xl border border-gold/40 bg-white/10 p-6 hover:bg-white/15 transition-all duration-300"
-                >
+            {(() => {
+              const today = new Date();
+              today.setHours(0, 0, 0, 0);
+              const upcomingBulletin = BULLETIN.filter(
+                (item) => item.expiryDate >= today,
+              );
+              const pastBulletin = BULLETIN.filter(
+                (item) => item.expiryDate < today,
+              );
+              const BulletinCard = ({
+                item,
+              }: { item: (typeof BULLETIN)[0] }) => (
+                <div className="rounded-2xl border border-gold/40 bg-white/10 p-6 hover:bg-white/15 transition-all duration-300">
                   <div className="rounded-full bg-gold/20 p-3 inline-flex items-center justify-center text-2xl w-16 h-16 mb-3">
                     {item.icon}
                   </div>
@@ -1823,8 +1897,29 @@ ${contactMessage}`);
                     </div>
                   )}
                 </div>
-              ))}
-            </div>
+              );
+              return (
+                <>
+                  {upcomingBulletin.length > 0 ? (
+                    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto">
+                      {upcomingBulletin.map((item) => (
+                        <BulletinCard key={item.event} item={item} />
+                      ))}
+                    </div>
+                  ) : (
+                    <p className="text-center text-white/50 italic mt-4">
+                      No upcoming announcements at this time.
+                    </p>
+                  )}
+                  {pastBulletin.length > 0 && (
+                    <PastEventsCollapsible
+                      pastBulletin={pastBulletin}
+                      BulletinCard={BulletinCard}
+                    />
+                  )}
+                </>
+              );
+            })()}
           </div>
         </section>
 

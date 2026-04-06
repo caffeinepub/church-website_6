@@ -1,29 +1,33 @@
 # Church Website
 
 ## Current State
-- TV Ministry section has a countdown timer using `getNextFridayTimeLeft()` which always counts to the next Friday 4pm GMT. It shows the timer but never shows a 'Now Broadcasting' state — it just stops at zero or shows zeros.
-- Latest Sermons section has 2 sermons: Pastor Solomon ('Knowing The Truth') and Rev. Patrick ('What Can I Do for the Lord?').
-- No Church Bulletin section exists.
+- Leadership array has `name: "Head Pastor Patrick Adu Amankwah"` and `title: "Head Pastor"` as the first member.
+- Church Bulletin section renders all BULLETIN items unconditionally (no date-based filtering). Items have free-text date strings, no JS Date objects.
+- There is no Past Events section or collapsible.
 
 ## Requested Changes (Diff)
 
 ### Add
-- **TV Ministry timer: Now Broadcasting state** — between Friday 4:00pm–5:00pm GMT, hide the countdown and show 'Now Broadcasting' message with a clickable link to https://www.faithworldtv.com/. After 5:15pm GMT, restart the countdown to the following Friday 4pm.
-- **Pastor Samuel sermon card** — title: 'THE HARVEST IS PLENTY, BUT LABORERS ARE FEW', preached 6/04/25, scriptures: Luke 10:1-5, Luke 10:17, Acts 1:8. Summary: need for more workers, accurate preaching, authority and power from God (full text as provided).
-- **Palm Sunday sermon card by Rev. Patrick** — title: 'The Lord is in need of you', Mark 10:17, Matthew 21. Key takeaways: God seeks commitment, authentic living in Christ, focus on the right things, 'Go and untie' for the Lord has need.
-- **Church Bulletin section** — static section below TV Ministry (or above footer). Two items: Easter Sunday 5th April 2026 with celebratory message, Father's Day 21st June 2026 with honoring message.
+- Each BULLETIN item needs a `expiryDate: Date` field (real JS Date object) so items can be automatically categorised as upcoming or past.
+- A "Past Events & Programs" collapsible section rendered directly below the active bulletin announcements grid. Uses the shadcn Collapsible component (already available). Shows all bulletin items whose `expiryDate` is before today's date. Styled consistently with the existing bulletin section (same card style, navy background, gold accents).
 
 ### Modify
-- `getNextFridayTimeLeft()` / timer hook: add logic to detect if currently in the 4pm–5pm GMT Friday window (isBroadcasting) and after 5:15pm (to target next Friday).
-- The countdown display in TV Ministry: conditionally show 'Now Broadcasting' panel or the countdown tiles based on isBroadcasting state.
+- BULLETIN item expiry dates:
+  - Week of Prayer and Fasting: expired (March 30, 2026)
+  - Good Friday Service: expired (April 3, 2026)
+  - Witnessing Opportunity: expired (April 5, 2026)
+  - Easter Sunday: expired (April 5, 2026)
+  - Youth Bible Reading Challenge: ongoing/future (set expiry to Dec 31, 2026)
+  - Father's Day: future (June 21, 2026)
+- Leadership array first entry: change `name` from `"Head Pastor Patrick Adu Amankwah"` to `"Rev Patrick Adu Amankwah"` and `title` from `"Head Pastor"` to `"Senior Pastor"`. (Keep photo the same.)
+- Active bulletin section: only show items where `expiryDate >= today`.
 
 ### Remove
 - Nothing removed.
 
 ## Implementation Plan
-1. Refactor `getNextFridayTimeLeft` into a richer hook `useTVBroadcastState` that returns `{ isBroadcasting, timeLeft }`. isBroadcasting = true when UTC time is Friday and hour is 16 (4pm–4:59pm). After 5:15pm GMT (hour >= 17 and minute >= 15), target becomes next Friday.
-2. In the TV Ministry section countdown block, conditionally render 'Now Broadcasting' with Faithworld TV link when isBroadcasting, otherwise show countdown tiles.
-3. Add Pastor Samuel sermon to SERMONS array with appropriate generated image.
-4. Add Palm Sunday sermon (Rev. Patrick) to SERMONS array with appropriate image.
-5. Add BULLETIN array with 2 items (Easter Sunday, Father's Day).
-6. Add Church Bulletin section to the page (styled with navy/gold theme, card layout).
+1. In `App.tsx`, add `expiryDate: Date` to each BULLETIN item with appropriate dates.
+2. Compute `today = new Date()` and split BULLETIN into `upcomingBulletin` (expiryDate >= today) and `pastBulletin` (expiryDate < today).
+3. Render the active bulletin grid using `upcomingBulletin`.
+4. Below the active bulletin grid, add a collapsible "Past Events & Programs" section using the shadcn Collapsible component. Show a toggle button (chevron icon) to expand/collapse. Render past items in the same card style.
+5. Update the LEADERSHIP array first entry: name → `"Rev Patrick Adu Amankwah"`, title → `"Senior Pastor"`.
